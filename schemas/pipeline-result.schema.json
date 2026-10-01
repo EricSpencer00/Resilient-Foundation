@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:pipeline-result:v1",
+  "title": "pipeline-result",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "pipeline_result"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "semantic_profile_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "intent_status": {
+      "enum": [
+        "candidate",
+        "validated",
+        "accepted",
+        "needs_decision"
+      ]
+    },
+    "formal": {
+      "type": "object",
+      "properties": {
+        "outcome": {
+          "enum": [
+            "Proved",
+            "Refuted",
+            "Unknown",
+            "Unsupported",
+            "Timeout",
+            "ResourceLimit",
+            "InvalidEvidence",
+            "NeedsDecision",
+            "Error"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "none",
+            "illustrative",
+            "empirical",
+            "solver_checked",
+            "kernel_checked",
+            "translation_checked"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "minItems": 0
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "outcome",
+        "evidence_class",
+        "evidence_ids",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "translation": {
+      "type": "object",
+      "properties": {
+        "outcome": {
+          "enum": [
+            "Proved",
+            "Refuted",
+            "Unknown",
+            "Unsupported",
+            "Timeout",
+            "ResourceLimit",
+            "InvalidEvidence",
+            "NeedsDecision",
+            "Error"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "none",
+            "illustrative",
+            "empirical",
+            "solver_checked",
+            "kernel_checked",
+            "translation_checked"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "minItems": 0
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "outcome",
+        "evidence_class",
+        "evidence_ids",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "runtime_status": {
+      "enum": [
+        "NotRun",
+        "Tested",
+        "DeployedBound",
+        "Failed",
+        "Unsupported"
+      ]
+    },
+    "functional_tests": {
+      "enum": [
+        "NotRun",
+        "Passed",
+        "Failed"
+      ]
+    },
+    "required_policy": {
+      "enum": [
+        "diagnostic",
+        "source_contract",
+        "strict_exact",
+        "strict_native_exact"
+      ]
+    },
+    "acceptance": {
+      "enum": [
+        "NotAccepted",
+        "Accepted"
+      ]
+    },
+    "required_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+        "maxLength": 100
+      },
+      "minItems": 1
+    },
+    "discharged_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+        "maxLength": 100
+      },
+      "minItems": 0
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+        "maxLength": 100
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "task_id",
+    "semantic_profile_id",
+    "intent_status",
+    "formal",
+    "translation",
+    "runtime_status",
+    "functional_tests",
+    "required_policy",
+    "acceptance",
+    "required_obligation_ids",
+    "discharged_obligation_ids",
+    "artifact_hashes",
+    "limitations"
+  ],
+  "additionalProperties": false
+}
