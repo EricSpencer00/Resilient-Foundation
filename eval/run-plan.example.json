@@ -1,0 +1,28 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "eval_run_plan",
+  "illustrative": true,
+  "run_id": "example-model-screen",
+  "lane": "code_proof",
+  "model": {
+    "provider": "placeholder-provider",
+    "model_id": "placeholder-model",
+    "snapshot_or_serving_cohort": "to-be-selected",
+    "settings": {}
+  },
+  "package_revision": "to-be-pinned-at-run",
+  "scaffold_revision": "to-be-pinned-at-run",
+  "dataset_revision": "to-be-pinned-at-run",
+  "task_split_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "budget_profile_id": "model-screen",
+  "baseline_id": "same-model-native-baseline",
+  "seeds": [
+    0
+  ],
+  "result_status": "NotRun",
+  "adapted_tasks": false,
+  "hardware_profile": "to-be-pinned-at-run",
+  "notes": [
+    "This is a schema example, not an authorized evaluation or observed score."
+  ]
+}

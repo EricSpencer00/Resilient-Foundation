@@ -1,0 +1,203 @@
+{
+  "version": "0.1.0-draft",
+  "base_bundle": "examples/nonnegative/bundle.json",
+  "cases": [
+    {
+      "id": "illustrative-proof-inflation",
+      "target": "result",
+      "path": [
+        "formal",
+        "outcome"
+      ],
+      "value": "Proved",
+      "expected_error": "illustrative_proof_claim"
+    },
+    {
+      "id": "unknown-accepted",
+      "target": "result",
+      "path": [
+        "acceptance"
+      ],
+      "value": "Accepted",
+      "expected_error": "required_obligation_open"
+    },
+    {
+      "id": "stale-source-hash",
+      "target": "result",
+      "path": [
+        "artifact_hashes",
+        "candidate-nn"
+      ],
+      "value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "expected_error": "artifact_hash_mismatch"
+    },
+    {
+      "id": "mixed-semantics",
+      "target": "result",
+      "path": [
+        "semantic_profile_id"
+      ],
+      "value": "different-profile",
+      "expected_error": "semantic_profile_mismatch"
+    },
+    {
+      "id": "execution-without-acceptance",
+      "target": "bundle",
+      "path": [
+        "execution_authorized"
+      ],
+      "value": true,
+      "expected_error": "execution_without_acceptance"
+    },
+    {
+      "id": "missing-native-obligation",
+      "target": "result",
+      "path": [
+        "required_obligation_ids"
+      ],
+      "value": [
+        "O-NN-EXACT",
+        "O-NN-LOWER"
+      ],
+      "expected_error": "required_roots_mismatch"
+    },
+    {
+      "id": "wrong-task",
+      "target": "result",
+      "path": [
+        "task_id"
+      ],
+      "value": "different-task",
+      "expected_error": "task_id_mismatch"
+    },
+    {
+      "id": "accepted-ambiguity",
+      "target": "ledger",
+      "path": [
+        "unresolved_ambiguities"
+      ],
+      "value": [
+        "integer width unresolved"
+      ],
+      "expected_error": "accepted_intent_with_ambiguity"
+    },
+    {
+      "id": "status-evidence-inflation",
+      "target": "result",
+      "path": [
+        "formal",
+        "evidence_class"
+      ],
+      "value": "kernel_checked",
+      "expected_error": "status_evidence_mismatch"
+    },
+    {
+      "id": "unknown-discharged",
+      "target": "result",
+      "path": [
+        "discharged_obligation_ids"
+      ],
+      "value": [
+        "O-NN-EXACT"
+      ],
+      "expected_error": "unknown_discharged"
+    },
+    {
+      "id": "unsafe-path",
+      "target": "bundle",
+      "path": [
+        "artifacts",
+        0,
+        "path"
+      ],
+      "value": "../../outside-file",
+      "expected_error": "unsafe_artifact_path"
+    },
+    {
+      "id": "dangling-edge",
+      "target": "graph",
+      "path": [
+        "edges",
+        0,
+        "to"
+      ],
+      "value": "missing-node",
+      "expected_error": "dangling_graph_edge"
+    },
+    {
+      "id": "dependency-cycle",
+      "target": "graph",
+      "path": [
+        "edges"
+      ],
+      "value": [
+        {
+          "from": "R-NN-01",
+          "to": "N-SPEC",
+          "relation": "formalizes"
+        },
+        {
+          "from": "R-NN-02",
+          "to": "N-SPEC",
+          "relation": "formalizes"
+        },
+        {
+          "from": "R-NN-03",
+          "to": "N-SPEC",
+          "relation": "formalizes"
+        },
+        {
+          "from": "O-NN-EXACT",
+          "to": "N-SPEC",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-EXACT",
+          "to": "N-CANDIDATE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-EXACT",
+          "to": "N-PROFILE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-LOWER",
+          "to": "N-SPEC",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-LOWER",
+          "to": "N-CANDIDATE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-LOWER",
+          "to": "N-PROFILE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-NATIVE",
+          "to": "N-SPEC",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-NATIVE",
+          "to": "N-CANDIDATE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "O-NN-NATIVE",
+          "to": "N-PROFILE",
+          "relation": "depends_on"
+        },
+        {
+          "from": "N-SPEC",
+          "to": "O-NN-EXACT",
+          "relation": "depends_on"
+        }
+      ],
+      "expected_error": "dependency_cycle"
+    }
+  ]
+}

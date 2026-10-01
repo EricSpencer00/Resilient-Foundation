@@ -1,0 +1,100 @@
+{
+  "version": "0.1.0-draft",
+  "budgets_are_proposed_not_authorized_spending": true,
+  "profiles": [
+    {
+      "id": "spec-smoke",
+      "lane": "package",
+      "model_required": false,
+      "status": "implemented_specification_checks_only",
+      "max_wall_seconds": 60,
+      "max_model_tokens": 0,
+      "max_tool_calls": 0,
+      "max_usd_per_task": 0,
+      "seeds": [
+        0
+      ],
+      "scope": "Current schema/manifest/traceability checks, not a package or solver benchmark."
+    },
+    {
+      "id": "model-screen",
+      "lane": "code_proof",
+      "model_required": true,
+      "status": "planned",
+      "max_wall_seconds": 300,
+      "max_model_tokens": 24000,
+      "max_tool_calls": 80,
+      "max_usd_per_task": 1.0,
+      "seeds": [
+        0
+      ],
+      "scope": "Predeclared stratified screening subset; results are not the full benchmark."
+    },
+    {
+      "id": "model-standard",
+      "lane": "code_proof",
+      "model_required": true,
+      "status": "planned",
+      "max_wall_seconds": 900,
+      "max_model_tokens": 96000,
+      "max_tool_calls": 200,
+      "max_usd_per_task": 3.0,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "scope": "Pinned full supported suite; each seed is a separately budgeted attempt; pass@1 and repeated-seed analysis separate."
+    },
+    {
+      "id": "repository-standard",
+      "lane": "repository",
+      "model_required": true,
+      "status": "planned",
+      "max_wall_seconds": 1800,
+      "max_model_tokens": 128000,
+      "max_tool_calls": 250,
+      "max_usd_per_task": 5.0,
+      "seeds": [
+        0
+      ],
+      "scope": "Pinned original repository tasks/scaffold; official and formal outcomes separate."
+    },
+    {
+      "id": "package-fixed",
+      "lane": "package",
+      "model_required": false,
+      "status": "planned",
+      "max_wall_seconds": 300,
+      "max_model_tokens": 0,
+      "max_tool_calls": 0,
+      "max_usd_per_task": 0,
+      "seeds": [
+        0
+      ],
+      "scope": "Per-case fixed artifacts; record solver CPU, wall, memory and all outcome states."
+    },
+    {
+      "id": "runtime-paired",
+      "lane": "runtime",
+      "model_required": false,
+      "status": "planned",
+      "max_wall_seconds": 600,
+      "max_model_tokens": 0,
+      "max_tool_calls": 0,
+      "max_usd_per_task": 0,
+      "seeds": [
+        0
+      ],
+      "scope": "Matched safe Rust behavior; at least 30 paired median samples, 200 p95 observations, 1000 p99 observations."
+    }
+  ],
+  "performance_gate_defaults": {
+    "median_latency_ratio_max": 1.1,
+    "p95_latency_ratio_max": 1.2,
+    "peak_rss_ratio_max": 1.1,
+    "confirmation_runs": 2,
+    "confidence_level": 0.95,
+    "baseline_required": true
+  }
+}

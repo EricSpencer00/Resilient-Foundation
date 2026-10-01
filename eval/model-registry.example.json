@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0-draft",
+  "illustrative": true,
+  "models": [],
+  "required_fields": [
+    "provider",
+    "model_id",
+    "snapshot_or_serving_cohort",
+    "settings",
+    "adapter_revision",
+    "pricing_snapshot",
+    "exposure_history"
+  ],
+  "notes": [
+    "Populate chosen model snapshots at experiment time; do not hardcode a current winner.",
+    "Local models record weights/tokenizer/runtime/quantization/hardware digests."
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "version": "0.1.0-draft",
+  "status": "planned_case_families_not_executed_results",
+  "cases": [
+    {
+      "id": "ADV-01",
+      "family": "Wrapping overflow",
+      "mutation_or_scenario": "MAX+1 interpreted mathematically",
+      "independent_expected_result": "Reject unrestricted math/runtime equivalence or use exact wrapping relation.",
+      "milestone": "M1"
+    },
+    {
+      "id": "ADV-02",
+      "family": "Division error",
+      "mutation_or_scenario": "Divisor zero silently returns a value",
+      "independent_expected_result": "Typed DivideByZero observation preserved.",
+      "milestone": "M1"
+    },
+    {
+      "id": "ADV-03",
+      "family": "Division overflow",
+      "mutation_or_scenario": "MIN/-1 panics or differs from wrap profile",
+      "independent_expected_result": "Return MIN under the selected profile.",
+      "milestone": "M1"
+    },
+    {
+      "id": "ADV-04",
+      "family": "JSON precision",
+      "mutation_or_scenario": "i64 literal serialized as an inexact JSON number",
+      "independent_expected_result": "Reject shape/conversion; exact decimal string required.",
+      "milestone": "M1"
+    },
+    {
+      "id": "ADV-05",
+      "family": "Weak spec",
+      "mutation_or_scenario": "Incorrect outputs allowed by a tautological postcondition",
+      "independent_expected_result": "Fail independent wrong-output validation.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-06",
+      "family": "Narrowed precondition",
+      "mutation_or_scenario": "Boundary inputs excluded to discharge code proof",
+      "independent_expected_result": "Reject unaccepted domain strengthening.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-07",
+      "family": "Vacuous assumption",
+      "mutation_or_scenario": "assume(false) eliminates executions",
+      "independent_expected_result": "No whole-task acceptance; satisfiable admissible input/domain obligation.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-08",
+      "family": "Unknown inflation",
+      "mutation_or_scenario": "Timeout/missing solver returned as Proved",
+      "independent_expected_result": "Reject status/evidence promotion.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-09",
+      "family": "Wrong proposition",
+      "mutation_or_scenario": "Certificate proves a different query",
+      "independent_expected_result": "Reject obligation/evidence binding.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-10",
+      "family": "Recovery prefix",
+      "mutation_or_scenario": "State mutation omitted from reachable prefix",
+      "independent_expected_result": "Bad recovery state counterexample validated.",
+      "milestone": "M4"
+    },
+    {
+      "id": "ADV-11",
+      "family": "Effect before acknowledgement",
+      "mutation_or_scenario": "Reset duplicates an actuator action",
+      "independent_expected_result": "Reject unsafe retry absent a sufficient device protocol.",
+      "milestone": "M4"
+    },
+    {
+      "id": "ADV-12",
+      "family": "Lost persistence",
+      "mutation_or_scenario": "Dedupe state disappears on reset",
+      "independent_expected_result": "Reject exactly-once claim under that fault model.",
+      "milestone": "M4"
+    },
+    {
+      "id": "ADV-13",
+      "family": "Unstable input",
+      "mutation_or_scenario": "Replay reads a different epoch without modeling it",
+      "independent_expected_result": "Reject false replay equivalence or declare reread semantics.",
+      "milestone": "M4"
+    },
+    {
+      "id": "ADV-14",
+      "family": "Progress",
+      "mutation_or_scenario": "Unlimited reset/loop mistaken for eventual completion",
+      "independent_expected_result": "Progress claim needs explicit assumptions/termination proof.",
+      "milestone": "M4"
+    },
+    {
+      "id": "ADV-15",
+      "family": "Stale proof",
+      "mutation_or_scenario": "Code/spec/profile/target changes after checking",
+      "independent_expected_result": "Reject stale identity/dependency evidence.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-16",
+      "family": "Evidence graph",
+      "mutation_or_scenario": "Test node or dependency cycle proves theorem root",
+      "independent_expected_result": "Reject unsupported proof edge/cycle.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-17",
+      "family": "Wrong lowering",
+      "mutation_or_scenario": "Generated target changes branch/error order",
+      "independent_expected_result": "Reject source-target relation.",
+      "milestone": "M3"
+    },
+    {
+      "id": "ADV-18",
+      "family": "Native mismatch",
+      "mutation_or_scenario": "Optimization/ABI/target arithmetic differs from modeled source",
+      "independent_expected_result": "Reject or withhold native claim.",
+      "milestone": "M5"
+    },
+    {
+      "id": "ADV-19",
+      "family": "Correlated probability",
+      "mutation_or_scenario": "Multiply marginal time/energy/success rates",
+      "independent_expected_result": "Require joint model or justified relation.",
+      "milestone": "M6"
+    },
+    {
+      "id": "ADV-20",
+      "family": "Retry cost",
+      "mutation_or_scenario": "Only successful-path cost included",
+      "independent_expected_result": "Reject total budget claim or charge retries/restores.",
+      "milestone": "M6"
+    },
+    {
+      "id": "ADV-21",
+      "family": "Same-count edit",
+      "mutation_or_scenario": "ensures <=100 becomes <=1000",
+      "independent_expected_result": "Detect logical weakening under the declared client relation.",
+      "milestone": "M7"
+    },
+    {
+      "id": "ADV-22",
+      "family": "Path uniqueness",
+      "mutation_or_scenario": "Cycles/stutters change what a path means",
+      "independent_expected_result": "Require defined path notion and complete/bounded model scope.",
+      "milestone": "M6"
+    },
+    {
+      "id": "ADV-23",
+      "family": "Hyper alignment",
+      "mutation_or_scenario": "Two traces use different public inputs without declaration",
+      "independent_expected_result": "Reject invalid noninterference comparison.",
+      "milestone": "M6"
+    },
+    {
+      "id": "ADV-24",
+      "family": "Exact termination",
+      "mutation_or_scenario": "Returning implementation compared with diverging spec using only outputs",
+      "independent_expected_result": "Reject exactness or prove termination-compatible observations.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-25",
+      "family": "Equivalent mutant",
+      "mutation_or_scenario": "nonnegative >=0 becomes >0 with else0",
+      "independent_expected_result": "Recognize same observable function; do not count textual mutant as invalid.",
+      "milestone": "M2"
+    },
+    {
+      "id": "ADV-26",
+      "family": "Hidden helper",
+      "mutation_or_scenario": "Unsupported FFI/library implements actual behavior",
+      "independent_expected_result": "Reject stronger profile claim; external trust explicit.",
+      "milestone": "M7"
+    }
+  ]
+}

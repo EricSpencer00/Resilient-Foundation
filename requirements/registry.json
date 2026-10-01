@@ -1,0 +1,567 @@
+{
+  "version": "0.1.0-draft",
+  "requirements": [
+    {
+      "id": "R-001",
+      "level": "MUST",
+      "commitment": "No unrestricted prose-equivalence claim",
+      "document": "docs/03-intent-and-autoformalization.md",
+      "work_packages": [
+        "WP-20"
+      ]
+    },
+    {
+      "id": "R-002",
+      "level": "MUST",
+      "commitment": "Every requirement has clause/observation coverage or an explicit scope decision",
+      "document": "docs/03-intent-and-autoformalization.md",
+      "work_packages": [
+        "WP-20"
+      ]
+    },
+    {
+      "id": "R-003",
+      "level": "MUST",
+      "commitment": "Ambiguity decisions and interpretation provenance are recorded",
+      "document": "docs/03-intent-and-autoformalization.md",
+      "work_packages": [
+        "WP-20"
+      ]
+    },
+    {
+      "id": "R-004",
+      "level": "MUST",
+      "commitment": "Independent spec oracle is not the candidate implementation",
+      "document": "docs/16-model-evaluation.md",
+      "work_packages": [
+        "WP-02",
+        "WP-20"
+      ]
+    },
+    {
+      "id": "R-005",
+      "level": "MUST",
+      "commitment": "Exactness is observable equivalence for a complete executable spec",
+      "document": "docs/02-correctness-contract.md",
+      "work_packages": [
+        "WP-06"
+      ]
+    },
+    {
+      "id": "R-006",
+      "level": "MUST",
+      "commitment": "Refinement and equality are distinct results",
+      "document": "docs/02-correctness-contract.md",
+      "work_packages": [
+        "WP-06"
+      ]
+    },
+    {
+      "id": "R-007",
+      "level": "MUST",
+      "commitment": "Termination/errors and semantic vs analysis bounds remain explicit",
+      "document": "docs/02-correctness-contract.md",
+      "work_packages": [
+        "WP-04",
+        "WP-06"
+      ]
+    },
+    {
+      "id": "R-008",
+      "level": "MUST",
+      "commitment": "Arithmetic agrees with the pinned machine profile",
+      "document": "docs/05-semantic-core.md",
+      "work_packages": [
+        "WP-03"
+      ]
+    },
+    {
+      "id": "R-009",
+      "level": "MUST",
+      "commitment": "Large integer serialization is exact",
+      "document": "docs/05-semantic-core.md",
+      "work_packages": [
+        "WP-03"
+      ]
+    },
+    {
+      "id": "R-010",
+      "level": "MUST",
+      "commitment": "IR typing and unsupported-feature checks precede analysis",
+      "document": "docs/05-semantic-core.md",
+      "work_packages": [
+        "WP-04"
+      ]
+    },
+    {
+      "id": "R-011",
+      "level": "MUST",
+      "commitment": "Every source-to-model edge has a declared preservation obligation",
+      "document": "docs/06-translation-and-codegen.md",
+      "work_packages": [
+        "WP-05",
+        "WP-12"
+      ]
+    },
+    {
+      "id": "R-012",
+      "level": "MUST",
+      "commitment": "Every claimed lowering relation is checked for its fragment",
+      "document": "docs/06-translation-and-codegen.md",
+      "work_packages": [
+        "WP-08"
+      ]
+    },
+    {
+      "id": "R-013",
+      "level": "MUST",
+      "commitment": "Native/compiler/runtime trust is not hidden by source proofs",
+      "document": "docs/06-translation-and-codegen.md",
+      "work_packages": [
+        "WP-13",
+        "WP-14"
+      ]
+    },
+    {
+      "id": "R-014",
+      "level": "MUST",
+      "commitment": "Counterexamples and witnesses are validated against source semantics",
+      "document": "docs/07-verification-and-properties.md",
+      "work_packages": [
+        "WP-06",
+        "WP-15"
+      ]
+    },
+    {
+      "id": "R-015",
+      "level": "MUST",
+      "commitment": "Backend selection matches the entire task tuple",
+      "document": "docs/07-verification-and-properties.md",
+      "work_packages": [
+        "WP-06",
+        "WP-31"
+      ]
+    },
+    {
+      "id": "R-016",
+      "level": "MUST",
+      "commitment": "Unknown/Unsupported/Timeout/missing solver cannot become Proved",
+      "document": "docs/09-certificates-and-trust.md",
+      "work_packages": [
+        "WP-07"
+      ]
+    },
+    {
+      "id": "R-017",
+      "level": "MUST",
+      "commitment": "Solver, kernel, empirical and translation evidence are distinct",
+      "document": "docs/09-certificates-and-trust.md",
+      "work_packages": [
+        "WP-07"
+      ]
+    },
+    {
+      "id": "R-018",
+      "level": "MUST",
+      "commitment": "Signatures/hashes do not establish semantic truth",
+      "document": "docs/09-certificates-and-trust.md",
+      "work_packages": [
+        "WP-07"
+      ]
+    },
+    {
+      "id": "R-019",
+      "level": "MUST",
+      "commitment": "Evidence binds actual spec/source/profile/target/build",
+      "document": "docs/09-certificates-and-trust.md",
+      "work_packages": [
+        "WP-07",
+        "WP-23"
+      ]
+    },
+    {
+      "id": "R-020",
+      "level": "MUST",
+      "commitment": "Required evidence graph dependencies are closed without unsound cycles",
+      "document": "docs/08-proof-graph.md",
+      "work_packages": [
+        "WP-22"
+      ]
+    },
+    {
+      "id": "R-021",
+      "level": "MUST",
+      "commitment": "Semantic changes invalidate dependent cached evidence",
+      "document": "docs/08-proof-graph.md",
+      "work_packages": [
+        "WP-22"
+      ]
+    },
+    {
+      "id": "R-022",
+      "level": "MUST",
+      "commitment": "Code/proof search cannot silently weaken locked intent/specs",
+      "document": "docs/03-intent-and-autoformalization.md",
+      "work_packages": [
+        "WP-21"
+      ]
+    },
+    {
+      "id": "R-023",
+      "level": "MUST",
+      "commitment": "Recovery obligations include reachable prefix, fault and recovery states",
+      "document": "docs/10-fault-recovery-effects.md",
+      "work_packages": [
+        "WP-09"
+      ]
+    },
+    {
+      "id": "R-024",
+      "level": "MUST",
+      "commitment": "External effects and acknowledgement/persistence enter recovery semantics",
+      "document": "docs/10-fault-recovery-effects.md",
+      "work_packages": [
+        "WP-10"
+      ]
+    },
+    {
+      "id": "R-025",
+      "level": "MUST",
+      "commitment": "Input epochs and replayability are explicit",
+      "document": "docs/10-fault-recovery-effects.md",
+      "work_packages": [
+        "WP-10"
+      ]
+    },
+    {
+      "id": "R-026",
+      "level": "MUST",
+      "commitment": "Exactly-once physical effects require an environment/protocol contract",
+      "document": "docs/10-fault-recovery-effects.md",
+      "work_packages": [
+        "WP-10"
+      ]
+    },
+    {
+      "id": "R-027",
+      "level": "MUST",
+      "commitment": "Progress/fault budget assumptions are separated from recovery safety",
+      "document": "docs/10-fault-recovery-effects.md",
+      "work_packages": [
+        "WP-11"
+      ]
+    },
+    {
+      "id": "R-028",
+      "level": "MUST",
+      "commitment": "Resource bounds include loop/call/retry/checkpoint costs",
+      "document": "docs/11-time-energy-probability.md",
+      "work_packages": [
+        "WP-16"
+      ]
+    },
+    {
+      "id": "R-029",
+      "level": "MUST",
+      "commitment": "Timing/energy/reliability query models the joint event and correlations",
+      "document": "docs/11-time-energy-probability.md",
+      "work_packages": [
+        "WP-17"
+      ]
+    },
+    {
+      "id": "R-030",
+      "level": "MUST",
+      "commitment": "Numeric interval/statistical evidence cannot be promoted to unsupported logical proof",
+      "document": "docs/11-time-energy-probability.md",
+      "work_packages": [
+        "WP-17"
+      ]
+    },
+    {
+      "id": "R-031",
+      "level": "MUST",
+      "commitment": "Scheduler/fairness and hypertrace alignment are declared",
+      "document": "docs/07-verification-and-properties.md",
+      "work_packages": [
+        "WP-15",
+        "WP-18"
+      ]
+    },
+    {
+      "id": "R-032",
+      "level": "MUST",
+      "commitment": "Graph queries declare path notion and model completeness",
+      "document": "docs/07-verification-and-properties.md",
+      "work_packages": [
+        "WP-15"
+      ]
+    },
+    {
+      "id": "R-033",
+      "level": "MUST",
+      "commitment": "Regression checking compares semantics rather than annotation counts",
+      "document": "docs/07-verification-and-properties.md",
+      "work_packages": [
+        "WP-19"
+      ]
+    },
+    {
+      "id": "R-034",
+      "level": "MUST",
+      "commitment": "Capability and external-component trust are explicit",
+      "document": "docs/12-runtime-agent-execution.md",
+      "work_packages": [
+        "WP-23"
+      ]
+    },
+    {
+      "id": "R-035",
+      "level": "MUST",
+      "commitment": "A wrapper does not prove a neural model or external library",
+      "document": "docs/12-runtime-agent-execution.md",
+      "work_packages": [
+        "WP-23"
+      ]
+    },
+    {
+      "id": "R-036",
+      "level": "MUST",
+      "commitment": "Executed artifacts match accepted capsule identity",
+      "document": "docs/12-runtime-agent-execution.md",
+      "work_packages": [
+        "WP-23"
+      ]
+    },
+    {
+      "id": "R-037",
+      "level": "MUST",
+      "commitment": "Rust familiarity and speed are measured hypotheses",
+      "document": "docs/13-rust-ecosystem-and-interoperability.md",
+      "work_packages": [
+        "WP-25",
+        "WP-28"
+      ]
+    },
+    {
+      "id": "R-038",
+      "level": "MUST",
+      "commitment": "Existing Resilient status is not overwritten by planned Foundation guarantees",
+      "document": "docs/14-resilient-integration.md",
+      "work_packages": [
+        "WP-05"
+      ]
+    },
+    {
+      "id": "R-039",
+      "level": "MUST",
+      "commitment": "Model/package/runtime evaluation lanes are separate",
+      "document": "docs/15-evaluation-matrix.md",
+      "work_packages": [
+        "WP-02"
+      ]
+    },
+    {
+      "id": "R-040",
+      "level": "MUST",
+      "commitment": "All task attempts remain in the declared success denominator",
+      "document": "docs/15-evaluation-matrix.md",
+      "work_packages": [
+        "WP-02",
+        "WP-25"
+      ]
+    },
+    {
+      "id": "R-041",
+      "level": "MUST",
+      "commitment": "Model snapshot/scaffold/task/package/budget identities are pinned",
+      "document": "docs/16-model-evaluation.md",
+      "work_packages": [
+        "WP-21",
+        "WP-25"
+      ]
+    },
+    {
+      "id": "R-042",
+      "level": "MUST",
+      "commitment": "Cost per accepted solution includes failed attempt costs",
+      "document": "docs/16-model-evaluation.md",
+      "work_packages": [
+        "WP-25"
+      ]
+    },
+    {
+      "id": "R-043",
+      "level": "MUST",
+      "commitment": "Official SWE-bench task/harness outcomes remain unchanged",
+      "document": "docs/17-swebench.md",
+      "work_packages": [
+        "WP-24"
+      ]
+    },
+    {
+      "id": "R-044",
+      "level": "MUST",
+      "commitment": "Ported/eligible-subset scores have separate identities and denominators",
+      "document": "docs/17-swebench.md",
+      "work_packages": [
+        "WP-24"
+      ]
+    },
+    {
+      "id": "R-045",
+      "level": "MUST",
+      "commitment": "Fixed-artifact package performance does not depend on a new model",
+      "document": "docs/18-package-performance.md",
+      "work_packages": [
+        "WP-27"
+      ]
+    },
+    {
+      "id": "R-046",
+      "level": "MUST",
+      "commitment": "Performance includes wall/aggregate CPU/RSS/certificates and failure outcomes",
+      "document": "docs/18-package-performance.md",
+      "work_packages": [
+        "WP-27"
+      ]
+    },
+    {
+      "id": "R-047",
+      "level": "MUST",
+      "commitment": "Runtime baseline has matching observable semantics",
+      "document": "docs/18-package-performance.md",
+      "work_packages": [
+        "WP-28"
+      ]
+    },
+    {
+      "id": "R-048",
+      "level": "MUST",
+      "commitment": "No known false acceptance can pass a capability release",
+      "document": "docs/19-soundness-and-mutation-suite.md",
+      "work_packages": [
+        "WP-26"
+      ]
+    },
+    {
+      "id": "R-049",
+      "level": "MUST",
+      "commitment": "Valid-case rejection and unsupported coverage accompany mutation scores",
+      "document": "docs/19-soundness-and-mutation-suite.md",
+      "work_packages": [
+        "WP-26"
+      ]
+    },
+    {
+      "id": "R-050",
+      "level": "MUST",
+      "commitment": "Schema consistency is not a compiler/proof benchmark result",
+      "document": "docs/20-ci-release-gates.md",
+      "work_packages": [
+        "WP-01"
+      ]
+    },
+    {
+      "id": "R-051",
+      "level": "MUST",
+      "commitment": "Claims require actual milestone acceptance artifacts",
+      "document": "docs/20-ci-release-gates.md",
+      "work_packages": [
+        "WP-01",
+        "WP-30"
+      ]
+    },
+    {
+      "id": "R-052",
+      "level": "MUST",
+      "commitment": "Private publication/access changes require explicit owner instruction",
+      "document": "AGENTS.md",
+      "work_packages": [
+        "WP-01"
+      ]
+    },
+    {
+      "id": "R-053",
+      "level": "MUST",
+      "commitment": "General AI execution is modular; no universal proof automation claim",
+      "document": "docs/25-concurrency-and-extension-horizon.md",
+      "work_packages": [
+        "WP-31"
+      ]
+    },
+    {
+      "id": "R-054",
+      "level": "MUST",
+      "commitment": "Concurrency/float/FFI features need new semantics and evidence support",
+      "document": "docs/25-concurrency-and-extension-horizon.md",
+      "work_packages": [
+        "WP-31"
+      ]
+    },
+    {
+      "id": "R-055",
+      "level": "MUST",
+      "commitment": "Proposed novelty is compared with pinned nearest baselines",
+      "document": "docs/22-research-positioning.md",
+      "work_packages": [
+        "WP-30"
+      ]
+    },
+    {
+      "id": "R-056",
+      "level": "MUST",
+      "commitment": "LLM judge/chain of thought cannot be accepted as proof evidence",
+      "document": "docs/08-proof-graph.md",
+      "work_packages": [
+        "WP-21"
+      ]
+    },
+    {
+      "id": "R-057",
+      "level": "MUST",
+      "commitment": "Benchmark oracle/evaluator cannot be modified by candidate generation",
+      "document": "docs/16-model-evaluation.md",
+      "work_packages": [
+        "WP-02",
+        "WP-24"
+      ]
+    },
+    {
+      "id": "R-058",
+      "level": "MUST",
+      "commitment": "No spend or recurring model job is initiated by a specification-only task",
+      "document": "docs/20-ci-release-gates.md",
+      "work_packages": [
+        "WP-02"
+      ]
+    },
+    {
+      "id": "R-059",
+      "level": "MUST",
+      "commitment": "Proof erasure and optimization preserve requested observations",
+      "document": "docs/06-translation-and-codegen.md",
+      "work_packages": [
+        "WP-08"
+      ]
+    },
+    {
+      "id": "R-060",
+      "level": "MUST",
+      "commitment": "Evidence bundle can be checked without mutable external dependencies",
+      "document": "docs/01-system-architecture.md",
+      "work_packages": [
+        "WP-07"
+      ]
+    },
+    {
+      "id": "R-061",
+      "level": "MUST",
+      "commitment": "Human and agent APIs preserve typed outcomes and versioned semantics",
+      "document": "docs/23-api-cli.md",
+      "work_packages": [
+        "WP-29"
+      ]
+    }
+  ]
+}
