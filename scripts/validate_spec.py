@@ -17,6 +17,12 @@ def require(condition,message):
 def safe_path(p):
     q=PurePosixPath(p)
     return not q.is_absolute() and '..' not in q.parts and bool(q.parts)
+def check_work_package_status(w):
+    require(w['status'] in ['planned','in_progress'],'Unsupported work-package status; completion needs an acceptance checker')
+    if w['status']=='in_progress':
+        artifacts=w.get('implementation_artifacts',[])
+        require(bool(artifacts),'In-progress work package lacks implementation artifacts')
+        require(all(safe_path(p) and (ROOT/p).is_file() for p in artifacts),'Missing or unsafe implementation artifact')
 def cyclic(nodes,edges):
     colors={}
     def visit(n):
@@ -103,7 +109,7 @@ def main():
       'task_bundle':'task-bundle','eval_run_plan':'eval-run-plan','backend_capabilities':'backend-capabilities'}
     instances=0
     for p in sorted(ROOT.rglob('*.json')):
-        if any(x in p.parts for x in ['.git','.venv','artifacts']) or p.name=='.validation-report.json':continue
+        if any(x in p.parts for x in ['.git','.venv','artifacts','target']) or p.name=='.validation-report.json':continue
         x=load(str(p.relative_to(ROOT)))
         if isinstance(x,dict) and x.get('kind') in mapping:
             Draft202012Validator(schemas[mapping[x['kind']]]).validate(x);instances+=1
@@ -120,7 +126,7 @@ def main():
         require((ROOT/r['document']).is_file(),'Missing requirement document: '+r['id'])
         require(r['work_packages'] and set(r['work_packages'])<=wids,'Missing requirement work package')
     for w in wps:
-        require(w['status']=='planned','Implementation status must not be fabricated')
+        check_work_package_status(w)
         require(set(w['depends_on'])<=wids and w['id'] not in w['depends_on'],'Invalid work-package dependency')
         require(w['requirement_ids'] and set(w['requirement_ids'])<=rids,'Untraced work package')
         require(all((ROOT/p).is_file() for p in w['documents']),'Missing work-package document')
@@ -131,7 +137,7 @@ def main():
     require(not cyclic(wids,dependencies),'Work-package dependency cycle')
     links=0
     for p in ROOT.rglob('*.md'):
-        if any(x in p.parts for x in ['.git','.venv']):continue
+        if any(x in p.parts for x in ['.git','.venv','target']):continue
         for dest in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)',p.read_text()):
             if re.match(r'^[A-Za-z][A-Za-z0-9+.-]*:',dest) or dest.startswith('#'):continue
             target=(p.parent/dest.split('#',1)[0]).resolve()

@@ -1,6 +1,6 @@
 # Rust API, CLI and AI tool protocol
 
-All interfaces in this document are planned.
+The analysis, evidence and CLI interfaces below are planned. The implemented scalar reference API is documented separately in [implementation status](26-implementation-status.md).
 
 ## Rust API shape
 
@@ -45,7 +45,7 @@ foundation eval package --profile <fixed-artifact-profile>
 foundation eval runtime --profile <matched-native-profile>
 ~~~
 
-The only currently implemented validation command is the Python specification checker described in README.md. No foundation executable is shipped yet.
+The Python specification checker and the `foundation-core` Rust reference API/example are implemented. No `foundation` CLI, JSON execution adapter or proof checker is shipped yet.
 
 ## Agent tool actions
 

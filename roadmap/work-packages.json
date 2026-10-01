@@ -53,7 +53,7 @@
       "id": "WP-03",
       "milestone": "M1",
       "title": "Machine arithmetic and error semantics",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-01"
       ],
@@ -64,13 +64,18 @@
       "requirement_ids": [
         "R-008",
         "R-009"
+      ],
+      "implementation_artifacts": [
+        "crates/foundation-core/src/lib.rs",
+        "crates/foundation-core/tests/scalar_conformance.rs",
+        "docs/26-implementation-status.md"
       ]
     },
     {
       "id": "WP-04",
       "milestone": "M1",
       "title": "Typed scalar IR and reference semantics",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-03"
       ],
@@ -82,6 +87,11 @@
       "requirement_ids": [
         "R-007",
         "R-010"
+      ],
+      "implementation_artifacts": [
+        "crates/foundation-core/src/lib.rs",
+        "crates/foundation-core/tests/scalar_conformance.rs",
+        "docs/26-implementation-status.md"
       ]
     },
     {

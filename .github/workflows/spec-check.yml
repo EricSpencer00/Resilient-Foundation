@@ -1,4 +1,4 @@
-name: Specification consistency
+name: Foundation checks
 on:
   push:
   pull_request:
@@ -16,3 +16,19 @@ jobs:
           python3 -m venv .venv
           .venv/bin/python -m pip install --disable-pip-version-check -r requirements-dev.txt
           .venv/bin/python scripts/validate_spec.py
+          .venv/bin/python -m unittest discover -s scripts -p 'test_*.py'
+  scalar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Select Rust toolchain
+        run: |
+          rustup toolchain install 1.91.1 --profile minimal --component rustfmt --component clippy
+          rustup override set 1.91.1
+      - name: Check reference semantics
+        run: |
+          cargo fmt --all --check
+          cargo test --workspace --locked
+          cargo test --workspace --locked --release
+          cargo clippy --workspace --all-targets --locked -- -D warnings

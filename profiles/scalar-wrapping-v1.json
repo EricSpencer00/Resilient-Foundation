@@ -41,9 +41,10 @@
   "ffi": "unsupported",
   "concurrency": "unsupported",
   "semantic_loop_bound": null,
-  "reference_semantics_status": "planned",
+  "reference_semantics_status": "implemented",
   "notes": [
     "The initial example is expression-only. Bounded statements/calls are a later fragment declaration.",
-    "This is a proposed verification profile, not a claim that all current Resilient passes share these semantics."
+    "This is a proposed verification profile, not a claim that all current Resilient passes share these semantics.",
+    "The Rust expression reference evaluator is implemented and conformance-tested; JSON loading, source extraction and mechanized preservation remain planned."
   ]
 }

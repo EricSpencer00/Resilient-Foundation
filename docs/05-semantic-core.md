@@ -39,4 +39,6 @@ Pretty-print differences do not change canonical IR identity; source identity an
 
 ## Proof obligations
 
+The expression-only reference evaluator is implemented in [foundation-core](../crates/foundation-core/src/lib.rs), with [independent conformance cases](../crates/foundation-core/tests/scalar_conformance.rs). It operates through a typed Rust API; the JSON adapter and Resilient extraction remain planned. This implementation has no mechanized preservation theorem or proof checker. See [implementation status](26-implementation-status.md) for the operational resource limits and remaining gates.
+
 Typing preservation, progress/error completeness, interpreter consistency, expression/statement lowering preservation, supported-fragment completeness, observation preservation and deterministic evaluation for the exact scalar profile. Their actual theorems/checkers are planned work, not supplied by these schemas.
