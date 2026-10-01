@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:backend-capabilities:v1",
+  "title": "backend-capabilities",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "backend_capabilities"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "experimental",
+              "released"
+            ]
+          },
+          "task_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "semantic_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+              "maxLength": 100
+            },
+            "minItems": 1
+          },
+          "evidence_classes": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "solver_checked",
+                "kernel_checked",
+                "translation_checked",
+                "empirical"
+              ]
+            },
+            "minItems": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checker_status": {
+            "enum": [
+              "planned",
+              "implemented",
+              "mechanized"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "task_kinds",
+          "semantic_profiles",
+          "evidence_classes",
+          "scope",
+          "checker_status",
+          "limitations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "routes"
+  ],
+  "additionalProperties": false
+}
