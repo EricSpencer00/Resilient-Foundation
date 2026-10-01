@@ -1,0 +1,101 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "task_bundle",
+  "illustrative": true,
+  "task_id": "nonnegative",
+  "artifacts": [
+    {
+      "id": "request-nn",
+      "role": "raw_request",
+      "path": "examples/nonnegative/request.txt",
+      "sha256": "8a9f3cd095e7569a2ffab145a0e7f2e8c7a8634faa61b010893ff8f59130a92d"
+    },
+    {
+      "id": "ledger-nn",
+      "role": "requirements",
+      "path": "examples/nonnegative/requirements.json",
+      "sha256": "5775aa89f7718c76af76137d1109ed6e727c4b8a46c486bd09293e6147baf9e7"
+    },
+    {
+      "id": "spec-nn",
+      "role": "spec_ir",
+      "path": "examples/nonnegative/spec-ir.json",
+      "sha256": "e79af90d2d27c1deb8c0e552aac20aae1c0fba017031985befb50e3cc4980757"
+    },
+    {
+      "id": "candidate-nn",
+      "role": "candidate_ir",
+      "path": "examples/nonnegative/candidate-ir.json",
+      "sha256": "dda8cf1d66273c4cbee9830465878dc8623c17922838a90e1a489e33671bd4f4"
+    },
+    {
+      "id": "profile-nn",
+      "role": "semantic_profile",
+      "path": "profiles/scalar-wrapping-v1.json",
+      "sha256": "b7feb4986e20f7069bcb9bedc3d577eddd052e5451e55d0d59336c05313606ff"
+    },
+    {
+      "id": "source-nn",
+      "role": "source_sketch",
+      "path": "examples/nonnegative/program.rz.example",
+      "sha256": "571dce51b67716228feae8759523e92d98d3235801797fd19a30ad9374bb115c"
+    },
+    {
+      "id": "rust-source-nn",
+      "role": "source_sketch",
+      "path": "examples/nonnegative/candidate.rs.example",
+      "sha256": "469ca0d94cc8fcfa2eae06fdd40f1bbe2a01f6bebb3a198f32a96ec57b894abc"
+    },
+    {
+      "id": "oracle-nn",
+      "role": "oracle",
+      "path": "examples/nonnegative/oracle.json",
+      "sha256": "353683fa08bc2e60c2fd5eeea2e0ce5a17572892bdfff7c621595941f9de640e"
+    },
+    {
+      "id": "graph-nn",
+      "role": "evidence_graph",
+      "path": "examples/nonnegative/evidence-graph.json",
+      "sha256": "7994f647225275815e27206c8649ebd0261f038dbf2d59abebe1ebc152219a34"
+    },
+    {
+      "id": "artifact-O-NN-EXACT",
+      "role": "obligation",
+      "path": "examples/nonnegative/o-nn-exact.json",
+      "sha256": "45c11ff1140381a09b05396def1dcce779c0878cefd8b8cb213c7920f631a215"
+    },
+    {
+      "id": "artifact-O-NN-LOWER",
+      "role": "obligation",
+      "path": "examples/nonnegative/o-nn-lower.json",
+      "sha256": "4c79e79f7032768ac6c627ea1fca488553d7bbf21623dec2a6ce81f39ae41a94"
+    },
+    {
+      "id": "artifact-O-NN-NATIVE",
+      "role": "obligation",
+      "path": "examples/nonnegative/o-nn-native.json",
+      "sha256": "d4f1abec938dbe1870ec42823634d77521eacd5d371562ca5ebbc246a7f63c04"
+    },
+    {
+      "id": "result-nn",
+      "role": "result",
+      "path": "examples/nonnegative/result.json",
+      "sha256": "f068611489e127cf09236338719ee7cc531e3b121e6a8debb9dc1fe0b0f4c761"
+    }
+  ],
+  "entrypoints": {
+    "ledger": "ledger-nn",
+    "spec": "spec-nn",
+    "candidate": "candidate-nn",
+    "profile": "profile-nn",
+    "graph": "graph-nn",
+    "result": "result-nn",
+    "oracle": "oracle-nn"
+  },
+  "obligation_ids": [
+    "O-NN-EXACT",
+    "O-NN-LOWER",
+    "O-NN-NATIVE"
+  ],
+  "execution_authorized": false
+}
