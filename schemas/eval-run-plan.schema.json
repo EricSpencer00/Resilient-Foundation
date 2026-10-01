@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:eval-run-plan:v1",
+  "title": "eval-run-plan",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "eval_run_plan"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "lane": {
+      "enum": [
+        "intent",
+        "code_proof",
+        "repository",
+        "package",
+        "runtime"
+      ]
+    },
+    "model": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "snapshot_or_serving_cohort": {
+              "type": "string",
+              "minLength": 1
+            },
+            "settings": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "provider",
+            "model_id",
+            "snapshot_or_serving_cohort",
+            "settings"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "package_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scaffold_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataset_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_split_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "budget_profile_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "baseline_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seeds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "result_status": {
+      "const": "NotRun"
+    },
+    "adapted_tasks": {
+      "type": "boolean"
+    },
+    "hardware_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "run_id",
+    "lane",
+    "model",
+    "package_revision",
+    "scaffold_revision",
+    "dataset_revision",
+    "task_split_hash",
+    "budget_profile_id",
+    "baseline_id",
+    "seeds",
+    "result_status",
+    "adapted_tasks",
+    "hardware_profile",
+    "notes"
+  ],
+  "additionalProperties": false
+}
