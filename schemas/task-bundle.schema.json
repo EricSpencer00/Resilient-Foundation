@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:task-bundle:v1",
+  "title": "task-bundle",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "task_bundle"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "role": {
+            "enum": [
+              "raw_request",
+              "requirements",
+              "spec_ir",
+              "candidate_ir",
+              "semantic_profile",
+              "source_sketch",
+              "obligation",
+              "evidence_graph",
+              "result",
+              "oracle"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "entrypoints": {
+      "type": "object",
+      "properties": {
+        "ledger": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "spec": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "candidate": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "profile": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "graph": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "result": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "oracle": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "ledger",
+        "spec",
+        "candidate",
+        "profile",
+        "graph",
+        "result",
+        "oracle"
+      ],
+      "additionalProperties": false
+    },
+    "obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+        "maxLength": 100
+      },
+      "minItems": 1
+    },
+    "execution_authorized": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "task_id",
+    "artifacts",
+    "entrypoints",
+    "obligation_ids",
+    "execution_authorized"
+  ],
+  "additionalProperties": false
+}
