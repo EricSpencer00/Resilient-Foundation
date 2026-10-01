@@ -1,0 +1,161 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "backend_capabilities",
+  "routes": [
+    {
+      "id": "scalar-smt",
+      "status": "planned",
+      "task_kinds": [
+        "safety",
+        "equivalence",
+        "refinement"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "solver_checked"
+      ],
+      "scope": "Restricted i64/bool expression VCs; trusted encoding and solver initially.",
+      "checker_status": "planned",
+      "limitations": [
+        "Proof-witness/kernel route must be separately implemented."
+      ]
+    },
+    {
+      "id": "scalar-kernel",
+      "status": "planned",
+      "task_kinds": [
+        "safety",
+        "equivalence"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "kernel_checked"
+      ],
+      "scope": "Supported proposition/evidence formats checked through a selected proof assistant/checker.",
+      "checker_status": "planned",
+      "limitations": [
+        "No universal SMT-theory support promised."
+      ]
+    },
+    {
+      "id": "finite-graph",
+      "status": "planned",
+      "task_kinds": [
+        "reachability",
+        "graph",
+        "temporal",
+        "recovery"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "solver_checked"
+      ],
+      "scope": "Finite complete models or explicit bounded exploration with source witness replay.",
+      "checker_status": "planned",
+      "limitations": [
+        "Completeness and horizon are distinct claims.",
+        "A statement/finite-model profile extension is required; the scalar example alone is not a graph model."
+      ]
+    },
+    {
+      "id": "relational-bounded",
+      "status": "planned",
+      "task_kinds": [
+        "hyper",
+        "regression"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "solver_checked"
+      ],
+      "scope": "Two-trace universal bounded alignment.",
+      "checker_status": "planned",
+      "limitations": [
+        "Quantifier alternation and unrestricted hyperlogics not covered."
+      ]
+    },
+    {
+      "id": "quant-finite",
+      "status": "planned",
+      "task_kinds": [
+        "probability",
+        "resource"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "solver_checked"
+      ],
+      "scope": "Finite DTMC/MDP exact or rigorous interval guarantees.",
+      "checker_status": "planned",
+      "limitations": [
+        "Extraction, scheduler and numeric assumptions explicit.",
+        "A stochastic/resource model extension is required; no distribution is inferred from the pure scalar profile."
+      ]
+    },
+    {
+      "id": "translation-ir",
+      "status": "planned",
+      "task_kinds": [
+        "ir_to_bytecode",
+        "ir_to_rust"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "translation_checked"
+      ],
+      "scope": "Supported IR-to-target relation.",
+      "checker_status": "planned",
+      "limitations": [
+        "Not a native binary guarantee."
+      ]
+    },
+    {
+      "id": "translation-native",
+      "status": "planned",
+      "task_kinds": [
+        "native_translation"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "translation_checked"
+      ],
+      "scope": "Restricted native leaf-function target semantics.",
+      "checker_status": "planned",
+      "limitations": [
+        "Target lifting/checking is a later research milestone."
+      ]
+    },
+    {
+      "id": "statistical",
+      "status": "planned",
+      "task_kinds": [
+        "statistical"
+      ],
+      "semantic_profiles": [
+        "scalar-wrapping-v1"
+      ],
+      "evidence_classes": [
+        "empirical"
+      ],
+      "scope": "Declared sampling and statistical procedure.",
+      "checker_status": "planned",
+      "limitations": [
+        "Not logical proof of a transition model."
+      ]
+    }
+  ]
+}
