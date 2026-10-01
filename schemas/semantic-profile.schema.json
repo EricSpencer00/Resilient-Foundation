@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:semantic-profile:v1",
+  "title": "semantic-profile",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "semantic_profile"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "integer": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "const": 64
+        },
+        "representation": {
+          "const": "signed_twos_complement"
+        },
+        "add_sub_mul": {
+          "const": "wrap_mod_2_64"
+        },
+        "division": {
+          "const": "truncate_toward_zero"
+        },
+        "division_zero": {
+          "const": "DivideByZero"
+        },
+        "division_min_minus_one": {
+          "const": "wrap_to_min"
+        }
+      },
+      "required": [
+        "width",
+        "representation",
+        "add_sub_mul",
+        "division",
+        "division_zero",
+        "division_min_minus_one"
+      ],
+      "additionalProperties": false
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "i64",
+          "bool"
+        ]
+      },
+      "minItems": 1
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "observation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "execution": {
+      "enum": [
+        "pure_scalar",
+        "bounded_single_thread"
+      ]
+    },
+    "float": {
+      "const": "unsupported"
+    },
+    "ffi": {
+      "const": "unsupported"
+    },
+    "concurrency": {
+      "const": "unsupported"
+    },
+    "semantic_loop_bound": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reference_semantics_status": {
+      "enum": [
+        "planned",
+        "implemented",
+        "mechanized"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "id",
+    "integer",
+    "types",
+    "operations",
+    "observation",
+    "execution",
+    "float",
+    "ffi",
+    "concurrency",
+    "semantic_loop_bound",
+    "reference_semantics_status",
+    "notes"
+  ],
+  "additionalProperties": false
+}
