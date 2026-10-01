@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "obligation",
+  "illustrative": true,
+  "id": "O-NN-LOWER",
+  "task_kind": "ir_to_rust",
+  "relation": "observable_equivalence",
+  "source_artifact_id": "candidate-nn",
+  "target_artifact_id": "rust-source-nn",
+  "semantic_profile_id": "scalar-wrapping-v1",
+  "observation": [
+    "return_value",
+    "typed_error",
+    "termination"
+  ],
+  "quantifiers": [
+    "forall x:i64"
+  ],
+  "requirements": [
+    "R-NN-01",
+    "R-NN-02",
+    "R-NN-03"
+  ],
+  "analysis_bounds": {
+    "steps": null,
+    "states": null,
+    "faults": null
+  },
+  "required_evidence_class": "translation_checked",
+  "assumptions": [],
+  "dependencies": [],
+  "statement": "The illustrative target Rust function implements the candidate IR under the selected scalar profile."
+}
