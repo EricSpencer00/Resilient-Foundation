@@ -1,0 +1,138 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "evidence_graph",
+  "illustrative": true,
+  "task_id": "nonnegative",
+  "nodes": [
+    {
+      "id": "R-NN-01",
+      "node_type": "requirement",
+      "state": "declared",
+      "artifact_id": "ledger-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "R-NN-02",
+      "node_type": "requirement",
+      "state": "declared",
+      "artifact_id": "ledger-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "R-NN-03",
+      "node_type": "requirement",
+      "state": "declared",
+      "artifact_id": "ledger-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "N-SPEC",
+      "node_type": "spec",
+      "state": "declared",
+      "artifact_id": "spec-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "N-CANDIDATE",
+      "node_type": "implementation",
+      "state": "declared",
+      "artifact_id": "candidate-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "N-PROFILE",
+      "node_type": "profile",
+      "state": "declared",
+      "artifact_id": "profile-nn",
+      "evidence_class": "none"
+    },
+    {
+      "id": "O-NN-EXACT",
+      "node_type": "obligation",
+      "state": "open",
+      "artifact_id": "artifact-O-NN-EXACT",
+      "evidence_class": "none"
+    },
+    {
+      "id": "O-NN-LOWER",
+      "node_type": "obligation",
+      "state": "open",
+      "artifact_id": "artifact-O-NN-LOWER",
+      "evidence_class": "none"
+    },
+    {
+      "id": "O-NN-NATIVE",
+      "node_type": "obligation",
+      "state": "open",
+      "artifact_id": "artifact-O-NN-NATIVE",
+      "evidence_class": "none"
+    }
+  ],
+  "edges": [
+    {
+      "from": "R-NN-01",
+      "to": "N-SPEC",
+      "relation": "formalizes"
+    },
+    {
+      "from": "R-NN-02",
+      "to": "N-SPEC",
+      "relation": "formalizes"
+    },
+    {
+      "from": "R-NN-03",
+      "to": "N-SPEC",
+      "relation": "formalizes"
+    },
+    {
+      "from": "O-NN-EXACT",
+      "to": "N-SPEC",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-EXACT",
+      "to": "N-CANDIDATE",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-EXACT",
+      "to": "N-PROFILE",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-LOWER",
+      "to": "N-SPEC",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-LOWER",
+      "to": "N-CANDIDATE",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-LOWER",
+      "to": "N-PROFILE",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-NATIVE",
+      "to": "N-SPEC",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-NATIVE",
+      "to": "N-CANDIDATE",
+      "relation": "depends_on"
+    },
+    {
+      "from": "O-NN-NATIVE",
+      "to": "N-PROFILE",
+      "relation": "depends_on"
+    }
+  ],
+  "required_roots": [
+    "O-NN-EXACT",
+    "O-NN-LOWER",
+    "O-NN-NATIVE"
+  ]
+}
