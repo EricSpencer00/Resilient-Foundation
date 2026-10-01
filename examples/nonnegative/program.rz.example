@@ -1,0 +1,10 @@
+// Illustrative proposed syntax, not a current compiler test.
+profile scalar_wrapping_v1;
+spec fn nonnegative(x: i64) -> i64 {
+    if x >= 0 { x } else { 0 }
+}
+fn nonnegative_impl(x: i64) -> i64
+    implements_exactly nonnegative
+{
+    if x >= 0 { x } else { 0 }
+}
