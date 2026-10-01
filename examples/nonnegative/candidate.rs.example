@@ -1,0 +1,4 @@
+// Illustrative target source. No compiler or translation proof has run.
+pub fn nonnegative(x: i64) -> i64 {
+    if x >= 0 { x } else { 0 }
+}
