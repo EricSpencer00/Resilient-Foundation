@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:evidence-graph:v1",
+  "title": "evidence-graph",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "evidence_graph"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "node_type": {
+            "enum": [
+              "requirement",
+              "spec",
+              "implementation",
+              "obligation",
+              "theorem",
+              "certificate",
+              "witness",
+              "test",
+              "assumption",
+              "profile",
+              "target",
+              "decision"
+            ]
+          },
+          "state": {
+            "enum": [
+              "declared",
+              "open",
+              "checked",
+              "refuted",
+              "unknown",
+              "unsupported"
+            ]
+          },
+          "artifact_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_class": {
+            "enum": [
+              "none",
+              "illustrative",
+              "empirical",
+              "solver_checked",
+              "kernel_checked",
+              "translation_checked"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "node_type",
+          "state",
+          "artifact_id",
+          "evidence_class"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "relation": {
+            "enum": [
+              "formalizes",
+              "implements",
+              "proves",
+              "validates",
+              "assumes",
+              "translates",
+              "depends_on"
+            ]
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "required_roots": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+        "maxLength": 100
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "task_id",
+    "nodes",
+    "edges",
+    "required_roots"
+  ],
+  "additionalProperties": false
+}
