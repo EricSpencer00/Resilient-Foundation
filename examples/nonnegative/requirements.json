@@ -1,0 +1,82 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "requirement_ledger",
+  "illustrative": true,
+  "task_id": "nonnegative",
+  "intent_mode": "free_prose",
+  "source_artifact_id": "request-nn",
+  "interpretation_state": "accepted",
+  "decision_provenance": "Illustrative accepted interpretation: integer means all i64 values under scalar-wrapping-v1; no actual user/solver approval is asserted.",
+  "requirements": [
+    {
+      "id": "R-NN-01",
+      "text": "The domain is all i64 inputs under the illustrative accepted machine profile.",
+      "source_excerpt": "For an integer x, return x if x is nonnegative, and return zero otherwise.",
+      "source_span": {
+        "start": 0,
+        "end": 74
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-NN-EXACT"
+      ],
+      "oracle_case_ids": [
+        "NN-MIN",
+        "NN-NEG",
+        "NN-ZERO",
+        "NN-POS",
+        "NN-MAX"
+      ],
+      "assumptions": [
+        "Interpretation of integer as i64 is an explicit illustrative decision."
+      ]
+    },
+    {
+      "id": "R-NN-02",
+      "text": "Nonnegative inputs return the same integer.",
+      "source_excerpt": "For an integer x, return x if x is nonnegative, and return zero otherwise.",
+      "source_span": {
+        "start": 0,
+        "end": 74
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-NN-EXACT"
+      ],
+      "oracle_case_ids": [
+        "NN-MIN",
+        "NN-NEG",
+        "NN-ZERO",
+        "NN-POS",
+        "NN-MAX"
+      ],
+      "assumptions": [
+        "Interpretation of integer as i64 is an explicit illustrative decision."
+      ]
+    },
+    {
+      "id": "R-NN-03",
+      "text": "Negative inputs return zero.",
+      "source_excerpt": "For an integer x, return x if x is nonnegative, and return zero otherwise.",
+      "source_span": {
+        "start": 0,
+        "end": 74
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-NN-EXACT"
+      ],
+      "oracle_case_ids": [
+        "NN-MIN",
+        "NN-NEG",
+        "NN-ZERO",
+        "NN-POS",
+        "NN-MAX"
+      ],
+      "assumptions": [
+        "Interpretation of integer as i64 is an explicit illustrative decision."
+      ]
+    }
+  ],
+  "unresolved_ambiguities": []
+}
