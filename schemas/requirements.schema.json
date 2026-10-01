@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:requirements:v1",
+  "title": "requirements",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "requirement_ledger"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "intent_mode": {
+      "enum": [
+        "free_prose",
+        "controlled_language",
+        "formal_spec"
+      ]
+    },
+    "source_artifact_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "interpretation_state": {
+      "enum": [
+        "candidate",
+        "accepted",
+        "needs_decision"
+      ]
+    },
+    "decision_provenance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+            "maxLength": 100
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_excerpt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_span": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          },
+          "decision": {
+            "enum": [
+              "candidate",
+              "accepted",
+              "needs_decision",
+              "out_of_scope"
+            ]
+          },
+          "clause_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+              "maxLength": 100
+            },
+            "minItems": 1
+          },
+          "oracle_case_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+              "maxLength": 100
+            },
+            "minItems": 1
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "source_excerpt",
+          "source_span",
+          "decision",
+          "clause_ids",
+          "oracle_case_ids",
+          "assumptions"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "unresolved_ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "task_id",
+    "intent_mode",
+    "source_artifact_id",
+    "interpretation_state",
+    "decision_provenance",
+    "requirements",
+    "unresolved_ambiguities"
+  ],
+  "additionalProperties": false
+}
