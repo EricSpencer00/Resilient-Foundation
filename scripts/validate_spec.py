@@ -23,6 +23,35 @@ def check_work_package_status(w):
         artifacts=w.get('implementation_artifacts',[])
         require(bool(artifacts),'In-progress work package lacks implementation artifacts')
         require(all(safe_path(p) and (ROOT/p).is_file() for p in artifacts),'Missing or unsafe implementation artifact')
+def check_backend_status(route):
+    '''Validate recorded experimental progress; never discharge program obligations.'''
+    if route['status']=='planned':
+        require(route['checker_status']=='planned','Planned route claims an implemented checker')
+        return
+    require(route['status']=='experimental' and route['checker_status']=='implemented',
+            'Released/mechanized backend claim needs its own acceptance gate')
+    expected={'scalar-smt':['solver_checked'],'translation-ir':['translation_checked']}
+    require(route['id'] in expected and route['evidence_classes']==expected[route['id']],
+            'Unsupported backend or inflated evidence class')
+    artifacts=route.get('implementation_artifacts',[])
+    require(artifacts and all(safe_path(p) and (ROOT/p).is_file() for p in artifacts),'Backend lacks implementation artifacts')
+    record=route.get('evidence_report','')
+    require(safe_path(record) and (ROOT/record).is_file(),'Backend lacks recorded acceptance run')
+    report=load(record)
+    require(report['status']=='passed' and report['scope']=='scalar_e2e_conformance' and
+            report['policy']=='scalar_source_exact_trusted_rust_v1','Unsupported recorded gate')
+    require(report['tests_run']>0 and report['tests_failed']==report['tests_skipped']==0 and
+            report['oracle_cases_executed']==5,'Recorded gate failed or skipped')
+    require(route['id'] in report['capability_ids'] and report['formal_class']=='solver_checked' and
+            report['translation_class']=='translation_checked' and report['native_relation']=='trusted_compilation',
+            'Recorded assurance scope differs')
+    for group in ['implementation_hashes','test_hashes','driver_hashes','evidence_files']:
+        bindings=report.get(group,{})
+        require(bindings,'Recorded run lacks '+group)
+        for p,digest in bindings.items():
+            require(safe_path(p) and (ROOT/p).is_file() and
+                    hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==digest,'Stale recorded run: '+p)
+    require(set(artifacts)<=set(report['implementation_hashes']),'Implementation not bound by recorded run')
 def cyclic(nodes,edges):
     colors={}
     def visit(n):
@@ -187,7 +216,7 @@ def main():
         if not p['model_required']:
             require(p['max_model_tokens']==0 and p['max_usd_per_task']==0,'Non-model profile has model spending')
     for route in load('profiles/backend-capabilities.json')['routes']:
-        require(route['status']=='planned' and route['checker_status']=='planned','Backend implementation claim without evidence')
+        check_backend_status(route)
     refs=load('research/references.json')['references']
     require(len({r['id'] for r in refs})==len(refs),'Duplicate reference ID')
     report={'status':'passed','scope':'specification_consistency_only','schemas':len(schemas),'validated_instances':instances,

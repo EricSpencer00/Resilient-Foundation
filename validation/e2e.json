@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "scope": "scalar_e2e_conformance",
+  "policy": "scalar_source_exact_trusted_rust_v1",
+  "started_at_utc": "2026-10-01T15:38:41.269620+00:00",
+  "completed_at_utc": "2026-10-01T15:38:54.971584+00:00",
+  "host": "hst-bench",
+  "architecture": "x86_64",
+  "python": "3.12.3",
+  "python_dependencies": {
+    "jsonschema": "4.25.1"
+  },
+  "solver": {
+    "version": "Z3 version 4.8.12 - 64 bit",
+    "executable_sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+  },
+  "native_toolchain": {
+    "rustc_verbose_version": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "flags": [
+      "--edition=2024",
+      "-Copt-level=2",
+      "-Cdebuginfo=0"
+    ],
+    "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
+    "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
+    "core_library_sha256": "f1a8d37c06a9a33ebb6c502c616ea214ac4c203bc0f6930f4cb5e7892c4e7a77"
+  },
+  "tests_run": 36,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "oracle_cases_executed": 5,
+  "elapsed_ms": 13733,
+  "instrumented_operations": {
+    "in_process_real_solver_calls": 50,
+    "in_process_fault_solver_calls": 3,
+    "in_process_native_compilations": 37,
+    "cli_subprocess_calls_excluded": true
+  },
+  "oracle_sha256": "353683fa08bc2e60c2fd5eeea2e0ce5a17572892bdfff7c621595941f9de640e",
+  "implementation_hashes": {
+    "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
+    "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
+    "foundation/intent.py": "b05c1b08803bf67f496cd933e1ff25f5a9f2dfa6cc4cd708446ece79e7ae1aff",
+    "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
+    "foundation/native.py": "648ad4646a40ead0defb6d390799d694481b6a2b032d82c6fd1ea28e844bb558",
+    "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
+    "foundation/cli.py": "a06b9a7f5398c6a13f272be67a0206c8a73014751c6659bc329f450c4e1a8bd3",
+    "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
+    "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "bin/foundation": "183b46fd5aa43a4eec50f06f9de83957f1c7eddafa6dea8aa01a7f554ecc1fc1",
+    "schemas/program-ir.schema.json": "e168d4c49e47d5bf5917ea6b1a8c3184d8b80f0492efd6f62299177d1a02f807",
+    "runtime/scalar-runner.rs.in": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
+    "crates/foundation-core/src/lib.rs": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
+    "crates/foundation-core/Cargo.toml": "ac3ecf977a29ba406e4b78e6caa393037398ab9a99852283090b0fe843f49c65",
+    "Cargo.toml": "bfb3566abe9bf13cb09e40d9e5f27d61b51d004add051f362823282088d70964",
+    "Cargo.lock": "85ea84e03353ade069a4108bfe7c5aecc11d573ef738374a47b83447ddbb2e81"
+  },
+  "test_hashes": {
+    "tests/test_e2e.py": "1d24cca22ad4b8386dbadb45da8190c0130a12cf16ca7ecaeded9f0bb5d50b37",
+    "tests/test_frontend.py": "15a825744f70c168abcf7b18d966847febcb5ab1021331583d52dede68e9fb7e",
+    "tests/test_smt_encoding.py": "8ce53fa9b65690983fc7f7e964cfae52b6b61e29f70e36257f634ed936b2c67f",
+    "tests/test_translation.py": "c1a348bc32f64949615d9561a485034a7c20f91954bd0e04fb8effe91a609816"
+  },
+  "driver_hashes": {
+    "scripts/run_e2e.py": "4bf299815eb62c9a9f75dfb4e520ecf9e68b8d89b2755572d01982201404c4bf"
+  },
+  "evidence_files": {
+    "validation/e2e/candidate-ir.json": "50b13196e3f80308f88d7bb5dfb1233f10b8ca9b96c879faa133a86cd8adf4d5",
+    "validation/e2e/candidate.rz": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
+    "validation/e2e/capsule.json": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+    "validation/e2e/check-receipt.json": "e0a5e77c6631af303ba8e414c61f1f77a12516c9c9a89b8dd314ac4e31011dde",
+    "validation/e2e/counterexample.json": "c7ab993b465f3fed4655890098ed1fd4b60f92e9d8bdd38227325db9fae9084f",
+    "validation/e2e/executions.json": "71b42bdeb93d71c2415c635cc8f7e3c7303a9a0a59c68feb4e8c98cdb3c8fc29",
+    "validation/e2e/formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
+    "validation/e2e/generated.rs": "f29cceced38bd6406fc50870d5b4c79ad4f5d494ca118b6f2ded0051199efcf4",
+    "validation/e2e/profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "validation/e2e/request.txt": "8a9f3cd095e7569a2ffab145a0e7f2e8c7a8634faa61b010893ff8f59130a92d",
+    "validation/e2e/requirements.json": "de1e8dce6b297210b5d14c3a6b5b726810cd150a78535b1ae10c544dfc8f92a9",
+    "validation/e2e/source-map.json": "2a6fdc1afb3ff8d9c3dac461d85d9d16d39d20cfbe2fde00bddb2ecd61c7e43c",
+    "validation/e2e/spec-ir.json": "e887772a26fb7996e64da2925483a340fa7f29e83b1b2b5418c104cd67f35abe",
+    "validation/e2e/translation-ir.json": "074d858553fc723ae0665adc49f4c3b54ceaf45a9435bde9321997622bd712bd",
+    "validation/e2e/translation.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670"
+  },
+  "capability_ids": [
+    "scalar-smt",
+    "translation-ir"
+  ],
+  "formal_class": "solver_checked",
+  "translation_class": "translation_checked",
+  "native_relation": "trusted_compilation",
+  "model_generation": "interactive Codex-authored candidate; no attested snapshot or model benchmark",
+  "limitations": [
+    "No kernel-checked UNSAT proof or native machine-code equivalence.",
+    "Native source runs the reference evaluator; it is not direct optimized code generation.",
+    "Recorded native executable is not included in the evidence directory; rebuild the capsule to execute.",
+    "Absolute build paths and host toolchains bind native evidence; records are host-specific."
+  ]
+}

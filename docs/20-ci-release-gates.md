@@ -4,7 +4,7 @@
 
 The specification validator checks schemas, linked documents, requirement/work-package coverage and dependency cycles, artifact identities, example invariants, evaluation formulas/profiles and deliberately invalid result manifests. It is read-only except its local validation report when requested. It does not call models or solvers.
 
-A successful CI run means specification consistency, not implementation correctness.
+A successful specification job establishes consistency only. The scalar implementation and end-to-end jobs check their declared supported fragment under the recorded trust assumptions.
 
 ## Future gates by scope
 
@@ -35,3 +35,7 @@ Each release lists implemented capabilities, supported tuple/profile, required/a
 ## Failure behavior
 
 Do not overwrite an accepted artifact with a failed build. Keep rejected candidate evidence inspectable. Unknown/Inconclusive remains visible and cannot be bypassed through default success or optional-warning treatment in a strict policy.
+
+## Implemented scalar boundary
+
+`make check` now includes Rust debug/release conformance, parser/wire/target-reader tests, formatting, lint and recorded-report integrity. `make e2e` invokes actual Z3 and Rust, requires zero skipped tests and saves host/tool/source/evidence identities plus oracle executions and a replayed counterexample. CI defines an Ubuntu scalar end-to-end job with observed identities recorded in each run; no hosted run is claimed until observed. The saved NUC report is experimental conformance evidence, distinct from schema consistency, kernel evidence and native equivalence.

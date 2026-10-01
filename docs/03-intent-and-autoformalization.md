@@ -39,3 +39,7 @@ Example accepted sentence: "For an integer x, return x if x is nonnegative, and 
 Lock the accepted spec. The model may edit candidate code and proof hints. Spec repair is a separate action producing a new decision/version; the search engine cannot silently remove a difficult requirement, strengthen a precondition, insert assume(false) or alter the oracle.
 
 Closest prior art includes FRET, VeriSpecGen, Verus-SpecGym and AlphaVerus. See research/references.md. Their existence rules out calling NLP-to-verified-code itself a new area.
+
+## Implemented scalar boundary
+
+The current [intent adapter](../foundation/intent.py) implements one exact controlled sentence under `nonnegative-i64-v1`. It records an accepted typed ledger and locks the generated spec IR. Other prose returns `NeedsDecision`; the interactive Codex candidate does not set its own requirement or acceptance state.

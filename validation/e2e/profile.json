@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "semantic_profile",
+  "id": "scalar-wrapping-v1",
+  "integer": {
+    "width": 64,
+    "representation": "signed_twos_complement",
+    "add_sub_mul": "wrap_mod_2_64",
+    "division": "truncate_toward_zero",
+    "division_zero": "DivideByZero",
+    "division_min_minus_one": "wrap_to_min"
+  },
+  "types": [
+    "i64",
+    "bool"
+  ],
+  "operations": [
+    "int",
+    "bool",
+    "var",
+    "if",
+    "add_wrap",
+    "sub_wrap",
+    "mul_wrap",
+    "div_wrap",
+    "eq",
+    "lt_signed",
+    "le_signed",
+    "gt_signed",
+    "ge_signed",
+    "and",
+    "or"
+  ],
+  "observation": [
+    "return_value",
+    "typed_error",
+    "termination"
+  ],
+  "execution": "pure_scalar",
+  "float": "unsupported",
+  "ffi": "unsupported",
+  "concurrency": "unsupported",
+  "semantic_loop_bound": null,
+  "reference_semantics_status": "implemented",
+  "notes": [
+    "The initial example is expression-only. Bounded statements/calls are a later fragment declaration.",
+    "This is a proposed verification profile, not a claim that all current Resilient passes share these semantics.",
+    "The Rust expression reference evaluator is implemented and conformance-tested; JSON loading, source extraction and mechanized preservation remain planned."
+  ]
+}

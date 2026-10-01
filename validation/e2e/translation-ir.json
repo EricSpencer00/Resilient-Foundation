@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "scalar_program",
+  "illustrative": false,
+  "id": "translated",
+  "semantic_profile_id": "scalar-wrapping-v1",
+  "function": {
+    "name": "translated",
+    "params": [
+      {
+        "name": "x",
+        "type": "i64"
+      }
+    ],
+    "return_type": "i64",
+    "body": {
+      "kind": "if",
+      "type": "i64",
+      "condition": {
+        "kind": "binary",
+        "type": "bool",
+        "op": "ge_signed",
+        "left": {
+          "kind": "var",
+          "type": "i64",
+          "name": "x"
+        },
+        "right": {
+          "kind": "int",
+          "type": "i64",
+          "value": "0"
+        }
+      },
+      "then": {
+        "kind": "var",
+        "type": "i64",
+        "name": "x"
+      },
+      "else": {
+        "kind": "int",
+        "type": "i64",
+        "value": "0"
+      }
+    }
+  }
+}

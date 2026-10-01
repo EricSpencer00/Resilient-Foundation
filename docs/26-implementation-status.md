@@ -1,47 +1,43 @@
 # Current implementation
 
-Checked 30 September 2026. This is a prototype status record; the normative semantics remain in [the semantic core](05-semantic-core.md).
+Checked 1 October 2026. The normative semantics remain in [the semantic core](05-semantic-core.md). The private checkout contains the archive's complete specification and the first supported end-to-end scalar route. The separate Resilient compiler repository remains unchanged.
 
-The private GitHub checkout was missing the validator, requirement registry, roadmap, research catalog and evaluation manifests present in the supplied MacBook archive. Those artifacts were imported while preserving matching tracked files and the Git history. No change was made in the separate Resilient compiler repository.
+## Working route
 
-## Working scalar slice
+The dependency-free [foundation-core crate](../crates/foundation-core/Cargo.toml) validates every branch of typed i64/bool expressions and evaluates `scalar-wrapping-v1` observations. Arithmetic wraps at 64 bits, signed division truncates toward zero, MIN/-1 wraps to MIN, division by zero is an observable error, and booleans short circuit. Depth 64 and 4096 nodes are operational limits, not reductions of the i64 input domain.
 
-The dependency-free [foundation-core crate](../crates/foundation-core/Cargo.toml) implements a typed Rust expression API for `scalar-wrapping-v1`. `Program::validate` checks the profile, unique parameter bindings, variable bindings, operand/branch types and return type. It visits all branches, even when a concrete input would not reach them. `Program::evaluate` validates first, checks argument types/count, then evaluates pure scalar observations.
+The [Python frontend](../foundation/source.py) accepts one existing Resilient function signature with typed parameters, expressions and total return/if blocks. It rejects unknown tokens, helpers, loops, effects and extra declarations. The [wire adapter](../foundation/ir.py) rejects duplicate keys, imprecise numbers, incorrect types and unsupported nodes, and computes domain-separated canonical identities. Source maps bind expressions to original spans.
 
-Supported expressions are i64/bool literals, variables, binary operations and `if`. Add/subtract/multiply wrap at 64 bits. Division truncates toward zero, returns `DivideByZero` for zero divisors and wraps MIN/-1 to MIN. Signed comparisons, typed equality and short-circuit boolean operators preserve the profile. `parse_i64_decimal` accepts canonical decimal strings without conversion through floating point.
+The [intent adapter](../foundation/intent.py) accepts only `nonnegative-i64-v1`: the exact controlled request shipped in the example. Arbitrary prose returns `NeedsDecision`. The [solver route](../foundation/smt.py) asks real Z3 whether any declared i64/bool input distinguishes return values or division errors. UNSAT establishes all-input equivalence under the trusted encoding and solver. SAT witnesses replay through the Rust reference evaluator before being reported as `Refuted`.
 
-The evaluator limits expression depth to 64 and total nodes to 4096. Exceeding either yields `ResourceLimit` before execution. These are operational cutoffs, not a reduction of the i64 input domain or a proved termination bound. AST construction, allocation and destruction remain the caller's responsibility. The Rust API cannot represent unknown expression variants; rejecting unknown JSON nodes belongs to the future adapter.
+The [restricted target reader](../foundation/native.py) independently decodes emitted Rust constructors into IR. The translation relation is rerun through Z3. Only the exact trusted runtime wrapper is accepted. Generated Rust runs the reference evaluator; this prototype is not direct optimized code generation or a verifier for arbitrary Rust.
 
-The [conformance suite](../crates/foundation-core/tests/scalar_conformance.rs) uses independently specified boundary values and error observations. The nonnegative API case uses the five cases from the existing [oracle](../examples/nonnegative/oracle.json); neither that oracle nor the illustrative acceptance status was changed.
+The [capsule checker](../foundation/pipeline.py) reinterprets the request, reparses source, reconstructs both obligations, reruns Z3, checks profile/source/target/checker/tool hashes, recompiles native bytes and compares their digest. Execution repeats that gate, validates canonical inputs, copies the checked executable to private scratch, rechecks its hash, and compares its observation with reference execution. The supported policy is `scalar_source_exact_trusted_rust_v1`; `strict_native_exact` is `Unsupported`.
 
 ## Assurance boundaries
 
 | Boundary | Current state | Remaining evidence |
 |---|---|---|
-| Prose to accepted requirements | Draft specification and illustrative ledger | Intent validation and ambiguity decisions |
-| Resilient source to typed IR | Planned | WP-05 extraction, source maps and independent lowering cases |
-| Typed scalar expressions to observations | Implemented Rust reference evaluator; conformance tested | JSON wire adapter, canonical identity and mechanized semantics connection |
-| Spec/candidate equivalence | Planned | WP-06 actual solver route, all-input relation and witness replay |
-| Proof result to checked evidence | Planned | WP-07 actual checking and artifact binding |
-| IR to Rust/bytecode/native artifact | Planned | WP-08 and WP-12 through WP-14 translation evidence |
-| Recovery, effects and runtime execution | Planned | Reachable reset states, effect protocols and execution capsules |
-| LLM generation and evaluation | Planned | Frozen tasks/oracles, model snapshots, budgets and separate metrics |
+| Prose to accepted requirements | One exact versioned controlled template | General intent validation and ambiguity decisions |
+| Resilient source to typed IR | Restricted parser, source maps, independent conformance | Mechanized extraction preservation; wider language |
+| Scalar expressions to observations | Rust reference evaluator and strict wire adapter | Mechanized semantics connection |
+| Spec/candidate equivalence | Actual all-input QF_BV checks, Rust-replayed witnesses | Independent UNSAT kernel evidence |
+| Result to checked evidence | Bound artifacts and reconstructed/rerun obligations | Proof-witness formats and incremental evidence DAG |
+| IR to restricted Rust representation | Independent target decode and solver-checked relation | General Rust/bytecode translation |
+| Rust source to native executable | Exact-byte rebuild and recorded toolchain | Native machine-code equivalence |
+| Accepted artifact to execution | Guarded pure scalar native execution | Stateful recovery, effects, capabilities and deployment environments |
+| LLM generation/evaluation | Frozen interactive Codex-authored candidate | Attested snapshots, model adapters, budgets and benchmarks |
 
-No solver, proof kernel, model or generated-program runtime is invoked by the current checks. Ordinary Rust compilation is trusted. Concrete evaluation does not create `Proved`, `Accepted` or execution authorization. The illustrative bundle remains `NotAccepted` and no backend capability was promoted.
+`scalar-smt` and `translation-ir` are experimental, implemented routes bound to the recorded run. Other backend routes remain planned. Work packages remain `in_progress` when this slice implements only part of their acceptance criteria. The existing illustrative bundle remains `NotAccepted`; its oracle and acceptance record were preserved.
 
-The scalar profile's implementation metadata now records the reference evaluator, without changing arithmetic or observations. The illustrative bundle's profile hash was refreshed to match those bytes. This rebinds the example; it does not create evidence for a proof result.
+## Recorded validation
 
-## Reproduce
+The [actual NUC report](../validation/e2e.json) records 36 tests, zero failures and zero skips, five independently specified oracle executions, 50 in-process real solver invocations and 37 native compilations. CLI subprocess operations are additional and excluded from those counters. Three fault solver invocations check missing/unknown/timeout outcomes. Wrong branches, overflow, observable division errors, stale artifacts, hash-consistent forged queries/targets and inflated proof claims fail their required boundary. A semantically equivalent boundary mutant is accepted.
 
-~~~sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
-make check
-cargo run --locked -p foundation-core --example nonnegative
-~~~
+The report includes exact implementation, test, driver and evidence hashes, observed solver/Python/Rust identities and host architecture. Evidence excludes the executable itself and remains a host-specific audit record. Use a newly built capsule for execution. This conformance result is not a general soundness theorem, model score or performance benchmark.
 
-Tested with rustc/cargo 1.91.1 on the MacBook. The small crate compiles in under a second locally. CI is configured for Rust 1.91.1 on Ubuntu, but no hosted CI run has been observed for this branch. Sustained solver builds, benchmarks and model work must use an authorized remote compute host.
+## Reproduce and next gates
 
-## Next gates
+Follow [README commands](../README.md) and [the CLI contract](23-api-cli.md). `make check` runs specification consistency, Rust debug/release tests, lightweight Python tests, formatting and lint. `make e2e` runs the required real solver/native suite, rejects skips and saves evidence. Substantive runs belong on an authorized compute host. CI is configured for Rust 1.91.1 on Ubuntu; the observed NUC run used Rust 1.98.1. No hosted CI run is claimed for this branch.
 
-WP-03 and WP-04 are in progress. Add strict JSON-to-typed-IR loading and domain-separated canonical identity, then connect Resilient extraction through WP-05. Implement one bit-precise scalar solver route under WP-06 before enabling LLM proof repair or acceptance. Follow with checked evidence and translation validation. The [Rust verifier comparison](../research/rust-verification-routes.md) records the external routes and their separate trust boundaries.
+Next gates are independent kernel evidence, a mechanized semantics connection and a restricted native relation. Verus/AutoVerus is a later adapter for Rust proof generation; its comparison and trust boundaries are in [the verifier research](../research/rust-verification-routes.md). Recovery, resource/probability routes and model evaluation retain their existing requirements.

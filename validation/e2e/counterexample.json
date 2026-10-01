@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "-9223372036854775808"
+  ],
+  "spec_observation": {
+    "kind": "return",
+    "type": "i64",
+    "value": "0"
+  },
+  "candidate_observation": {
+    "kind": "return",
+    "type": "i64",
+    "value": "-9223372036854775808"
+  },
+  "replay": "rust_reference_runtime",
+  "validated": true
+}

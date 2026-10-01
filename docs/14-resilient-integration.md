@@ -37,4 +37,4 @@ Foundation policies can require stronger evidence than current Resilient compila
 
 ## Validation and upstream work
 
-Implementation in Resilient follows its own AGENTS.md, public-interface tests and evidence workflow. Preserve user authorization boundaries for that repository's changes. This new repository holds the specification and planned integration work; it does not make or push an upstream code change.
+Implementation in Resilient follows its own AGENTS.md, public-interface tests and evidence workflow. Preserve user authorization boundaries for that repository's changes. Foundation now independently parses a restricted existing Resilient signature and pure return/if fragment through [its source adapter](../foundation/source.py), with source spans and scalar conformance checks. This is a standalone adapter, not an upstream compiler integration or audit of the wider language. No upstream code change or push was made.

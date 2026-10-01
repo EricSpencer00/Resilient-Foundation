@@ -35,4 +35,4 @@ Proved, Refuted, Unknown, Unsupported, Timeout, ResourceLimit, InvalidEvidence, 
 
 The selected policy declares required axes/classes and capability assumptions. Weak evidence cannot satisfy a stronger gate. Optional diagnostics may fail without changing an unrelated proved claim, but failure of any required obligation prevents whole-artifact acceptance.
 
-The current repository's validator checks shapes and dependency policy only. It does not validate SMT, Lean, machine-code or runtime certificates.
+The specification validator checks shapes, dependency policy and the integrity of saved experimental reports; it does not discharge program obligations. The scalar `foundation check` command reconstructs the request/source/target relation and reruns actual SMT obligations before acceptance. Its `solver_checked` and `translation_checked` declarations remain conditional on the encoding, Z3, restricted target reader and runtime. Exact native rebuilds bind bytes under compiler trust; they do not establish machine-code equivalence. See [the implemented policy](23-api-cli.md).

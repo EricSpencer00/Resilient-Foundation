@@ -98,7 +98,7 @@
       "id": "WP-05",
       "milestone": "M1",
       "title": "Resilient source-to-IR extraction",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-04"
       ],
@@ -109,13 +109,18 @@
       "requirement_ids": [
         "R-011",
         "R-038"
+      ],
+      "implementation_artifacts": [
+        "foundation/source.py",
+        "tests/test_frontend.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
       "id": "WP-06",
       "milestone": "M2",
       "title": "Scalar obligations and actual solver route",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-05"
       ],
@@ -129,13 +134,18 @@
         "R-007",
         "R-014",
         "R-015"
+      ],
+      "implementation_artifacts": [
+        "foundation/smt.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
       "id": "WP-07",
       "milestone": "M2",
       "title": "Evidence checking and artifact binding",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-06"
       ],
@@ -149,13 +159,18 @@
         "R-018",
         "R-019",
         "R-060"
+      ],
+      "implementation_artifacts": [
+        "foundation/pipeline.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
       "id": "WP-08",
       "milestone": "M3",
       "title": "IR-to-bytecode/Rust translation validation",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-07"
       ],
@@ -166,6 +181,12 @@
       "requirement_ids": [
         "R-012",
         "R-059"
+      ],
+      "implementation_artifacts": [
+        "foundation/native.py",
+        "runtime/scalar-runner.rs.in",
+        "tests/test_translation.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
@@ -356,7 +377,7 @@
       "id": "WP-20",
       "milestone": "M7",
       "title": "Controlled language and requirement ledger",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-02",
         "WP-04"
@@ -370,6 +391,11 @@
         "R-002",
         "R-003",
         "R-004"
+      ],
+      "implementation_artifacts": [
+        "foundation/intent.py",
+        "tests/test_frontend.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
@@ -413,7 +439,7 @@
       "id": "WP-23",
       "milestone": "M7",
       "title": "Typed runtime execution capsules",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-10",
         "WP-14"
@@ -427,6 +453,11 @@
         "R-034",
         "R-035",
         "R-036"
+      ],
+      "implementation_artifacts": [
+        "foundation/pipeline.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
@@ -472,7 +503,7 @@
       "id": "WP-26",
       "milestone": "M2",
       "title": "Soundness and semantic mutation harness",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-04",
         "WP-06"
@@ -484,6 +515,11 @@
       "requirement_ids": [
         "R-048",
         "R-049"
+      ],
+      "implementation_artifacts": [
+        "tests/test_e2e.py",
+        "scripts/run_e2e.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
@@ -526,7 +562,7 @@
       "id": "WP-29",
       "milestone": "M7",
       "title": "Agent-friendly CLI and Cargo experience",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "WP-21",
         "WP-23"
@@ -537,6 +573,12 @@
       "acceptance": "Stable structured outcomes, source diagnostics and explicit unsupported behavior.",
       "requirement_ids": [
         "R-061"
+      ],
+      "implementation_artifacts": [
+        "foundation/cli.py",
+        "bin/foundation",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
       ]
     },
     {
