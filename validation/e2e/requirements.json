@@ -1,0 +1,36 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "requirement_ledger",
+  "illustrative": false,
+  "task_id": "nonnegative",
+  "intent_mode": "controlled_language",
+  "source_artifact_id": "request",
+  "interpretation_state": "accepted",
+  "decision_provenance": "Explicit template nonnegative-i64-v1 under scalar-wrapping-v1; input domain is all i64.",
+  "requirements": [
+    {
+      "id": "R-NN-EXACT",
+      "text": "For an integer x, return x if x is nonnegative, and return zero otherwise.",
+      "source_excerpt": "For an integer x, return x if x is nonnegative, and return zero otherwise.",
+      "source_span": {
+        "start": 0,
+        "end": 74
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-NN-EXACT"
+      ],
+      "oracle_case_ids": [
+        "NN-MIN",
+        "NN-NEG",
+        "NN-ZERO",
+        "NN-POS",
+        "NN-MAX"
+      ],
+      "assumptions": [
+        "Integer is signed wrapping i64 by the versioned template domain."
+      ]
+    }
+  ],
+  "unresolved_ambiguities": []
+}

@@ -32,7 +32,7 @@
       "id": "profile-nn",
       "role": "semantic_profile",
       "path": "profiles/scalar-wrapping-v1.json",
-      "sha256": "b7feb4986e20f7069bcb9bedc3d577eddd052e5451e55d0d59336c05313606ff"
+      "sha256": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f"
     },
     {
       "id": "source-nn",
@@ -80,7 +80,7 @@
       "id": "result-nn",
       "role": "result",
       "path": "examples/nonnegative/result.json",
-      "sha256": "f068611489e127cf09236338719ee7cc531e3b121e6a8debb9dc1fe0b0f4c761"
+      "sha256": "60d9de908f221192939b70a95c96a1530d6efa362cf39e05a2c812f2ed3ff802"
     }
   ],
   "entrypoints": {

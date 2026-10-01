@@ -1,0 +1,622 @@
+{
+  "version": "0.1.0-draft",
+  "milestones": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7"
+  ],
+  "work_packages": [
+    {
+      "id": "WP-01",
+      "milestone": "M0",
+      "title": "Specification consistency and normative registry",
+      "status": "planned",
+      "depends_on": [],
+      "documents": [
+        "SPEC.md",
+        "schemas/README.md"
+      ],
+      "acceptance": "All schemas/examples/requirements/dependencies pass the independent specification checks.",
+      "requirement_ids": [
+        "R-050",
+        "R-051",
+        "R-052"
+      ]
+    },
+    {
+      "id": "WP-02",
+      "milestone": "M0",
+      "title": "Pinned evaluation protocol and oracle custody",
+      "status": "planned",
+      "depends_on": [
+        "WP-01"
+      ],
+      "documents": [
+        "docs/15-evaluation-matrix.md",
+        "docs/16-model-evaluation.md"
+      ],
+      "acceptance": "Model, package and runtime lanes have separate manifests and immutable task oracles.",
+      "requirement_ids": [
+        "R-004",
+        "R-039",
+        "R-040",
+        "R-057",
+        "R-058"
+      ]
+    },
+    {
+      "id": "WP-03",
+      "milestone": "M1",
+      "title": "Machine arithmetic and error semantics",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-01"
+      ],
+      "documents": [
+        "docs/05-semantic-core.md"
+      ],
+      "acceptance": "MIN/MAX/overflow/division/JSON-precision cases distinguish mathematical and machine semantics.",
+      "requirement_ids": [
+        "R-008",
+        "R-009"
+      ],
+      "implementation_artifacts": [
+        "crates/foundation-core/src/lib.rs",
+        "crates/foundation-core/tests/scalar_conformance.rs",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-04",
+      "milestone": "M1",
+      "title": "Typed scalar IR and reference semantics",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-03"
+      ],
+      "documents": [
+        "docs/04-language.md",
+        "docs/05-semantic-core.md"
+      ],
+      "acceptance": "Independently authored all-domain boundary cases and unsupported nodes are handled explicitly.",
+      "requirement_ids": [
+        "R-007",
+        "R-010"
+      ],
+      "implementation_artifacts": [
+        "crates/foundation-core/src/lib.rs",
+        "crates/foundation-core/tests/scalar_conformance.rs",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-05",
+      "milestone": "M1",
+      "title": "Resilient source-to-IR extraction",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-04"
+      ],
+      "documents": [
+        "docs/14-resilient-integration.md"
+      ],
+      "acceptance": "Wrong lowering/type/domain/branch is detected; extraction scope and source maps are explicit.",
+      "requirement_ids": [
+        "R-011",
+        "R-038"
+      ],
+      "implementation_artifacts": [
+        "foundation/source.py",
+        "tests/test_frontend.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-06",
+      "milestone": "M2",
+      "title": "Scalar obligations and actual solver route",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-05"
+      ],
+      "documents": [
+        "docs/07-verification-and-properties.md"
+      ],
+      "acceptance": "Actual state/value relation; invalid branch/overflow mutants rejected; Unknown/missing solver visible.",
+      "requirement_ids": [
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-014",
+        "R-015"
+      ],
+      "implementation_artifacts": [
+        "foundation/smt.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-07",
+      "milestone": "M2",
+      "title": "Evidence checking and artifact binding",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-06"
+      ],
+      "documents": [
+        "docs/09-certificates-and-trust.md"
+      ],
+      "acceptance": "Supported real evidence checked; stale/query-mismatch/forged claims rejected; no class inflation.",
+      "requirement_ids": [
+        "R-016",
+        "R-017",
+        "R-018",
+        "R-019",
+        "R-060"
+      ],
+      "implementation_artifacts": [
+        "foundation/pipeline.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-08",
+      "milestone": "M3",
+      "title": "IR-to-bytecode/Rust translation validation",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-07"
+      ],
+      "documents": [
+        "docs/06-translation-and-codegen.md"
+      ],
+      "acceptance": "Wrong generated arithmetic/error/order is rejected against independent source semantics.",
+      "requirement_ids": [
+        "R-012",
+        "R-059"
+      ],
+      "implementation_artifacts": [
+        "foundation/native.py",
+        "runtime/scalar-runner.rs.in",
+        "tests/test_translation.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-09",
+      "milestone": "M4",
+      "title": "Reachable-state recovery obligations",
+      "status": "planned",
+      "depends_on": [
+        "WP-08"
+      ],
+      "documents": [
+        "docs/10-fault-recovery-effects.md"
+      ],
+      "acceptance": "Different reachable fault prefixes generate different state obligations; bad restore is rejected.",
+      "requirement_ids": [
+        "R-023"
+      ]
+    },
+    {
+      "id": "WP-10",
+      "milestone": "M4",
+      "title": "Retry-safe input and external effect discipline",
+      "status": "planned",
+      "depends_on": [
+        "WP-09"
+      ],
+      "documents": [
+        "docs/10-fault-recovery-effects.md"
+      ],
+      "acceptance": "Unsafe action-before-ack retry rejected; accepted dedupe protocol proved under explicit persistence model.",
+      "requirement_ids": [
+        "R-024",
+        "R-025",
+        "R-026"
+      ]
+    },
+    {
+      "id": "WP-11",
+      "milestone": "M4",
+      "title": "Recovery progress and fault-budget contract",
+      "status": "planned",
+      "depends_on": [
+        "WP-10"
+      ],
+      "documents": [
+        "docs/10-fault-recovery-effects.md"
+      ],
+      "acceptance": "Nontermination/fault-budget exhaustion and uninterrupted-progress assumptions distinguished.",
+      "requirement_ids": [
+        "R-027"
+      ]
+    },
+    {
+      "id": "WP-12",
+      "milestone": "M3",
+      "title": "Mechanized source/IR/VM semantics connection",
+      "status": "planned",
+      "depends_on": [
+        "WP-08"
+      ],
+      "documents": [
+        "docs/02-correctness-contract.md",
+        "docs/06-translation-and-codegen.md"
+      ],
+      "acceptance": "Actual preservation theorem or supported independent translation evidence with full trust statement.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "WP-13",
+      "milestone": "M5",
+      "title": "Restricted target machine semantics and lifting",
+      "status": "planned",
+      "depends_on": [
+        "WP-12"
+      ],
+      "documents": [
+        "docs/06-translation-and-codegen.md"
+      ],
+      "acceptance": "Unsupported instructions/ABI/errors rejected; pinned target artifact model.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "WP-14",
+      "milestone": "M5",
+      "title": "Native artifact equivalence checker",
+      "status": "planned",
+      "depends_on": [
+        "WP-13"
+      ],
+      "documents": [
+        "docs/06-translation-and-codegen.md"
+      ],
+      "acceptance": "Compiler/optimization mutant detected; required native relation checked for the supported leaf fragment.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "WP-15",
+      "milestone": "M6",
+      "title": "Finite graph and source-model relation",
+      "status": "planned",
+      "depends_on": [
+        "WP-12"
+      ],
+      "documents": [
+        "docs/07-verification-and-properties.md"
+      ],
+      "acceptance": "Witnesses replay and model completeness/bounds are justified; TLA/Stateright subset comparison.",
+      "requirement_ids": [
+        "R-014",
+        "R-031",
+        "R-032"
+      ]
+    },
+    {
+      "id": "WP-16",
+      "milestone": "M6",
+      "title": "Target cost profiles and loop/retry bounds",
+      "status": "planned",
+      "depends_on": [
+        "WP-11"
+      ],
+      "documents": [
+        "docs/11-time-energy-probability.md"
+      ],
+      "acceptance": "Cost provenance/units/uncertainty explicit; expensive retries and unproved loops rejected from certified bounds.",
+      "requirement_ids": [
+        "R-028"
+      ]
+    },
+    {
+      "id": "WP-17",
+      "milestone": "M6",
+      "title": "Joint finite probabilistic resource query",
+      "status": "planned",
+      "depends_on": [
+        "WP-15",
+        "WP-16"
+      ],
+      "documents": [
+        "docs/11-time-energy-probability.md"
+      ],
+      "acceptance": "Independent exact/interval oracle cases; joint event and scheduler class; no marginal-product shortcut.",
+      "requirement_ids": [
+        "R-029",
+        "R-030"
+      ]
+    },
+    {
+      "id": "WP-18",
+      "milestone": "M6",
+      "title": "Bounded relational verification",
+      "status": "planned",
+      "depends_on": [
+        "WP-15"
+      ],
+      "documents": [
+        "docs/07-verification-and-properties.md"
+      ],
+      "acceptance": "Two-trace secret/input alignment and quantified property validated; unsupported prefixes visible.",
+      "requirement_ids": [
+        "R-031"
+      ]
+    },
+    {
+      "id": "WP-19",
+      "milestone": "M7",
+      "title": "Fault/effect/resource-aware regression",
+      "status": "planned",
+      "depends_on": [
+        "WP-10",
+        "WP-18"
+      ],
+      "documents": [
+        "docs/07-verification-and-properties.md"
+      ],
+      "acceptance": "Equal-count logical weakening detected; old/new client domain and observable compatibility checked.",
+      "requirement_ids": [
+        "R-033"
+      ]
+    },
+    {
+      "id": "WP-20",
+      "milestone": "M7",
+      "title": "Controlled language and requirement ledger",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-02",
+        "WP-04"
+      ],
+      "documents": [
+        "docs/03-intent-and-autoformalization.md"
+      ],
+      "acceptance": "Typed templates/ambiguity distinctions; independent wrong-input/output and omission cases.",
+      "requirement_ids": [
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004"
+      ],
+      "implementation_artifacts": [
+        "foundation/intent.py",
+        "tests/test_frontend.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-21",
+      "milestone": "M7",
+      "title": "Model adapters and locked-spec search",
+      "status": "planned",
+      "depends_on": [
+        "WP-07",
+        "WP-20"
+      ],
+      "documents": [
+        "docs/16-model-evaluation.md",
+        "docs/23-api-cli.md"
+      ],
+      "acceptance": "Same acceptance policy across model snapshots; failed budgets/forbidden spec edits visible.",
+      "requirement_ids": [
+        "R-022",
+        "R-041",
+        "R-056"
+      ]
+    },
+    {
+      "id": "WP-22",
+      "milestone": "M7",
+      "title": "Evidence DAG and incremental invalidation",
+      "status": "planned",
+      "depends_on": [
+        "WP-07"
+      ],
+      "documents": [
+        "docs/08-proof-graph.md"
+      ],
+      "acceptance": "Changed source/spec/profile/assumption invalidates dependencies; tests cannot prove theorem roots.",
+      "requirement_ids": [
+        "R-020",
+        "R-021"
+      ]
+    },
+    {
+      "id": "WP-23",
+      "milestone": "M7",
+      "title": "Typed runtime execution capsules",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-10",
+        "WP-14"
+      ],
+      "documents": [
+        "docs/12-runtime-agent-execution.md"
+      ],
+      "acceptance": "Executed bytes/profile/capabilities match accepted capsule; external assumptions and failure paths explicit.",
+      "requirement_ids": [
+        "R-019",
+        "R-034",
+        "R-035",
+        "R-036"
+      ],
+      "implementation_artifacts": [
+        "foundation/pipeline.py",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-24",
+      "milestone": "M7",
+      "title": "SWE-bench Rust and repository adapters",
+      "status": "planned",
+      "depends_on": [
+        "WP-02",
+        "WP-21"
+      ],
+      "documents": [
+        "docs/17-swebench.md"
+      ],
+      "acceptance": "Original task/harness and denominators preserved; formal component coverage separately reported.",
+      "requirement_ids": [
+        "R-043",
+        "R-044",
+        "R-057"
+      ]
+    },
+    {
+      "id": "WP-25",
+      "milestone": "M7",
+      "title": "Spec/code/proof benchmark adapters",
+      "status": "planned",
+      "depends_on": [
+        "WP-02",
+        "WP-21"
+      ],
+      "documents": [
+        "docs/15-evaluation-matrix.md"
+      ],
+      "acceptance": "Verina/SpecGym/vericoding/Vero comparison uses pinned tasks and declared adaptations.",
+      "requirement_ids": [
+        "R-037",
+        "R-040",
+        "R-041",
+        "R-042"
+      ]
+    },
+    {
+      "id": "WP-26",
+      "milestone": "M2",
+      "title": "Soundness and semantic mutation harness",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-04",
+        "WP-06"
+      ],
+      "documents": [
+        "docs/19-soundness-and-mutation-suite.md"
+      ],
+      "acceptance": "Independent valid/invalid/matched and equivalent-mutant cases; no known false acceptance.",
+      "requirement_ids": [
+        "R-048",
+        "R-049"
+      ],
+      "implementation_artifacts": [
+        "tests/test_e2e.py",
+        "scripts/run_e2e.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-27",
+      "milestone": "M3",
+      "title": "Fixed-artifact package performance harness",
+      "status": "planned",
+      "depends_on": [
+        "WP-02",
+        "WP-08"
+      ],
+      "documents": [
+        "docs/18-package-performance.md"
+      ],
+      "acceptance": "Cold/warm/incremental CPU/wall/RSS/certificate data; timeouts included.",
+      "requirement_ids": [
+        "R-045",
+        "R-046"
+      ]
+    },
+    {
+      "id": "WP-28",
+      "milestone": "M5",
+      "title": "Native runtime and cost comparison",
+      "status": "planned",
+      "depends_on": [
+        "WP-14",
+        "WP-27"
+      ],
+      "documents": [
+        "docs/18-package-performance.md"
+      ],
+      "acceptance": "Matched safe Rust semantics; paired runtime/size/energy measurements and uncertainty.",
+      "requirement_ids": [
+        "R-037",
+        "R-047"
+      ]
+    },
+    {
+      "id": "WP-29",
+      "milestone": "M7",
+      "title": "Agent-friendly CLI and Cargo experience",
+      "status": "in_progress",
+      "depends_on": [
+        "WP-21",
+        "WP-23"
+      ],
+      "documents": [
+        "docs/23-api-cli.md"
+      ],
+      "acceptance": "Stable structured outcomes, source diagnostics and explicit unsupported behavior.",
+      "requirement_ids": [
+        "R-061"
+      ],
+      "implementation_artifacts": [
+        "foundation/cli.py",
+        "bin/foundation",
+        "tests/test_e2e.py",
+        "docs/26-implementation-status.md"
+      ]
+    },
+    {
+      "id": "WP-30",
+      "milestone": "M7",
+      "title": "Closest-baseline contribution evaluation",
+      "status": "planned",
+      "depends_on": [
+        "WP-17",
+        "WP-24",
+        "WP-28"
+      ],
+      "documents": [
+        "docs/22-research-positioning.md"
+      ],
+      "acceptance": "Specific task/theorem/evidence or measured benefit compared with direct prior art.",
+      "requirement_ids": [
+        "R-051",
+        "R-055"
+      ]
+    },
+    {
+      "id": "WP-31",
+      "milestone": "M7",
+      "title": "Extension process and supported-profile registry",
+      "status": "planned",
+      "depends_on": [
+        "WP-12"
+      ],
+      "documents": [
+        "docs/25-concurrency-and-extension-horizon.md"
+      ],
+      "acceptance": "Each new feature has semantics/encoding/translation/oracle/evidence/performance declarations.",
+      "requirement_ids": [
+        "R-015",
+        "R-053",
+        "R-054"
+      ]
+    }
+  ]
+}

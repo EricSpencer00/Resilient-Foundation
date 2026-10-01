@@ -1,0 +1,8 @@
+// Candidate authored by Codex; the controlled specification is locked separately.
+fn nonnegative(int x) -> int {
+    if x >= 0 {
+        return x;
+    } else {
+        return 0;
+    }
+}

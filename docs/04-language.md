@@ -52,3 +52,7 @@ A feature enters a verified profile only with typing, operational semantics, enc
 ## LLM ergonomics hypothesis
 
 Rust familiarity should reduce the entry cost for common models, but verified Rust may still be harder than higher-level verification languages. Measure paired tasks across Rust/Resilient, Verus and Dafny/Lean under matched requirements and budgets. Familiarity and native speed are design motivations, not benchmark findings.
+
+## Implemented scalar boundary
+
+The [implemented source parser](../foundation/source.py) uses the existing Resilient `fn name(int x) -> int` signature syntax, pure expressions and total return/if blocks. It accepts i64/bool parameters and results, arithmetic, signed comparisons, equality and short-circuit booleans. Helpers, local bindings, loops, contracts, effects, unknown tokens and additional declarations are outside this supported fragment and rejected.

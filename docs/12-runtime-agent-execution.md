@@ -31,3 +31,7 @@ Static proof artifacts should not require an SMT call on every ordinary executio
 ## Interoperability modes
 
 Verified component; contract-assumed component; monitored/tested component; unrestricted experimental component. Execution policy declares which modes are allowed. No wrapper upgrades an unverified library or model into a fully verified component.
+
+## Implemented scalar boundary
+
+The scalar prototype implements `scalar_source_exact_trusted_rust_v1`: reconstruct and rerun both relations, verify toolchain and exact native bytes by rebuilding, copy/hash the binary before execution, validate canonical input and compare the concrete observation to reference evaluation. It repeats SMT/rebuild work per execution as an initial correctness gate; the static-evidence performance design above is future work. The supported runtime is pure scalar and has no user-defined effects, recovery or external capabilities. OS/runtime/compiler/hardware assumptions remain explicit.

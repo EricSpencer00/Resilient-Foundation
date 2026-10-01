@@ -1,0 +1,41 @@
+{
+  "format": "foundation-source-map-v1",
+  "spans": [
+    {
+      "ir_path": "function.body",
+      "start": 118,
+      "end": 184,
+      "excerpt": "if x >= 0 {\n        return x;\n    } else {\n        return 0;\n    }"
+    },
+    {
+      "ir_path": "function.body.condition",
+      "start": 121,
+      "end": 127,
+      "excerpt": "x >= 0"
+    },
+    {
+      "ir_path": "function.body.condition.left",
+      "start": 121,
+      "end": 122,
+      "excerpt": "x"
+    },
+    {
+      "ir_path": "function.body.condition.right",
+      "start": 126,
+      "end": 127,
+      "excerpt": "0"
+    },
+    {
+      "ir_path": "function.body.then",
+      "start": 145,
+      "end": 146,
+      "excerpt": "x"
+    },
+    {
+      "ir_path": "function.body.else",
+      "start": 176,
+      "end": 177,
+      "excerpt": "0"
+    }
+  ]
+}

@@ -42,3 +42,7 @@ A raw SAT/UNSAT result is solver-checked evidence. A validated counterexample/wi
 ## Numeric semantics
 
 Probabilities/rewards use exact rationals or rigorously bounded intervals on finite models. Floating point estimates, approximate statistical results and conservative analytic bounds carry separate classes and assumptions.
+
+## Implemented scalar boundary
+
+The experimental `scalar-smt` route implements all-input equivalence for pure i64/bool expressions using QF_BV, including wrapping arithmetic, signed division and observable divide-by-zero errors. SAT counterexamples are replayed through the Rust reference evaluator. Unknown, timeout and missing solver remain distinct failures. Public build locks one controlled nonnegative requirement template; safety/refinement, stateful models and other backend families remain planned.

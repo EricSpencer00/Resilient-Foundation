@@ -1,6 +1,6 @@
 # Normative specification index
 
-Specification version: **0.1.0-draft**. Working project name: **Resilient Foundation**. Repository visibility: **private**. Remote repository: https://github.com/EricSpencer00/Resilient-Foundation. Owner: **Eric Spencer**.
+Specification version: **0.1.0-draft**. Working project name: **Resilient Foundation**. Repository visibility: **public**. Remote repository: https://github.com/EricSpencer00/Resilient-Foundation. Owner: **Eric Spencer**.
 
 ## Authority
 

@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scope": "specification_consistency_and_rust_reference_conformance",
+  "checked_date": "2026-09-30",
+  "toolchain": {
+    "rustc": "1.91.1",
+    "cargo": "1.91.1",
+    "host": "aarch64-apple-darwin"
+  },
+  "commands": [
+    {
+      "command": "make check",
+      "result": "passed",
+      "rust_debug_conformance_tests": 14,
+      "rust_release_conformance_tests": 14,
+      "validator_policy_tests": 4,
+      "negative_evidence_manifests_rejected": 13,
+      "formatting": "passed",
+      "clippy": "passed"
+    },
+    {
+      "command": "cargo run --locked -p foundation-core --example nonnegative",
+      "result": "passed",
+      "oracle_boundary_cases": 5
+    },
+    {
+      "command": ".venv/bin/python scripts/validate_spec.py --report validation/specification-consistency.json",
+      "result": "passed"
+    }
+  ],
+  "artifact_sha256": {
+    "Cargo.lock": "85ea84e03353ade069a4108bfe7c5aecc11d573ef738374a47b83447ddbb2e81",
+    "crates/foundation-core/src/lib.rs": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
+    "crates/foundation-core/tests/scalar_conformance.rs": "9d969f48107f54a5d44a3f07617daa3f8a5744a08ef4acee1ee205c44bb8b7ed",
+    "profiles/scalar-wrapping-v1.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "scripts/validate_spec.py": "250a68830f5b9b3a27428477ea3fb7cdd4946d0fd06276b7985909baefffa3ba",
+    "scripts/test_validate_spec.py": "d4e68565ea13b33b6cce03e4c79344878d1f54026c87afd99e6040f08059e96a"
+  },
+  "assurance": {
+    "reference_evaluation": "conformance_tested",
+    "formal_proof": "not_run",
+    "translation_check": "not_run",
+    "llm_evaluation": "not_run",
+    "hosted_ci": "not_run",
+    "illustrative_bundle_acceptance": "NotAccepted"
+  },
+  "limitations": [
+    "No JSON execution adapter or Resilient extraction.",
+    "Concrete tests do not prove all-input equivalence or native compilation correctness.",
+    "No solver, proof assistant or LLM backend was installed or executed."
+  ]
+}

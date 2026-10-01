@@ -1,6 +1,6 @@
 # Rust API, CLI and AI tool protocol
 
-All interfaces in this document are planned.
+The scalar CLI below is implemented. The general Rust analysis traits, model tools and expanded commands remain planned. [Implementation status](26-implementation-status.md) records the current supported fragment.
 
 ## Rust API shape
 
@@ -30,7 +30,25 @@ pub trait EvidenceChecker {
 
 These types are conceptual; CheckedEvidence is constructible only through the relevant actual checker, not by deserializing a producer's assertion.
 
-## Planned CLI
+## Implemented scalar CLI
+
+Run from the checkout root with the development requirements installed:
+
+~~~text
+python -m foundation intent request.txt
+python -m foundation source candidate.rz
+python -m foundation build --request request.txt --candidate candidate.rz --out artifacts/fresh
+python -m foundation check artifacts/fresh
+python -m foundation run artifacts/fresh --input '{"x":"-7"}'
+~~~
+
+Activate `.venv` for the `bin/foundation` launcher, or use `.venv/bin/python -m foundation`. Global `--solver`, `--cargo` and `--rustc` select executable paths before the subcommand. `build` accepts `--timeout-ms` in 1..60000; build/check/run accept the supported `--policy scalar_source_exact_trusted_rust_v1`. Output directories must be fresh. Rejected builds preserve inspectable intermediate evidence and never create an accepted capsule.
+
+The controlled requirement is the exact shipped nonnegative template. Other prose is `NeedsDecision`. Source supports one `fn name(int x, bool flag) -> int|bool` with total return/if blocks and pure scalar expressions; loops, helpers, contracts, effects and extra declarations are `Unsupported`. i64 JSON inputs are canonical decimal strings; JSON integer inputs are rejected to avoid precision loss.
+
+`check` reconstructs source/target obligations and runs the actual solver; it does not accept the producer's result merely because hashes match. `run` repeats checking and executes only the exact validated binary, comparing the observation with reference evaluation. The prototype trusts Z3, the restricted encodings/reference runtime, Rust compilation, OS and hardware. It does not satisfy `strict_native_exact`.
+
+## Planned expanded CLI
 
 ~~~text
 foundation intent propose request.txt
@@ -45,7 +63,7 @@ foundation eval package --profile <fixed-artifact-profile>
 foundation eval runtime --profile <matched-native-profile>
 ~~~
 
-The only currently implemented validation command is the Python specification checker described in README.md. No foundation executable is shipped yet.
+These expanded commands are design vocabulary. They are not aliases for the implemented scalar CLI; unsupported command names fail visibly.
 
 ## Agent tool actions
 
@@ -55,7 +73,7 @@ A model cannot request Proved as an action or set its own acceptance state. Tool
 
 ## Exit behavior
 
-Proposed process exit codes: 0 required policy satisfied; 2 refuted; 3 Unknown/Timeout/ResourceLimit; 4 Unsupported; 5 InvalidEvidence; 6 NeedsDecision; 1 operational error. JSON output remains authoritative, and multiple obligations are aggregated without hiding required failures.
+Implemented scalar process exit codes: 0 required policy satisfied; 2 refuted; 3 Unknown/Timeout/ResourceLimit; 4 Unsupported; 5 InvalidEvidence; 6 NeedsDecision; 1 operational error. JSON output remains authoritative, and multiple obligations are aggregated without hiding required failures.
 
 ## Error diagnostics
 

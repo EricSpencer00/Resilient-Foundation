@@ -43,4 +43,4 @@ Alpha-renaming, independent statement reordering under a proved side condition, 
 
 ## Current checks
 
-The repository implements schema/manifest/traceability consistency checks and negative illustrative manifests. It does not execute the runtime, solver or machine-code mutants yet. Those become milestone acceptance evidence when the implementations exist.
+The repository retains schema/manifest/traceability checks and negative illustrative manifests. The [scalar conformance suite](../tests/test_e2e.py) now executes real solver and native-runtime checks, including wrong branches, overflow, divide-by-zero, short circuiting, forged queries, changed target constructors, stale source, altered native bytes and inflated evidence claims. CLI process outcomes and canonical inputs are checked. A semantically equivalent boundary mutant remains accepted. [Recorded evidence](../validation/e2e.json) reports the observed run and unchanged oracle. This is a scalar subset of the catalog; machine-code semantics, stateful effects, recovery and quantitative mutants remain planned.

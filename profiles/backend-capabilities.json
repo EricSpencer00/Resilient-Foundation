@@ -4,11 +4,9 @@
   "routes": [
     {
       "id": "scalar-smt",
-      "status": "planned",
+      "status": "experimental",
       "task_kinds": [
-        "safety",
-        "equivalence",
-        "refinement"
+        "equivalence"
       ],
       "semantic_profiles": [
         "scalar-wrapping-v1"
@@ -16,11 +14,17 @@
       "evidence_classes": [
         "solver_checked"
       ],
-      "scope": "Restricted i64/bool expression VCs; trusted encoding and solver initially.",
-      "checker_status": "planned",
+      "scope": "All-input QF_BV observable equivalence of the restricted pure i64/bool expression fragment.",
+      "checker_status": "implemented",
       "limitations": [
-        "Proof-witness/kernel route must be separately implemented."
-      ]
+        "Trusted parser, scalar encoding and Z3; no independent UNSAT proof kernel.",
+        "Public build accepts one controlled nonnegative template; arbitrary proposition/refinement adapters remain planned."
+      ],
+      "implementation_artifacts": [
+        "foundation/smt.py",
+        "foundation/pipeline.py"
+      ],
+      "evidence_report": "validation/e2e.json"
     },
     {
       "id": "scalar-kernel",
@@ -104,9 +108,8 @@
     },
     {
       "id": "translation-ir",
-      "status": "planned",
+      "status": "experimental",
       "task_kinds": [
-        "ir_to_bytecode",
         "ir_to_rust"
       ],
       "semantic_profiles": [
@@ -115,11 +118,17 @@
       "evidence_classes": [
         "translation_checked"
       ],
-      "scope": "Supported IR-to-target relation.",
-      "checker_status": "planned",
+      "scope": "Independent restricted Rust constructor decoding and all-input relation to scalar IR.",
+      "checker_status": "implemented",
       "limitations": [
-        "Not a native binary guarantee."
-      ]
+        "Reference-evaluator-backed Rust source; not arbitrary Rust or direct optimized code generation.",
+        "rustc/LLVM, runtime, OS and hardware trusted; native machine-code relation remains planned."
+      ],
+      "implementation_artifacts": [
+        "foundation/native.py",
+        "foundation/pipeline.py"
+      ],
+      "evidence_report": "validation/e2e.json"
     },
     {
       "id": "translation-native",

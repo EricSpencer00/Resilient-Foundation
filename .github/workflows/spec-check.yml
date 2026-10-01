@@ -1,0 +1,57 @@
+name: Foundation checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: foundation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6 tag checked 2026-09-30
+      - name: Check specification and negative manifests
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r requirements-dev.txt
+          .venv/bin/python scripts/validate_spec.py
+          .venv/bin/python -m unittest discover -s scripts -p 'test_*.py'
+          .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+  scalar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Select Rust toolchain
+        run: |
+          rustup toolchain install 1.91.1 --profile minimal --component rustfmt --component clippy
+          rustup override set 1.91.1
+      - name: Check reference semantics
+        run: |
+          cargo fmt --all --check
+          cargo test --workspace --locked
+          cargo test --workspace --locked --release
+          cargo clippy --workspace --all-targets --locked -- -D warnings
+  e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Select Rust and solver
+        run: |
+          rustup toolchain install 1.91.1 --profile minimal
+          rustup override set 1.91.1
+          echo "FOUNDATION_CARGO=$(rustup which cargo)" >> "$GITHUB_ENV"
+          echo "FOUNDATION_RUSTC=$(rustup which rustc)" >> "$GITHUB_ENV"
+          sudo apt-get update
+          sudo apt-get install --yes z3
+      - name: Check the actual scalar pipeline
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r requirements-dev.txt
+          .venv/bin/python scripts/run_e2e.py --solver /usr/bin/z3
+          .venv/bin/python scripts/validate_spec.py

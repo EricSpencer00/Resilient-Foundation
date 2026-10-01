@@ -1,0 +1,100 @@
+{
+  "format": "foundation-capsule-v1",
+  "policy": "scalar_source_exact_trusted_rust_v1",
+  "acceptance": "Accepted",
+  "intent": {
+    "mode": "controlled_language",
+    "status": "accepted",
+    "template": "nonnegative-i64-v1"
+  },
+  "scope": {
+    "semantic_profile_id": "scalar-wrapping-v1",
+    "domain": "all inputs of declared i64/bool signature",
+    "observations": [
+      "return_value",
+      "DivideByZero",
+      "termination"
+    ],
+    "fragment": "pure_total_scalar_expressions"
+  },
+  "formal": {
+    "outcome": "Proved",
+    "evidence_class": "solver_checked",
+    "obligation": "spec_candidate_observable_equivalence"
+  },
+  "translation": {
+    "outcome": "Proved",
+    "evidence_class": "translation_checked",
+    "basis": "solver_checked",
+    "obligation": "candidate_restricted_rust_constructor_equivalence"
+  },
+  "native": {
+    "relation": "trusted_compilation",
+    "toolchain": {
+      "rustc_verbose_version": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8",
+      "flags": [
+        "--edition=2024",
+        "-Copt-level=2",
+        "-Cdebuginfo=0"
+      ],
+      "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
+      "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
+      "core_library_sha256": "f1a8d37c06a9a33ebb6c502c616ea214ac4c203bc0f6930f4cb5e7892c4e7a77"
+    }
+  },
+  "solver": {
+    "version": "Z3 version 4.8.12 - 64 bit",
+    "executable_sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+  },
+  "solver_timeout_ms": 10000,
+  "artifact_hashes": {
+    "request.txt": "8a9f3cd095e7569a2ffab145a0e7f2e8c7a8634faa61b010893ff8f59130a92d",
+    "requirements.json": "de1e8dce6b297210b5d14c3a6b5b726810cd150a78535b1ae10c544dfc8f92a9",
+    "spec-ir.json": "e887772a26fb7996e64da2925483a340fa7f29e83b1b2b5418c104cd67f35abe",
+    "candidate.rz": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
+    "candidate-ir.json": "50b13196e3f80308f88d7bb5dfb1233f10b8ca9b96c879faa133a86cd8adf4d5",
+    "source-map.json": "2a6fdc1afb3ff8d9c3dac461d85d9d16d39d20cfbe2fde00bddb2ecd61c7e43c",
+    "profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "generated.rs": "f29cceced38bd6406fc50870d5b4c79ad4f5d494ca118b6f2ded0051199efcf4",
+    "translation-ir.json": "074d858553fc723ae0665adc49f4c3b54ceaf45a9435bde9321997622bd712bd",
+    "formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
+    "translation.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
+    "native": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d"
+  },
+  "canonical_identities": {
+    "spec": "5177dd2baa48773f534b8f2e177724c14cecb98c652f775366e10061a196d038",
+    "candidate": "90b88ef119cf852ce484c9d10c00107c23bacecdd5165b7e8d08ce303e707bcf",
+    "translation": "e4929f23e121e736d5c63908bfca3f66e433bed2328577e62196aa5f949dfd07"
+  },
+  "implementation_hashes": {
+    "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
+    "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
+    "foundation/intent.py": "b05c1b08803bf67f496cd933e1ff25f5a9f2dfa6cc4cd708446ece79e7ae1aff",
+    "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
+    "foundation/native.py": "648ad4646a40ead0defb6d390799d694481b6a2b032d82c6fd1ea28e844bb558",
+    "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
+    "foundation/cli.py": "a06b9a7f5398c6a13f272be67a0206c8a73014751c6659bc329f450c4e1a8bd3",
+    "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
+    "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "bin/foundation": "183b46fd5aa43a4eec50f06f9de83957f1c7eddafa6dea8aa01a7f554ecc1fc1",
+    "schemas/program-ir.schema.json": "e168d4c49e47d5bf5917ea6b1a8c3184d8b80f0492efd6f62299177d1a02f807",
+    "runtime/scalar-runner.rs.in": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
+    "crates/foundation-core/src/lib.rs": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
+    "crates/foundation-core/Cargo.toml": "ac3ecf977a29ba406e4b78e6caa393037398ab9a99852283090b0fe843f49c65",
+    "Cargo.toml": "bfb3566abe9bf13cb09e40d9e5f27d61b51d004add051f362823282088d70964",
+    "Cargo.lock": "85ea84e03353ade069a4108bfe7c5aecc11d573ef738374a47b83447ddbb2e81"
+  },
+  "assumptions": [
+    "Versioned controlled template interpretation and restricted Resilient parser.",
+    "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+    "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+    "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+    "Native source executes through the reference evaluator; this is not direct optimized code generation."
+  ],
+  "generation": {
+    "role": "untrusted_candidate_producer",
+    "candidate_source_sha256": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
+    "model_snapshot": "not_attested",
+    "model_evaluation": "not_run"
+  }
+}

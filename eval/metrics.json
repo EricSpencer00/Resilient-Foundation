@@ -1,0 +1,121 @@
+{
+  "version": "0.1.0-draft",
+  "zero_denominator": "undefined_not_zero",
+  "aggregation": "Separate lanes and assurance axes; no soundness-speed composite.",
+  "metrics": [
+    {
+      "id": "checked_solution_rate",
+      "lane": "model",
+      "formula": "accepted_under_declared_policy / all_launched_attempts",
+      "interpretation": "All launched attempts; failure/unsupported/budget exhaustion are not solved."
+    },
+    {
+      "id": "supported_coverage",
+      "lane": "model",
+      "formula": "supported_attempts / all_launched_attempts",
+      "interpretation": "Publish separately from conditional success."
+    },
+    {
+      "id": "conditional_checked_yield",
+      "lane": "model",
+      "formula": "accepted_under_declared_policy / supported_attempts",
+      "interpretation": "Does not replace all-attempt success."
+    },
+    {
+      "id": "intent_validation_rate",
+      "lane": "intent",
+      "formula": "tasks_passing_independent_requirement_validation / all_intent_tasks",
+      "interpretation": "Finite-oracle validation, not unrestricted NL equivalence."
+    },
+    {
+      "id": "requirement_omission_rate",
+      "lane": "intent",
+      "formula": "omitted_required_atomic_requirements / independently_labeled_required_requirements",
+      "interpretation": "Requirement labels must be independently established."
+    },
+    {
+      "id": "official_repository_resolved",
+      "lane": "repository",
+      "formula": "official_harness_resolved / official_tasks_attempted",
+      "interpretation": "Original unmodified task/harness; adaptations have a separate denominator."
+    },
+    {
+      "id": "formal_component_coverage",
+      "lane": "repository",
+      "formula": "components_with_required_checked_evidence / components_in_declared_scope",
+      "interpretation": "Do not label a whole repo proved from one kernel."
+    },
+    {
+      "id": "false_acceptance_rate",
+      "lane": "package",
+      "formula": "accepted_known_invalid_claims / known_invalid_claims",
+      "interpretation": "Any reproducible known false acceptance blocks affected release."
+    },
+    {
+      "id": "false_rejection_rate",
+      "lane": "package",
+      "formula": "refuted_known_valid_claims / known_valid_claims",
+      "interpretation": "Unknown/Unsupported reported separately; refusing everything is not useful."
+    },
+    {
+      "id": "mutation_detection_rate",
+      "lane": "package",
+      "formula": "rejected_semantically_invalid_mutants / reviewed_semantically_invalid_mutants",
+      "interpretation": "Equivalent mutants excluded with justification; Unknown separate from demonstrated rejection."
+    },
+    {
+      "id": "unknown_rate",
+      "lane": "package",
+      "formula": "unknown_timeout_resource_limit / all_in_scope_attempts",
+      "interpretation": "Outcome histogram retained."
+    },
+    {
+      "id": "unsupported_rate",
+      "lane": "package",
+      "formula": "unsupported_attempts / all_launched_attempts",
+      "interpretation": "Coverage measure, not a soundness failure."
+    },
+    {
+      "id": "total_cost_per_accepted",
+      "lane": "model",
+      "formula": "total_cost_of_all_attempts / accepted_under_declared_policy",
+      "interpretation": "Undefined with zero successes; show spend and zero count."
+    },
+    {
+      "id": "time_to_checked_solution",
+      "lane": "model",
+      "formula": "elapsed_wall_to_policy_acceptance",
+      "interpretation": "Report budget-success curve and failure caps, not solved-only mean."
+    },
+    {
+      "id": "proof_replay_ratio",
+      "lane": "package",
+      "formula": "checking_cpu / search_cpu",
+      "interpretation": "Supported paired artifacts; undefined if search cost is zero/unmeasured."
+    },
+    {
+      "id": "native_runtime_ratio",
+      "lane": "runtime",
+      "formula": "candidate_runtime / matched_safe_rust_runtime",
+      "interpretation": "Same inputs, semantics, target/flags and observation; paired interval."
+    },
+    {
+      "id": "incremental_reuse_rate",
+      "lane": "package",
+      "formula": "checked_reused_obligations / previous_obligations",
+      "interpretation": "Validate dependency/identity preservation before counting reuse."
+    },
+    {
+      "id": "peak_memory",
+      "lane": "package",
+      "formula": "measured_peak_bytes_under_declared_process_group_method",
+      "interpretation": "Name RSS/cgroup method and worker concurrency."
+    },
+    {
+      "id": "certificate_size",
+      "lane": "package",
+      "formula": "certificate_bytes",
+      "interpretation": "Bind required evidence/proposition/profile; compression separately reported."
+    }
+  ]
+}

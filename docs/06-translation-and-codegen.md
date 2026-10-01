@@ -41,3 +41,7 @@ Use separately authored boundary examples and differential execution across refe
 ## Build identity
 
 Record source, canonical spec/IR, compiler/emitter/checker/backend versions, dependency digests, target triple, ABI, optimization flags, enabled features, error/overflow policy and target artifact hash. An accepted result for one build does not cover a differently compiled binary.
+
+## Implemented scalar boundary
+
+The experimental `translation-ir` route emits restricted Rust constructors for the expression model and uses the tested reference evaluator. A separately declared target reader reconstructs IR, the source/target observable relation is checked with Z3, and wrapper bytes must match the trusted template. The scalar capsule binds toolchain/library/source/native hashes and verifies a fresh rebuild before execution. This establishes the declared constructor relation under explicit compiler/runtime trust; it is neither arbitrary Rust verification nor a machine-code preservation proof.

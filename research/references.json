@@ -1,0 +1,1270 @@
+{
+  "review_date": "2026-09-30",
+  "method": "Primary sources and pinned selected implementation; no builds/benchmarks. Counts are source entries, not independent projects.",
+  "references": [
+    {
+      "id": "REF-001",
+      "title": "Caesar: A Deductive Verifier for Probabilistic Programs",
+      "url": "https://arxiv.org/html/2605.15827v1",
+      "depth": "P",
+      "note": "Rust implementation, quantitative IR, Z3 and model-checking integration.",
+      "date": "arXiv 2605.15827, v1, 2026"
+    },
+    {
+      "id": "REF-002",
+      "title": "moves-rwth/caesar",
+      "url": "https://github.com/moves-rwth/caesar",
+      "depth": "R",
+      "note": "Implementation and project entry point.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-003",
+      "title": "Caesar documentation: Model Checking",
+      "url": "https://www.caesarverifier.org/docs/model-checking/",
+      "depth": "D",
+      "note": "Subset restrictions and deductive/model-checking semantic differences.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-004",
+      "title": "A Deductive Verification Infrastructure for Probabilistic Programs (Extended Version)",
+      "url": "https://arxiv.org/abs/2309.07781",
+      "depth": "A",
+      "note": "Earlier quantitative intermediate-language foundations.",
+      "date": "arXiv 2309.07781, first posted 2023; record updated 2026"
+    },
+    {
+      "id": "REF-005",
+      "title": "Securing the Foundations of an Intermediate Language for Probabilistic Program Verification",
+      "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2026.29",
+      "depth": "A",
+      "note": "Lean formalization of MDP semantics, calculus and encodings.",
+      "date": "ITP 2026, LIPIcs 29"
+    },
+    {
+      "id": "REF-006",
+      "title": "A Game-Based Semantics for the Probabilistic Intermediate Verification Language HeyVL",
+      "url": "https://orbit.dtu.dk/en/publications/a-game-based-semantics-fortheprobabilistic-intermediate-verificat/",
+      "depth": "A",
+      "note": "Stochastic-game interpretation of the quantitative language.",
+      "date": "AISoLA 2024 proceedings, published 2025"
+    },
+    {
+      "id": "REF-007",
+      "title": "The First Version of ::formally is Released",
+      "url": "https://www.formally.fm/blog/first-version-released-formally/",
+      "depth": "N",
+      "note": "Distinguishes initial SMT infrastructure from the broader Rust roadmap.",
+      "date": "Author announcement, 2025-12-20"
+    },
+    {
+      "id": "REF-008",
+      "title": "formally-fm/formally",
+      "url": "https://github.com/formally-fm/formally",
+      "depth": "R",
+      "note": "Rust toolchain repository; scope must be checked per component.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-009",
+      "title": "UCLID5: Multi-Modal Formal Modeling, Verification, and Synthesis",
+      "url": "https://arxiv.org/html/2208.03699v1",
+      "depth": "P",
+      "note": "Multiple modeling styles, SMT verification, synthesis and hyperinvariants.",
+      "date": "arXiv 2208.03699, v1, 2022"
+    },
+    {
+      "id": "REF-010",
+      "title": "uclid-org/uclid",
+      "url": "https://github.com/uclid-org/uclid",
+      "depth": "R",
+      "note": "Executable framework and language entry point.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-011",
+      "title": "Synthesis in UCLID5",
+      "url": "https://arxiv.org/abs/2007.06760",
+      "depth": "A",
+      "note": "Synthesis integration in the modeling and verification framework.",
+      "date": "arXiv 2007.06760, 2020"
+    },
+    {
+      "id": "REF-012",
+      "title": "utwente-fmt/ltsmin",
+      "url": "https://github.com/utwente-fmt/ltsmin",
+      "depth": "R",
+      "note": "Language-independent interfaces and several exploration engines.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-013",
+      "title": "Symbolic Reachability Analysis of B through ProB and LTSmin",
+      "url": "https://arxiv.org/abs/1603.04401",
+      "depth": "A",
+      "note": "Concrete language-to-exploration interoperability example.",
+      "date": "arXiv 1603.04401, 2016"
+    },
+    {
+      "id": "REF-014",
+      "title": "spechub/Hets",
+      "url": "https://github.com/spechub/Hets",
+      "depth": "R",
+      "note": "Heterogeneous logics, provers and first-class logic translations.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-015",
+      "title": "CoVeriTeam: On-Demand Composition of Cooperative Verification Systems",
+      "url": "https://www.sosy-lab.org/research/coveriteam/",
+      "depth": "D",
+      "note": "Author research page: actors, artifacts and verifier composition.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-016",
+      "title": "sosy-lab/software/coveriteam",
+      "url": "https://gitlab.com/sosy-lab/software/coveriteam",
+      "depth": "M",
+      "note": "Official source location is GitLab; metadata checked, not a source audit.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-017",
+      "title": "koehlma/momba",
+      "url": "https://github.com/koehlma/momba",
+      "depth": "R",
+      "note": "Probabilistic-modeling framework and mixed Python/Rust architecture.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-018",
+      "title": "momba_explore crate documentation",
+      "url": "https://docs.rs/momba-explore/latest/momba_explore/",
+      "depth": "D",
+      "note": "Rust exploration component; separate from full framework coverage.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-019",
+      "title": "JANI: Quantitative Model and Tool Interaction",
+      "url": "https://www.stormchecker.org/files/BDHHJT17.pdf",
+      "depth": "P",
+      "note": "Interchange model families and tool interoperability.",
+      "date": "TACAS 2017 author PDF"
+    },
+    {
+      "id": "REF-020",
+      "title": "fadoss/umaudemc",
+      "url": "https://github.com/fadoss/umaudemc",
+      "depth": "R",
+      "note": "Qualitative, probabilistic and statistical backend orchestration.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-021",
+      "title": "Strategies, model checking and branching-time properties in Maude",
+      "url": "https://arxiv.org/abs/2401.07680",
+      "depth": "A",
+      "note": "Strategy-controlled branching semantics and model checking.",
+      "date": "Journal work 2021; arXiv 2401.07680 posted 2024"
+    },
+    {
+      "id": "REF-022",
+      "title": "QMaude artifact",
+      "url": "https://zenodo.org/records/7339536",
+      "depth": "M",
+      "note": "Artifact identity for the quantitative Maude tool family.",
+      "date": "FM 2023 artifact, archived 2022"
+    },
+    {
+      "id": "REF-023",
+      "title": "fadoss/maudesmc",
+      "url": "https://github.com/fadoss/maudesmc",
+      "depth": "R",
+      "note": "Statistical-checking component adjacent to umaudemc.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-024",
+      "title": "Tools at the Frontiers of Quantitative Verification",
+      "url": "https://arxiv.org/html/2405.13583v1",
+      "depth": "P",
+      "note": "QComp 2023 report: tool/model coverage and comparison baselines.",
+      "date": "QComp 2023; arXiv 2405.13583, v1, 2024"
+    },
+    {
+      "id": "REF-025",
+      "title": "stormchecker/storm",
+      "url": "https://github.com/stormchecker/storm",
+      "depth": "R",
+      "note": "Probabilistic-verification engine and integration candidate.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-026",
+      "title": "The Probabilistic Model Checker Storm",
+      "url": "https://arxiv.org/abs/2002.07080",
+      "depth": "A",
+      "note": "Established quantitative-verification architecture.",
+      "date": "arXiv 2002.07080, 2020"
+    },
+    {
+      "id": "REF-027",
+      "title": "Probabilistic Model Checking Taken by Storm",
+      "url": "https://arxiv.org/abs/2603.15559",
+      "depth": "A",
+      "note": "Recent primary tutorial and quantitative modeling guidance.",
+      "date": "arXiv 2603.15559, 2026"
+    },
+    {
+      "id": "REF-028",
+      "title": "prismmodelchecker/prism",
+      "url": "https://github.com/prismmodelchecker/prism",
+      "depth": "R",
+      "note": "Primary probabilistic-model-checking repository.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-029",
+      "title": "PRISM-games",
+      "url": "https://www.prismmodelchecker.org/games/",
+      "depth": "D",
+      "note": "Stochastic-game and strategic-verification scope.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-030",
+      "title": "iscas-tis/ePMC",
+      "url": "https://github.com/iscas-tis/ePMC",
+      "depth": "M",
+      "note": "Project entry point; capability discussion also uses QComp.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-031",
+      "title": "ModelChecker/moxi-mc-flow",
+      "url": "https://github.com/ModelChecker/moxi-mc-flow",
+      "depth": "R",
+      "note": "Typed model interchange and witness translation through a toolchain.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-032",
+      "title": "MoXIchecker: An Extensible Model Checker for MoXI",
+      "url": "https://arxiv.org/abs/2407.15551",
+      "depth": "A",
+      "note": "Extensible MoXI checking using pySMT and richer theories.",
+      "date": "arXiv 2407.15551, 2024"
+    },
+    {
+      "id": "REF-033",
+      "title": "stanford-centaur/pono",
+      "url": "https://github.com/stanford-centaur/pono",
+      "depth": "R",
+      "note": "SMT-based model-checking backend and solver independence.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-034",
+      "title": "Pono 2.0: A Versatile SMT-Based Model Checker for Safety and Liveness",
+      "url": "https://www.sosy-lab.org/research/pub/2026-FM.Pono_2.0_A_Versatile_SMT-Based_Model_Checker_for_Safety_and_Liveness.pdf",
+      "depth": "P",
+      "note": "Current safety/liveness algorithms and backend comparison.",
+      "date": "FM 2026 author PDF"
+    },
+    {
+      "id": "REF-035",
+      "title": "pysmt/pysmt",
+      "url": "https://github.com/pysmt/pysmt",
+      "depth": "R",
+      "note": "Formula representation and multiple SMT solver interfaces.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-036",
+      "title": "stanford-centaur/smt-switch",
+      "url": "https://github.com/stanford-centaur/smt-switch",
+      "depth": "R",
+      "note": "Solver-agnostic C++ interface.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-037",
+      "title": "smt-switch: A Solver-Agnostic C++ API for SMT Solving",
+      "url": "https://arxiv.org/abs/2007.01374",
+      "depth": "A",
+      "note": "Independent account of solver abstraction.",
+      "date": "arXiv 2007.01374, 2020"
+    },
+    {
+      "id": "REF-038",
+      "title": "formalsec/smtml",
+      "url": "https://github.com/formalsec/smtml",
+      "depth": "R",
+      "note": "OCaml SMT abstraction; another shared-expression baseline.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-039",
+      "title": "pyvmt/pyvmt",
+      "url": "https://github.com/pyvmt/pyvmt",
+      "depth": "R",
+      "note": "Transition-system and property representation over SMT.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-040",
+      "title": "kind2-mc/kind2",
+      "url": "https://github.com/kind2-mc/kind2",
+      "depth": "R",
+      "note": "Established SMT-based system verification and proof workflows.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-041",
+      "title": "boogie-org/boogie",
+      "url": "https://github.com/boogie-org/boogie",
+      "depth": "R",
+      "note": "Verification intermediate-language baseline.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-042",
+      "title": "viperproject/silver",
+      "url": "https://github.com/viperproject/silver",
+      "depth": "R",
+      "note": "Intermediate verification language and associated infrastructure.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-043",
+      "title": "runtimeverification/k",
+      "url": "https://github.com/runtimeverification/k",
+      "depth": "R",
+      "note": "Executable semantics used to derive verification tools.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-044",
+      "title": "Gillian: A Multi-Language Platform for Unified Symbolic Analysis",
+      "url": "https://arxiv.org/abs/2105.14769",
+      "depth": "A",
+      "note": "Language-parametric symbolic verification and metatheory.",
+      "date": "arXiv 2105.14769, 2021"
+    },
+    {
+      "id": "REF-045",
+      "title": "Verifying Hyperproperties with TLA",
+      "url": "https://lamport.azurewebsites.net/pubs/hyper2.pdf",
+      "depth": "P",
+      "note": "Author treatment of hyperproperty verification using TLA.",
+      "date": "Lamport and Schneider, 2021 author PDF"
+    },
+    {
+      "id": "REF-046",
+      "title": "tlaplus/tlaplus",
+      "url": "https://github.com/tlaplus/tlaplus",
+      "depth": "R",
+      "note": "TLC and TLA+ implementation ecosystem.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-047",
+      "title": "apalache-mc/apalache",
+      "url": "https://github.com/apalache-mc/apalache",
+      "depth": "R",
+      "note": "SMT-based symbolic analysis of a supported TLA+ fragment.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-048",
+      "title": "quint-co/quint",
+      "url": "https://github.com/quint-co/quint",
+      "depth": "R",
+      "note": "Specification-language and tool integration baseline.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-049",
+      "title": "Quint documentation: Model Checkers",
+      "url": "https://quint.sh/docs/model-checkers",
+      "depth": "D",
+      "note": "Explicit TLC and bounded symbolic Apalache workflows.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-050",
+      "title": "HyperQB 2.0: A Bounded Model Checker for Hyperproperties",
+      "url": "https://arxiv.org/html/2109.12989v6",
+      "depth": "P",
+      "note": "Current Rust implementation, SMT/QBF and bounded hyperproperty semantics.",
+      "date": "arXiv 2109.12989, v6, 2025; CAV 2026 tool paper"
+    },
+    {
+      "id": "REF-051",
+      "title": "HyperQB/HyperRUSTY",
+      "url": "https://github.com/HyperQB/HyperRUSTY",
+      "depth": "R",
+      "note": "Current HyperQB 2.0 Rust source, not the older Python/QBF repository.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-052",
+      "title": "HyperQB project: Downloads",
+      "url": "https://hyperqb.github.io/download.html",
+      "depth": "D",
+      "note": "Current source and release links; project license label.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-053",
+      "title": "AutoHyper: Explicit-State Model Checking for HyperLTL",
+      "url": "https://arxiv.org/html/2301.11229v1",
+      "depth": "P",
+      "note": "Finite-state automata checking with arbitrary HyperLTL quantifier prefixes.",
+      "date": "arXiv 2301.11229, v1, 2023"
+    },
+    {
+      "id": "REF-054",
+      "title": "AutoHyper/AutoHyper",
+      "url": "https://github.com/AutoHyper/AutoHyper",
+      "depth": "R",
+      "note": "Current F# implementation; relational atoms and HyperQPTL additions.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-055",
+      "title": "TART-MSU/HyperProb",
+      "url": "https://github.com/TART-MSU/HyperProb",
+      "depth": "R",
+      "note": "Probabilistic hyperproperty checker combining model and SMT machinery.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-056",
+      "title": "Probabilistic Hyperproperties with Nondeterminism",
+      "url": "https://arxiv.org/html/2005.06115v2",
+      "depth": "P",
+      "note": "Scheduler quantification and decidable versus undecidable fragments.",
+      "date": "arXiv 2005.06115, v2; first posted 2020"
+    },
+    {
+      "id": "REF-057",
+      "title": "Hyper Hoare Logic: (Dis-)Proving Program Hyperproperties",
+      "url": "https://arxiv.org/html/2301.10037v4",
+      "depth": "P",
+      "note": "Assertions over sets of states and formal proof-theoretic results.",
+      "date": "arXiv 2301.10037, v4; PLDI 2024"
+    },
+    {
+      "id": "REF-058",
+      "title": "Isabelle AFP: Hyper Hoare Logic",
+      "url": "https://isa-afp.org/entries/HyperHoareLogic.html",
+      "depth": "D",
+      "note": "Mechanized proof artifact and formalization scope.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-059",
+      "title": "Model Checking Quantitative Hyperproperties",
+      "url": "https://arxiv.org/abs/1905.13514",
+      "depth": "A",
+      "note": "Counting related traces, a distinct meaning of quantitative.",
+      "date": "arXiv 1905.13514, 2019 record for earlier conference work"
+    },
+    {
+      "id": "REF-060",
+      "title": "Quantitative Language Automata",
+      "url": "https://arxiv.org/html/2506.05158v2",
+      "depth": "P",
+      "note": "Language-level quantitative specifications and hyperproperty generalization.",
+      "date": "arXiv 2506.05158, v2, 2026; first posted 2025"
+    },
+    {
+      "id": "REF-061",
+      "title": "On Strong Observational Refinement and Forward Simulation",
+      "url": "https://arxiv.org/html/2107.14509v1",
+      "depth": "P",
+      "note": "Refinement notions relevant to hyperproperty preservation.",
+      "date": "arXiv 2107.14509, v1, 2021"
+    },
+    {
+      "id": "REF-062",
+      "title": "EasyCrypt/easycrypt",
+      "url": "https://github.com/EasyCrypt/easycrypt",
+      "depth": "R",
+      "note": "Relational probabilistic program-proof environment.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-063",
+      "title": "EasyCrypt reference manual",
+      "url": "https://www.easycrypt.info/easycrypt-doc/refman.pdf",
+      "depth": "D",
+      "note": "Hoare and probabilistic relational proof systems.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-064",
+      "title": "Farkas certificates and minimal witnesses for probabilistic reachability constraints",
+      "url": "https://arxiv.org/abs/1910.10636",
+      "depth": "A",
+      "note": "Checkable probabilistic reachability certificates and subsystem witnesses.",
+      "date": "arXiv 1910.10636, 2019; conference work 2020"
+    },
+    {
+      "id": "REF-065",
+      "title": "Certificates and Witnesses for Multi-objective omega-regular Queries in Markov Decision Processes",
+      "url": "https://arxiv.org/abs/2508.17859",
+      "depth": "A",
+      "note": "Certificates, strategies and witnesses for richer quantitative queries.",
+      "date": "arXiv 2508.17859, 2025"
+    },
+    {
+      "id": "REF-066",
+      "title": "Conditional Model Checking",
+      "url": "https://arxiv.org/abs/1109.6926",
+      "depth": "A",
+      "note": "Conditions recording verified regions and unfinished work.",
+      "date": "arXiv 1109.6926, 2011"
+    },
+    {
+      "id": "REF-067",
+      "title": "Conditional Model Checking project",
+      "url": "https://www.sosy-lab.org/research/cpa-cmc/",
+      "depth": "D",
+      "note": "Primary project documentation for partial-coverage composition.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-068",
+      "title": "Software Verification Witnesses 2.0",
+      "url": "https://www.sosy-lab.org/research/pub/2024-SPIN.Software_Verification_Witnesses_2.0.pdf",
+      "depth": "P",
+      "note": "Witness exchange, semantic information and independent validation.",
+      "date": "SPIN 2024 author PDF"
+    },
+    {
+      "id": "REF-069",
+      "title": "ufmg-smite/carcara",
+      "url": "https://github.com/ufmg-smite/carcara",
+      "depth": "R",
+      "note": "Rust proof checker for the Alethe format.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-070",
+      "title": "smtcoq/smtcoq",
+      "url": "https://github.com/smtcoq/smtcoq",
+      "depth": "R",
+      "note": "Certified SAT/SMT proof checking in Rocq/Coq.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-071",
+      "title": "cvc5 documentation: Alethe Proofs",
+      "url": "https://cvc5.github.io/docs-ci/docs-main/proofs/output_alethe.html",
+      "depth": "D",
+      "note": "Proof-output scope and supported-rule limitations.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-072",
+      "title": "sosy-lab/benchexec",
+      "url": "https://github.com/sosy-lab/benchexec",
+      "depth": "R",
+      "note": "Reproducible resource measurement and benchmark execution.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-073",
+      "title": "RustSAT: A Library For SAT Solving in Rust",
+      "url": "https://arxiv.org/abs/2505.15221",
+      "depth": "A",
+      "note": "Rust SAT solver interfaces and encodings.",
+      "date": "arXiv 2505.15221, 2025"
+    },
+    {
+      "id": "REF-074",
+      "title": "chrjabs/rustsat",
+      "url": "https://github.com/chrjabs/rustsat",
+      "depth": "R",
+      "note": "Reusable SAT and optimization library components.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-075",
+      "title": "stateright/stateright",
+      "url": "https://github.com/stateright/stateright",
+      "depth": "R",
+      "note": "Rust system models and finite-state checking.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-076",
+      "title": "onderjan/machine-check",
+      "url": "https://github.com/onderjan/machine-check",
+      "depth": "R",
+      "note": "Verification of a constrained machine-description subset in Rust.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-077",
+      "title": "The SCAN Statistical Model Checker",
+      "url": "https://arxiv.org/html/2603.28794v1",
+      "depth": "P",
+      "note": "Rust statistical checker; model and logic scope.",
+      "date": "arXiv 2603.28794, v1, 2026"
+    },
+    {
+      "id": "REF-078",
+      "title": "convince-project/scan",
+      "url": "https://github.com/convince-project/scan",
+      "depth": "R",
+      "note": "Statistical verification engine and model-language implementation status.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-079",
+      "title": "Verifying Probabilistic Programs in Rust",
+      "url": "https://arxiv.org/html/2607.12282v1",
+      "depth": "P",
+      "note": "Alerus: Verus plus probabilistic error credits and soundness foundations.",
+      "date": "arXiv 2607.12282, v1, 2026"
+    },
+    {
+      "id": "REF-080",
+      "title": "ahuoguo/alerus",
+      "url": "https://github.com/ahuoguo/alerus",
+      "depth": "R",
+      "note": "Current implementation and documented prophecy-feature restriction.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-081",
+      "title": "RustMC: Extending the GenMC stateless model checker to Rust",
+      "url": "https://arxiv.org/abs/2502.06293",
+      "depth": "A",
+      "note": "Rust concurrency verification, distinct from a generic modeling library.",
+      "date": "arXiv 2502.06293, 2025"
+    },
+    {
+      "id": "REF-082",
+      "title": "model-checking/kani",
+      "url": "https://github.com/model-checking/kani",
+      "depth": "R",
+      "note": "Rust program-verification tool; useful adjacent baseline.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-083",
+      "title": "biodivine_hctl_model_checker crate documentation",
+      "url": "https://docs.rs/biodivine-hctl-model-checker/latest/biodivine_hctl_model_checker/",
+      "depth": "D",
+      "note": "Hybrid CTL for Boolean networks; not HyperCTL.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-084",
+      "title": "kino-mc/rsmt2",
+      "url": "https://github.com/kino-mc/rsmt2",
+      "depth": "R",
+      "note": "Rust interface to SMT-LIB subprocess solvers.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-085",
+      "title": "facebookarchive/Rust-SMT-LIB-API",
+      "url": "https://github.com/facebookarchive/Rust-SMT-LIB-API",
+      "depth": "R",
+      "note": "Older Rust SMT API; repository is archived.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-086",
+      "title": "jix/varisat",
+      "url": "https://github.com/jix/varisat",
+      "depth": "R",
+      "note": "SAT implementation and Rust component candidate.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-087",
+      "title": "OxiDD/oxidd",
+      "url": "https://github.com/OxiDD/oxidd",
+      "depth": "R",
+      "note": "Decision-diagram infrastructure and Rust API.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-088",
+      "title": "neuppl/rsdd",
+      "url": "https://github.com/neuppl/rsdd",
+      "depth": "R",
+      "note": "Rust decision-diagram and weighted-counting components.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-089",
+      "title": "meelgroup/approxmc",
+      "url": "https://github.com/meelgroup/approxmc",
+      "depth": "R",
+      "note": "Approximate model counting; not a temporal model checker.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-090",
+      "title": "Scaling Exact Inference for Discrete Probabilistic Programs",
+      "url": "https://arxiv.org/abs/2005.09089",
+      "depth": "A",
+      "note": "Dice: exact inference via compilation and weighted counting.",
+      "date": "arXiv 2005.09089, 2020"
+    },
+    {
+      "id": "REF-091",
+      "title": "SHoltzen/dice",
+      "url": "https://github.com/SHoltzen/dice",
+      "depth": "R",
+      "note": "Implementation corresponding to the exact-inference line of work.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-092",
+      "title": "Enhancing SMT-based Weighted Model Integration by Structure Awareness",
+      "url": "https://arxiv.org/html/2302.06188v2",
+      "depth": "P",
+      "note": "SMT and integration for mixed discrete/continuous inference.",
+      "date": "arXiv 2302.06188, v2; first posted 2023"
+    },
+    {
+      "id": "REF-093",
+      "title": "unitn-sml/wmpy",
+      "url": "https://github.com/unitn-sml/wmpy",
+      "depth": "R",
+      "note": "Current redirect target of the reviewed wmi-pa repository.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-094",
+      "title": "eth-sri/psi",
+      "url": "https://github.com/eth-sri/psi",
+      "depth": "R",
+      "note": "Exact symbolic inference for probabilistic programs.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-095",
+      "title": "petgraph/petgraph",
+      "url": "https://github.com/petgraph/petgraph",
+      "depth": "R",
+      "note": "General graph data structures and algorithms.",
+      "date": "Live source, checked 2026-09-30"
+    },
+    {
+      "id": "REF-096",
+      "title": "EricSpencer00/Resilient",
+      "url": "https://github.com/EricSpencer00/Resilient",
+      "depth": "R",
+      "note": "Project overview; owner is Eric Spencer.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-097",
+      "title": "docs/VERIFICATION_LIMITS.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/VERIFICATION_LIMITS.md",
+      "depth": "D",
+      "note": "Scope document; distinguishes function proofs from wider assumptions.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-098",
+      "title": "docs/STRUCTURAL_ENFORCEMENT.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/STRUCTURAL_ENFORCEMENT.md",
+      "depth": "D",
+      "note": "Trust-model claims and spec-provenance boundary.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-099",
+      "title": "docs/LEAN_SPEC.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/LEAN_SPEC.md",
+      "depth": "D",
+      "note": "Advertised Lean fragment and future extensions.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-100",
+      "title": "docs/EMBEDDED_PIPELINE.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/EMBEDDED_PIPELINE.md",
+      "depth": "D",
+      "note": "Read current status heading separately from historical design sections.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-101",
+      "title": "docs/EXPRESSIBLE_INVALID_STATES.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/EXPRESSIBLE_INVALID_STATES.md",
+      "depth": "D",
+      "note": "Registry of known structural gaps.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-102",
+      "title": "resilient/src/recovers_to_bmc.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/recovers_to_bmc.rs",
+      "depth": "C",
+      "note": "Inspected CFG enumeration, obligation generation and solver-result handling.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-103",
+      "title": "resilient/src/recovery_checker.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/recovery_checker.rs",
+      "depth": "C",
+      "note": "Closed-form recovery-body warnings and unsupported-effect checks.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-104",
+      "title": "resilient/src/probabilistic_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/probabilistic_contracts.rs",
+      "depth": "C",
+      "note": "Declaration validation, registry and empirical success-rate accounting.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-105",
+      "title": "resilient/src/power_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/power_contracts.rs",
+      "depth": "C",
+      "note": "Statement/builtin estimates and fixed loop multiplier.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-106",
+      "title": "resilient/src/wcet_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/wcet_contracts.rs",
+      "depth": "C",
+      "note": "Initial statement/call/loop cost model.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-107",
+      "title": "resilient/src/noninterference.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/noninterference.rs",
+      "depth": "C",
+      "note": "Single-return integer self-composition fragment and Unknown handling.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-108",
+      "title": "resilient/src/semantic_regression.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/semantic_regression.rs",
+      "depth": "C",
+      "note": "Contract-count and failure-variant comparison, not predicate implication.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-109",
+      "title": "resilient/src/lean_spec.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/lean_spec.rs",
+      "depth": "C",
+      "note": "Generated expression theorem; both expression renderings derive from the lowered body.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-110",
+      "title": "resilient/lean-spec/Resilient/Semantics.lean",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/lean-spec/Resilient/Semantics.lean",
+      "depth": "C",
+      "note": "Mathematical Int evaluator for the expression fragment.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-111",
+      "title": "resilient/lean-spec/Resilient/Theorems.lean",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/lean-spec/Resilient/Theorems.lean",
+      "depth": "C",
+      "note": "Small expression-level lemmas; not a compiled-runtime preservation theorem.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-112",
+      "title": "resilient-runtime/src/lib.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient-runtime/src/lib.rs",
+      "depth": "C",
+      "note": "Scalar value arithmetic uses wrapping i64; default runtime is no_std.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-113",
+      "title": "resilient-runtime/src/vm.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient-runtime/src/vm.rs",
+      "depth": "C",
+      "note": "Selected opening/type/arithmetic sections; embedded VM is a separate implementation.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-114",
+      "title": "resilient/src/tla_bridge.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/tla_bridge.rs",
+      "depth": "C",
+      "note": "TLC subprocess wrapper over a supplied TLA file.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-115",
+      "title": "resilient/src/tla_refines.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/tla_refines.rs",
+      "depth": "C",
+      "note": "Mapping validation; module explicitly defers action discovery and proof checking.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-116",
+      "title": "resilient/src/stateright_bridge.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/stateright_bridge.rs",
+      "depth": "C",
+      "note": "Narrow actor-state subset with explicit depth/state limits.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-117",
+      "title": "resilient/src/contract_certificate.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/contract_certificate.rs",
+      "depth": "C",
+      "note": "Per-clause pass/fail/unknown, replayable queries and optional signatures.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-118",
+      "title": "resilient/src/idempotent_handler.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/idempotent_handler.rs",
+      "depth": "C",
+      "note": "Naming/access-pattern heuristic; not semantic idempotency proof.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-119",
+      "title": "resilient/src/transaction_commit.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/transaction_commit.rs",
+      "depth": "C",
+      "note": "CFG-aware commit/rollback discipline; distinct from external exactly-once effects.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "id": "REF-120",
+      "title": "Verifying Programs Under Custom Application-Specific Execution Models",
+      "url": "https://arxiv.org/html/1805.06090v1",
+      "depth": "P",
+      "note": "Leto: first-class faulty execution and relational verification.",
+      "date": "arXiv 1805.06090, v1, 2018"
+    },
+    {
+      "id": "REF-121",
+      "title": "mit-pdos/perennial",
+      "url": "https://github.com/mit-pdos/perennial",
+      "depth": "R",
+      "note": "Concurrent crash safety and recovery procedures in Iris/Rocq.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-122",
+      "title": "Towards a Formal Foundation of Intermittent Computing",
+      "url": "https://arxiv.org/abs/2007.15126",
+      "depth": "A",
+      "note": "Memory/input consistency and formal intermittent-execution foundations.",
+      "date": "arXiv 2007.15126, 2020"
+    },
+    {
+      "id": "REF-123",
+      "title": "Alpaca: Intermittent Execution without Checkpoints",
+      "url": "https://arxiv.org/abs/1909.06951",
+      "depth": "A",
+      "note": "Task privatization/commit; rollback variant.",
+      "date": "OOPSLA 2017 work; arXiv record 2019"
+    },
+    {
+      "id": "REF-124",
+      "title": "CMUAbstract/alpaca-oopsla",
+      "url": "https://github.com/CMUAbstract/alpaca-oopsla",
+      "depth": "R",
+      "note": "Author artifact for the intermittent task-based programming model.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-125",
+      "title": "ETAP: Energy-aware Timing Analysis of Intermittent Programs",
+      "url": "https://arxiv.org/html/2201.11433v2",
+      "depth": "P",
+      "note": "Probabilistic symbolic timing/energy analysis and checkpoint models.",
+      "date": "arXiv 2201.11433, v2, 2022"
+    },
+    {
+      "id": "REF-126",
+      "title": "ferhaterata/etap",
+      "url": "https://github.com/ferhaterata/etap",
+      "depth": "M",
+      "note": "Author repository located in primary search; direct page unavailable.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-127",
+      "title": "Transactional Concurrency Control for Intermittent, Energy-Harvesting Computing Systems",
+      "url": "https://users.ece.cmu.edu/~eruppel/documents/pldi_ruppel_final.pdf",
+      "depth": "P",
+      "note": "Coati: concurrent intermittent tasks/events and transaction discipline.",
+      "date": "PLDI 2019 author PDF; selected sections"
+    },
+    {
+      "id": "REF-128",
+      "title": "Verifying Quantitative Reliability of Programs That Execute on Unreliable Hardware",
+      "url": "https://dspace.mit.edu/entities/publication/868b7a7a-c327-4b68-b3c3-840c749aac33",
+      "depth": "A",
+      "note": "Rely: reliability requirements checked against a hardware reliability model.",
+      "date": "OOPSLA 2013; author institutional abstract"
+    },
+    {
+      "id": "REF-129",
+      "title": "Verified Low-Level Programming Embedded in F*",
+      "url": "https://arxiv.org/abs/1703.00053",
+      "depth": "A",
+      "note": "Low-level verification and semantics-preserving extraction.",
+      "date": "arXiv 1703.00053, 2017"
+    },
+    {
+      "id": "REF-130",
+      "title": "CakeML/cakeml",
+      "url": "https://github.com/CakeML/cakeml",
+      "depth": "R",
+      "note": "Mechanized language and compiler implementation in HOL4.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-131",
+      "title": "Verified VCG and Verified Compiler for Dafny",
+      "url": "https://arxiv.org/abs/2512.05262",
+      "depth": "A",
+      "note": "Verified VCG and compilation via CakeML for a defined imperative subset.",
+      "date": "arXiv 2512.05262, 2025"
+    },
+    {
+      "id": "REF-132",
+      "title": "Partial Contracts Suffice: Sound, LLM-Inferred Regression Verification",
+      "url": "https://arxiv.org/html/2607.10291v1",
+      "depth": "P",
+      "note": "Recent verified contract-based regression approach; selected intro/method sections.",
+      "date": "arXiv 2607.10291, v1, 2026 preprint"
+    },
+    {
+      "id": "REF-133",
+      "title": "p-org/P",
+      "url": "https://github.com/p-org/P",
+      "depth": "R",
+      "note": "State-machine language, reasoning backends and runtime-observation integration.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-134",
+      "title": "Copilot-Language/copilot",
+      "url": "https://github.com/Copilot-Language/copilot",
+      "depth": "R",
+      "note": "Hard real-time stream monitors and generated-code proof infrastructure.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-135",
+      "title": "The Black-Box Simplex Architecture for Runtime Assurance of Autonomous CPS",
+      "url": "https://arxiv.org/abs/2102.12981",
+      "depth": "A",
+      "note": "Runtime assurance and safe control switching.",
+      "date": "arXiv 2102.12981, 2021"
+    },
+    {
+      "id": "REF-136",
+      "title": "Synergistic Simplex: Cooperative Runtime Assurance for Safety-Critical Autonomous Systems",
+      "url": "https://arxiv.org/abs/2605.08190",
+      "depth": "A",
+      "note": "Recent safety-preserving interaction between ML components and monitors.",
+      "date": "arXiv 2605.08190, 2026"
+    },
+    {
+      "id": "REF-137",
+      "title": "WaveCert: Translation Validation for Asynchronous Dataflow Programs via Dynamic Fractional Permissions",
+      "url": "https://arxiv.org/abs/2312.09326",
+      "depth": "A",
+      "note": "Concrete translation-validation precedent with compiler-bug evaluation.",
+      "date": "arXiv 2312.09326, 2023"
+    },
+    {
+      "id": "REF-138",
+      "title": "ProofTree public preview",
+      "url": "https://www.prooftree.ai/",
+      "depth": "S",
+      "note": "Primary search excerpt: verified mathematics workspace/private preview; private implementation not inspected.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-139",
+      "title": "ProofTree Notes: Proof Abundance",
+      "url": "https://www.prooftree.ai/notes/proof-abundance",
+      "depth": "S",
+      "note": "Primary search excerpt: persistent/shared mathematical work; direct HTML extract empty.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-140",
+      "title": "VeriSpecGen: Intent-aligned Formal Specification Synthesis via Traceable Refinement",
+      "url": "https://arxiv.org/html/2604.10392v1",
+      "depth": "P",
+      "note": "Selected introduction and method sections; requirement attribution and tests are not unrestricted NL-equivalence proof.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-141",
+      "title": "Verus-SpecGym",
+      "url": "https://arxiv.org/abs/2605.26457",
+      "depth": "A",
+      "note": "Specification autoformalization benchmark; no model scores reproduced here.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-142",
+      "title": "formal-verif-is-cool/verus-spec-gym",
+      "url": "https://github.com/formal-verif-is-cool/verus-spec-gym",
+      "depth": "R",
+      "note": "Primary repository overview; candidate evaluator adapter.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-143",
+      "title": "AlphaVerus",
+      "url": "https://arxiv.org/html/2412.06176v1",
+      "depth": "P",
+      "note": "Selected generation/translation/tree-search discussion.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-144",
+      "title": "Verus trust boundary",
+      "url": "https://verus-lang.github.io/verus/guide/tcb.html",
+      "depth": "D",
+      "note": "Assumptions, external bodies and trusted specifications.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-145",
+      "title": "AeneasVerif/aeneas",
+      "url": "https://github.com/AeneasVerif/aeneas",
+      "depth": "R",
+      "note": "Safe Rust subset and functional translation; no claim of arbitrary native compilation proof.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-146",
+      "title": "creusot-rs/creusot",
+      "url": "https://github.com/creusot-rs/creusot",
+      "depth": "R",
+      "note": "Primary repository overview; candidate Rust proof route.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-147",
+      "title": "NASA FRET",
+      "url": "https://github.com/NASA-SW-VnV/fret",
+      "depth": "R",
+      "note": "Restricted English requirements, formal representations and validation.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-148",
+      "title": "Subak validation",
+      "url": "https://docs.subak.ai/docs/concepts/validation",
+      "depth": "D",
+      "note": "Proof-tree/validation workflow is direct product prior art.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-149",
+      "title": "Subak positioning",
+      "url": "https://docs.subak.ai/docs/why-subak",
+      "depth": "D",
+      "note": "Generation/validation separation and durable artifacts.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-150",
+      "title": "SWE-bench Verified",
+      "url": "https://www.swebench.com/verified.html",
+      "depth": "D",
+      "note": "Official task/scaffold protocol and model-vs-system comparison.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-151",
+      "title": "SWE-bench Multilingual",
+      "url": "https://www.swebench.com/multilingual.html",
+      "depth": "D",
+      "note": "Original Rust tasks, F2P/P2P protocol and task-selection details.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-152",
+      "title": "SWE-bench harness",
+      "url": "https://github.com/SWE-bench/SWE-bench",
+      "depth": "R",
+      "note": "Official evaluation repository; no suite downloaded/run here.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-153",
+      "title": "SWE-Bench Pro Verified",
+      "url": "https://arxiv.org/abs/2609.08149",
+      "depth": "A",
+      "note": "Recent task quality/leakage preprint; claims not independently reproduced.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-154",
+      "title": "Verina",
+      "url": "https://github.com/sunblaze-ucb/verina",
+      "depth": "R",
+      "note": "Modular specification/code/proof generation and provider-configured runs.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-155",
+      "title": "Vero",
+      "url": "https://github.com/sunblaze-ucb/vero",
+      "depth": "R",
+      "note": "Repository-level verified code/proof benchmark; candidate adapter.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-156",
+      "title": "Vericoding benchmark",
+      "url": "https://github.com/Beneficial-AI-Foundation/vericoding-benchmark",
+      "depth": "R",
+      "note": "Fixed formal-spec synthesis tasks across Dafny/Verus/Lean.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-157",
+      "title": "AlgoVeri",
+      "url": "https://github.com/haoyuzhao123/algoveri",
+      "depth": "R",
+      "note": "Aligned cross-language algorithm benchmark; no scores reproduced.",
+      "date": "Checked 2026-09-30"
+    },
+    {
+      "id": "REF-158",
+      "title": "SMT-COMP 2026 result protocol",
+      "url": "https://smt-comp.github.io/2026/results/qf_strings-single-query/",
+      "depth": "D",
+      "note": "Correct/error/time/outcome columns; select matching categories.",
+      "date": "Checked 2026-09-30"
+    }
+  ]
+}

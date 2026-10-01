@@ -1,0 +1,192 @@
+{
+  "repository": "EricSpencer00/Resilient",
+  "commit": "53a9f198013655e6ad9372f8aaf463d22ee6c032",
+  "date": "2026-09-30",
+  "method": "Selected source/doc inspection; no build, proof or failure reproduction.",
+  "entries": [
+    {
+      "key": "limits",
+      "title": "docs/VERIFICATION_LIMITS.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/VERIFICATION_LIMITS.md",
+      "depth": "D",
+      "note": "Scope document; distinguishes function proofs from wider assumptions.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "structural",
+      "title": "docs/STRUCTURAL_ENFORCEMENT.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/STRUCTURAL_ENFORCEMENT.md",
+      "depth": "D",
+      "note": "Trust-model claims and spec-provenance boundary.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "lean-doc",
+      "title": "docs/LEAN_SPEC.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/LEAN_SPEC.md",
+      "depth": "D",
+      "note": "Advertised Lean fragment and future extensions.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "embedded-doc",
+      "title": "docs/EMBEDDED_PIPELINE.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/EMBEDDED_PIPELINE.md",
+      "depth": "D",
+      "note": "Read current status heading separately from historical design sections.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "invalid",
+      "title": "docs/EXPRESSIBLE_INVALID_STATES.md",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/docs/EXPRESSIBLE_INVALID_STATES.md",
+      "depth": "D",
+      "note": "Registry of known structural gaps.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "recovery",
+      "title": "resilient/src/recovers_to_bmc.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/recovers_to_bmc.rs",
+      "depth": "C",
+      "note": "Inspected CFG enumeration, obligation generation and solver-result handling.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "recovery-checker",
+      "title": "resilient/src/recovery_checker.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/recovery_checker.rs",
+      "depth": "C",
+      "note": "Closed-form recovery-body warnings and unsupported-effect checks.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "prob",
+      "title": "resilient/src/probabilistic_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/probabilistic_contracts.rs",
+      "depth": "C",
+      "note": "Declaration validation, registry and empirical success-rate accounting.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "power",
+      "title": "resilient/src/power_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/power_contracts.rs",
+      "depth": "C",
+      "note": "Statement/builtin estimates and fixed loop multiplier.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "wcet",
+      "title": "resilient/src/wcet_contracts.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/wcet_contracts.rs",
+      "depth": "C",
+      "note": "Initial statement/call/loop cost model.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "ni",
+      "title": "resilient/src/noninterference.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/noninterference.rs",
+      "depth": "C",
+      "note": "Single-return integer self-composition fragment and Unknown handling.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "regression",
+      "title": "resilient/src/semantic_regression.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/semantic_regression.rs",
+      "depth": "C",
+      "note": "Contract-count and failure-variant comparison, not predicate implication.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "lean-lower",
+      "title": "resilient/src/lean_spec.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/lean_spec.rs",
+      "depth": "C",
+      "note": "Generated expression theorem; both expression renderings derive from the lowered body.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "lean-semantics",
+      "title": "resilient/lean-spec/Resilient/Semantics.lean",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/lean-spec/Resilient/Semantics.lean",
+      "depth": "C",
+      "note": "Mathematical Int evaluator for the expression fragment.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "lean-theorems",
+      "title": "resilient/lean-spec/Resilient/Theorems.lean",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/lean-spec/Resilient/Theorems.lean",
+      "depth": "C",
+      "note": "Small expression-level lemmas; not a compiled-runtime preservation theorem.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "runtime",
+      "title": "resilient-runtime/src/lib.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient-runtime/src/lib.rs",
+      "depth": "C",
+      "note": "Scalar value arithmetic uses wrapping i64; default runtime is no_std.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "runtime-vm",
+      "title": "resilient-runtime/src/vm.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient-runtime/src/vm.rs",
+      "depth": "C",
+      "note": "Selected opening/type/arithmetic sections; embedded VM is a separate implementation.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "tla",
+      "title": "resilient/src/tla_bridge.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/tla_bridge.rs",
+      "depth": "C",
+      "note": "TLC subprocess wrapper over a supplied TLA file.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "tla-refines",
+      "title": "resilient/src/tla_refines.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/tla_refines.rs",
+      "depth": "C",
+      "note": "Mapping validation; module explicitly defers action discovery and proof checking.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "stateright",
+      "title": "resilient/src/stateright_bridge.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/stateright_bridge.rs",
+      "depth": "C",
+      "note": "Narrow actor-state subset with explicit depth/state limits.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "cert",
+      "title": "resilient/src/contract_certificate.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/contract_certificate.rs",
+      "depth": "C",
+      "note": "Per-clause pass/fail/unknown, replayable queries and optional signatures.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "idempotent",
+      "title": "resilient/src/idempotent_handler.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/idempotent_handler.rs",
+      "depth": "C",
+      "note": "Naming/access-pattern heuristic; not semantic idempotency proof.",
+      "date": "Resilient main 53a9f1980136"
+    },
+    {
+      "key": "transaction",
+      "title": "resilient/src/transaction_commit.rs",
+      "url": "https://github.com/EricSpencer00/Resilient/blob/53a9f198013655e6ad9372f8aaf463d22ee6c032/resilient/src/transaction_commit.rs",
+      "depth": "C",
+      "note": "CFG-aware commit/rollback discipline; distinct from external exactly-once effects.",
+      "date": "Resilient main 53a9f1980136"
+    }
+  ]
+}
