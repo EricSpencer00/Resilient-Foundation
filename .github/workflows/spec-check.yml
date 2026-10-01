@@ -45,6 +45,8 @@ jobs:
         run: |
           rustup toolchain install 1.91.1 --profile minimal
           rustup override set 1.91.1
+          echo "FOUNDATION_CARGO=$(rustup which cargo)" >> "$GITHUB_ENV"
+          echo "FOUNDATION_RUSTC=$(rustup which rustc)" >> "$GITHUB_ENV"
           sudo apt-get update
           sudo apt-get install --yes z3
       - name: Check the actual scalar pipeline
