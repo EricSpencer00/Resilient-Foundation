@@ -1,6 +1,6 @@
 # Current implementation
 
-Checked 1 October 2026. The normative semantics remain in [the semantic core](05-semantic-core.md). The private checkout contains the archive's complete specification and the first supported end-to-end scalar route. The separate Resilient compiler repository remains unchanged.
+Checked 1 October 2026. The normative semantics remain in [the semantic core](05-semantic-core.md). This public checkout contains the archive's complete specification and the first supported end-to-end scalar route. The separate Resilient compiler repository remains unchanged.
 
 ## Working route
 

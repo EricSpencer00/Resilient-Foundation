@@ -21,9 +21,9 @@ Verus/AutoVerus remains a later Rust proof-generation adapter. Installing a larg
 
 ## Execution and limits
 
-Personal private project. Editing and lightweight verification stay on the MacBook. Substantial compilation and solver suites run on `hst-bench` through the MacBook's canonical ProxyJump route. No user token or spending limit was supplied; prefer existing free capacity and bounded subprocess budgets. Do not start model servers on the MacBook or send private inputs to new external model services.
+Public project. Editing and lightweight verification stay on the MacBook. Substantial compilation and solver suites run on `hst-bench` through the MacBook's canonical ProxyJump route. No user token or spending limit was supplied; prefer existing free capacity and bounded subprocess budgets. Do not start model servers on the MacBook or send private inputs to new external model services.
 
-Observed NUC tools: `/usr/bin/z3` 4.8.12, Python 3.12.3 with pinned jsonschema 4.25.1, and Rust 1.98.1 through `/home/eric/.cargo/bin/cargo` and `/home/eric/.cargo/bin/rustc`. The task-owned workspace `/tmp/resilient-foundation-goal-130N7I` held compilation and solver artifacts. Its final evidence was retained locally and integrity-checked, then the entire task-created workspace was removed and absence confirmed. Temporary Mac transfer metadata in that copy was removed before the repository gate. No agents, model servers, unattended jobs, paid resources, external model calls or upstream repository changes were created. The authoritative checkout and this branch are retained; no branch was pushed or published.
+Observed NUC tools: `/usr/bin/z3` 4.8.12, Python 3.12.3 with pinned jsonschema 4.25.1, and Rust 1.98.1 through `/home/eric/.cargo/bin/cargo` and `/home/eric/.cargo/bin/rustc`. The task-owned workspace `/tmp/resilient-foundation-goal-130N7I` held compilation and solver artifacts. Its final evidence was retained locally and integrity-checked, then the entire task-created workspace was removed and absence confirmed. Temporary Mac transfer metadata in that copy was removed before the repository gate. No agents, model servers, unattended jobs, paid resources, external model calls or upstream repository changes were created for the route. The completed branch was pushed after this goal's validation.
 
 ## Outcome
 

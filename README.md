@@ -2,7 +2,7 @@
 
 A Rust-based foundation for AI-generated software whose requirements, executable specifications, implementation, translation evidence and runtime behavior remain connected.
 
-**Status: private scalar end-to-end prototype, version 0.1.0-draft, 1 October 2026.** A controlled requirement and restricted Resilient candidate now pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The recorded NUC run passed all 36 conformance checks with no skips. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
+**Status: public scalar end-to-end prototype, version 0.1.0-draft, 1 October 2026.** A controlled requirement and restricted Resilient candidate now pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The recorded NUC run passed all 36 conformance checks with no skips. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
 
 The first frontend is [Resilient](https://github.com/EricSpencer00/Resilient), owned by Eric Spencer. Resilient keeps its language/compiler/runtime identity; Foundation supplies shared semantic profiles, obligations, evidence and evaluation protocols.
 
@@ -63,6 +63,8 @@ The execution returns `"0"` and identifies the exact accepted capsule and native
 The supported policy is `scalar_source_exact_trusted_rust_v1`. It accepts one exact controlled nonnegative requirement template and a pure i64/bool source fragment. Other prose returns `NeedsDecision`; unsupported source and stronger native policies fail explicitly. Generated Rust constructs the expression model and runs the tested reference evaluator. [The CLI contract](docs/23-api-cli.md) describes outcomes and remaining limits.
 
 [Saved evidence](validation/e2e.json) records actual tool identities, test/source hashes, solver calls, native compilations, five frozen oracle executions and a replayed counterexample. It is a host-specific record; rebuild a capsule to execute it. The candidate was authored by Codex during this task; no attested model snapshot or model benchmark is claimed.
+
+GitHub Actions uses only standard GitHub-hosted `ubuntu-24.04` runners, with read-only repository permissions and bounded job timeouts. The workflow does not request paid larger runners, self-hosted machines, services, secrets or external model calls. Public repositories receive GitHub's standard hosted-runner allowance; any future paid service or larger runner requires a separate change.
 
 ## First implementation slice
 

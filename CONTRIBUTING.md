@@ -10,4 +10,4 @@ Specification changes update the requirement registry, schema/example where rele
 
 Implementation changes expose stable Rust or CLI boundaries and explicit unsupported outcomes. Optimizations preserve the same observations and preconditions. Ported benchmark tasks record the original task, adaptation, retained requirements, excluded requirements and evaluation denominator.
 
-This private repository has no public license grant. Dependency licenses and redistribution requirements must be recorded when third-party code is actually introduced.
+This repository currently has no explicit public license grant. Dependency licenses and redistribution requirements must be recorded when third-party code is actually introduced. Public visibility does not by itself grant permission to reuse the code; add a project-approved license before making a reuse claim.
