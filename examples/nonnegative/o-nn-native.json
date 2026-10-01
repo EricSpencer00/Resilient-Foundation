@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "obligation",
+  "illustrative": true,
+  "id": "O-NN-NATIVE",
+  "task_kind": "native_translation",
+  "relation": "observable_equivalence",
+  "source_artifact_id": "candidate-nn",
+  "target_artifact_id": null,
+  "semantic_profile_id": "scalar-wrapping-v1",
+  "observation": [
+    "return_value",
+    "typed_error",
+    "termination"
+  ],
+  "quantifiers": [
+    "forall x:i64"
+  ],
+  "requirements": [
+    "R-NN-01",
+    "R-NN-02",
+    "R-NN-03"
+  ],
+  "analysis_bounds": {
+    "steps": null,
+    "states": null,
+    "faults": null
+  },
+  "required_evidence_class": "translation_checked",
+  "assumptions": [],
+  "dependencies": [],
+  "statement": "A future native artifact must have checked observable correspondence; no native bytes exist in this example."
+}
