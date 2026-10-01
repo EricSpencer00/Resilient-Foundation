@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:program-ir:v1",
+  "title": "program-ir",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "0.1.0-draft"
+    },
+    "kind": {
+      "const": "scalar_program"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "semantic_profile_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+      "maxLength": 100
+    },
+    "function": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+          "maxLength": 100
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+                "maxLength": 100
+              },
+              "type": {
+                "enum": [
+                  "i64",
+                  "bool"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "return_type": {
+          "enum": [
+            "i64",
+            "bool"
+          ]
+        },
+        "body": {
+          "$ref": "#/$defs/expr"
+        }
+      },
+      "required": [
+        "name",
+        "params",
+        "return_type",
+        "body"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "illustrative",
+    "id",
+    "semantic_profile_id",
+    "function"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "expr": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "int"
+            },
+            "type": {
+              "const": "i64"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^(0|-[1-9][0-9]*|[1-9][0-9]*)$",
+              "maxLength": 20
+            }
+          },
+          "required": [
+            "kind",
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "bool"
+            },
+            "type": {
+              "const": "bool"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "var"
+            },
+            "type": {
+              "enum": [
+                "i64",
+                "bool"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]*$",
+              "maxLength": 100
+            }
+          },
+          "required": [
+            "kind",
+            "type",
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "binary"
+            },
+            "type": {
+              "enum": [
+                "i64",
+                "bool"
+              ]
+            },
+            "op": {
+              "enum": [
+                "add_wrap",
+                "sub_wrap",
+                "mul_wrap",
+                "div_wrap",
+                "eq",
+                "lt_signed",
+                "le_signed",
+                "gt_signed",
+                "ge_signed",
+                "and",
+                "or"
+              ]
+            },
+            "left": {
+              "$ref": "#/$defs/expr"
+            },
+            "right": {
+              "$ref": "#/$defs/expr"
+            }
+          },
+          "required": [
+            "kind",
+            "type",
+            "op",
+            "left",
+            "right"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "if"
+            },
+            "type": {
+              "enum": [
+                "i64",
+                "bool"
+              ]
+            },
+            "condition": {
+              "$ref": "#/$defs/expr"
+            },
+            "then": {
+              "$ref": "#/$defs/expr"
+            },
+            "else": {
+              "$ref": "#/$defs/expr"
+            }
+          },
+          "required": [
+            "kind",
+            "type",
+            "condition",
+            "then",
+            "else"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
