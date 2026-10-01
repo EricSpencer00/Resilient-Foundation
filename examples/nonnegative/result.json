@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "pipeline_result",
+  "illustrative": true,
+  "task_id": "nonnegative",
+  "semantic_profile_id": "scalar-wrapping-v1",
+  "intent_status": "accepted",
+  "formal": {
+    "outcome": "Unknown",
+    "evidence_class": "none",
+    "evidence_ids": [],
+    "reason": "Actual solver/kernel route not run."
+  },
+  "translation": {
+    "outcome": "Unknown",
+    "evidence_class": "none",
+    "evidence_ids": [],
+    "reason": "No translation/native checker or binary available."
+  },
+  "runtime_status": "NotRun",
+  "functional_tests": "NotRun",
+  "required_policy": "strict_native_exact",
+  "acceptance": "NotAccepted",
+  "required_obligation_ids": [
+    "O-NN-EXACT",
+    "O-NN-LOWER",
+    "O-NN-NATIVE"
+  ],
+  "discharged_obligation_ids": [],
+  "artifact_hashes": {
+    "request-nn": "8a9f3cd095e7569a2ffab145a0e7f2e8c7a8634faa61b010893ff8f59130a92d",
+    "ledger-nn": "5775aa89f7718c76af76137d1109ed6e727c4b8a46c486bd09293e6147baf9e7",
+    "spec-nn": "e79af90d2d27c1deb8c0e552aac20aae1c0fba017031985befb50e3cc4980757",
+    "candidate-nn": "dda8cf1d66273c4cbee9830465878dc8623c17922838a90e1a489e33671bd4f4",
+    "profile-nn": "b7feb4986e20f7069bcb9bedc3d577eddd052e5451e55d0d59336c05313606ff",
+    "source-nn": "571dce51b67716228feae8759523e92d98d3235801797fd19a30ad9374bb115c",
+    "rust-source-nn": "469ca0d94cc8fcfa2eae06fdd40f1bbe2a01f6bebb3a198f32a96ec57b894abc",
+    "oracle-nn": "353683fa08bc2e60c2fd5eeea2e0ce5a17572892bdfff7c621595941f9de640e",
+    "graph-nn": "7994f647225275815e27206c8649ebd0261f038dbf2d59abebe1ebc152219a34",
+    "artifact-O-NN-EXACT": "45c11ff1140381a09b05396def1dcce779c0878cefd8b8cb213c7920f631a215",
+    "artifact-O-NN-LOWER": "4c79e79f7032768ac6c627ea1fca488553d7bbf21623dec2a6ce81f39ae41a94",
+    "artifact-O-NN-NATIVE": "d4f1abec938dbe1870ec42823634d77521eacd5d371562ca5ebbc246a7f63c04"
+  },
+  "limitations": [
+    "Illustrative design walkthrough only.",
+    "Free-prose interpretation is an explicit example decision, not a theorem.",
+    "No compiler, proof kernel, native translation or model benchmark was run."
+  ]
+}
