@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "obligation",
+  "illustrative": true,
+  "id": "O-NN-EXACT",
+  "task_kind": "equivalence",
+  "relation": "observable_equivalence",
+  "source_artifact_id": "spec-nn",
+  "target_artifact_id": "candidate-nn",
+  "semantic_profile_id": "scalar-wrapping-v1",
+  "observation": [
+    "return_value",
+    "typed_error",
+    "termination"
+  ],
+  "quantifiers": [
+    "forall x:i64"
+  ],
+  "requirements": [
+    "R-NN-01",
+    "R-NN-02",
+    "R-NN-03"
+  ],
+  "analysis_bounds": {
+    "steps": null,
+    "states": null,
+    "faults": null
+  },
+  "required_evidence_class": "kernel_checked",
+  "assumptions": [],
+  "dependencies": [],
+  "statement": "For every i64 x, candidate and executable spec have equal return/error/termination observations."
+}
