@@ -1,7 +1,7 @@
 {
   "schema": "resilient-contract-certificate/v1",
   "schema_version": 1,
-  "source": "/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz",
+  "source": "/tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz",
   "functions": [
     {
       "name": "ident_round",
@@ -20,13 +20,6 @@
         "basis": "implementation",
         "verdict": "pass"
       }
-      ]
-    },
-    {
-      "name": "main",
-      "enrolled": false,
-      "provenance": [],
-      "clauses": [
       ]
     }
   ]

@@ -8,5 +8,5 @@
       "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444"
     }
   ],
-  "program": "/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz"
+  "program": "/tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz"
 }

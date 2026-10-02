@@ -8,99 +8,158 @@
       "stage": "source_extraction",
       "status": "integrated",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/lib.rs", "resilient/src/typechecker.rs"],
+      "surface": [
+        "resilient/src/lib.rs",
+        "resilient/src/typechecker.rs"
+      ],
       "scope": "Resilient source and typed compiler surface can be located and bound to an inventory.",
-      "limitations": ["Foundation does not reimplement or prove Resilient parsing or lowering."]
+      "limitations": [
+        "Foundation does not reimplement or prove Resilient parsing or lowering."
+      ]
     },
     {
       "id": "contract-verification",
       "stage": "verification",
       "status": "integrated",
       "evidence_class": "solver_checked",
-      "surface": ["resilient/src/contract_verify.rs", "resilient/src/contract_certificate.rs"],
-      "scope": "Imported per-clause contract certificates can be structurally checked and replayed by rz with Z3.",
-      "limitations": ["The compiler, its verifier and Z3 remain trusted for the imported proof route."]
+      "surface": [
+        "resilient/src/contract_verify.rs",
+        "resilient/src/contract_certificate.rs"
+      ],
+      "scope": "Pure scalar contract definitions can be regenerated with a selected Resilient binary, and each emitted SMT query can be independently replayed with Z3.",
+      "limitations": [
+        "Resilient source-to-query encoding remains trusted. Clauses without replayable queries are compiler-reported, not solver-checked."
+      ]
     },
     {
       "id": "proof-certificates",
       "stage": "evidence",
       "status": "integrated",
       "evidence_class": "artifact_checked",
-      "surface": ["resilient/src/cert_sign.rs", "resilient/src/contract_certificate.rs"],
+      "surface": [
+        "resilient/src/cert_sign.rs",
+        "resilient/src/contract_certificate.rs"
+      ],
       "scope": "SMT-LIB2 obligations, manifest hashes and contract verdict JSON are bound into a Foundation evidence record.",
-      "limitations": ["Artifact binding does not establish source-to-query preservation without the Resilient replay step."]
+      "limitations": [
+        "Source association becomes a compiler-backed binding only after artifact regeneration matches. No translation theorem is claimed."
+      ]
     },
     {
       "id": "signed-certificates",
       "stage": "evidence",
       "status": "observed",
       "evidence_class": "artifact_checked",
-      "surface": ["resilient/src/cert_sign.rs", "resilient/src/cert_key.pem"],
-      "scope": "The adapter records signed certificate material and delegates cryptographic verification to rz.",
-      "limitations": ["No private signing key is stored in Foundation or in the public repository."]
+      "surface": [
+        "resilient/src/cert_sign.rs",
+        "resilient/src/cert_key.pem"
+      ],
+      "scope": "The adapter binds signature material as artifact bytes; cryptographic authentication is not implemented.",
+      "limitations": [
+        "No private signing key is stored in Foundation or in the public repository."
+      ]
     },
     {
       "id": "recovery-and-effects",
       "stage": "verification",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/recovery_checker.rs", "resilient/src/transaction_commit.rs", "resilient/src/idempotent_handler.rs"],
+      "surface": [
+        "resilient/src/recovery_checker.rs",
+        "resilient/src/transaction_commit.rs",
+        "resilient/src/idempotent_handler.rs"
+      ],
       "scope": "Recovery, transactional and retry-oriented compiler surfaces are catalogued for later evidence adapters.",
-      "limitations": ["No Foundation acceptance route currently claims stateful recovery or external-effect soundness."]
+      "limitations": [
+        "No Foundation acceptance route currently claims stateful recovery or external-effect soundness."
+      ]
     },
     {
       "id": "information-flow",
       "stage": "verification",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/noninterference.rs", "resilient/src/info_flow.rs"],
+      "surface": [
+        "resilient/src/noninterference.rs",
+        "resilient/src/info_flow.rs"
+      ],
       "scope": "Noninterference and capability-flow surfaces are visible in the inventory.",
-      "limitations": ["A relational semantic profile and independent checker are still required."]
+      "limitations": [
+        "A relational semantic profile and independent checker are still required."
+      ]
     },
     {
       "id": "resource-contracts",
       "stage": "verification",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/wcet_contracts.rs", "resilient/src/power_contracts.rs", "resilient/src/probabilistic_contracts.rs"],
+      "surface": [
+        "resilient/src/wcet_contracts.rs",
+        "resilient/src/power_contracts.rs",
+        "resilient/src/probabilistic_contracts.rs"
+      ],
       "scope": "WCET, power and probabilistic contract implementations are catalogued as separate evidence lanes.",
-      "limitations": ["No resource or probability guarantee is inferred from the scalar profile."]
+      "limitations": [
+        "No resource or probability guarantee is inferred from the scalar profile."
+      ]
     },
     {
       "id": "temporal-refinement",
       "stage": "verification",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/tla_refines.rs", "resilient/src/tla_bridge.rs", "resilient-runtime/tla/runtime.tla"],
+      "surface": [
+        "resilient/src/tla_refines.rs",
+        "resilient/src/tla_bridge.rs",
+        "resilient-runtime/tla/runtime.tla"
+      ],
       "scope": "Temporal/refinement bridge surfaces are catalogued for an explicit state-machine adapter.",
-      "limitations": ["The current Foundation route has no TLA or model-checker acceptance gate."]
+      "limitations": [
+        "The current Foundation route has no TLA or model-checker acceptance gate."
+      ]
     },
     {
       "id": "embedded-runtime",
       "stage": "runtime",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient-runtime/src/vm.rs", "resilient/src/rzbc_emit.rs", "docs/EMBEDDED_PIPELINE.md"],
+      "surface": [
+        "resilient-runtime/src/vm.rs",
+        "resilient/src/rzbc_emit.rs",
+        "docs/EMBEDDED_PIPELINE.md"
+      ],
       "scope": "The no_std fixed-capacity runtime and bytecode boundary are catalogued for deployment evidence.",
-      "limitations": ["No embedded target build or QEMU run is promoted by this package yet."]
+      "limitations": [
+        "No embedded target build or QEMU run is promoted by this package yet."
+      ]
     },
     {
       "id": "mutation-and-regression",
       "stage": "ci",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/mutation_testing.rs", "resilient/src/semantic_regression.rs"],
+      "surface": [
+        "resilient/src/mutation_testing.rs",
+        "resilient/src/semantic_regression.rs"
+      ],
       "scope": "Mutation and semantic-regression surfaces are named for future cross-repository conformance cases.",
-      "limitations": ["Foundation's independent mutation cases currently cover only its scalar route."]
+      "limitations": [
+        "Foundation's independent mutation cases currently cover only its scalar route."
+      ]
     },
     {
       "id": "tooling-and-lsp",
       "stage": "runtime",
       "status": "observed",
       "evidence_class": "inventory_only",
-      "surface": ["resilient/src/lsp_server.rs", "resilient/src/capabilities.rs"],
+      "surface": [
+        "resilient/src/lsp_server.rs",
+        "resilient/src/capabilities.rs"
+      ],
       "scope": "Developer tooling and capability metadata remain discoverable through the same inventory.",
-      "limitations": ["Editor protocol behavior is outside the Foundation evidence acceptance path."]
+      "limitations": [
+        "Editor protocol behavior is outside the Foundation evidence acceptance path."
+      ]
     }
   ]
 }

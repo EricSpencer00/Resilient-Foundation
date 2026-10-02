@@ -1,9 +1,15 @@
 import copy
 import unittest
+import json
+import os
+from pathlib import Path
+import sys
+import tempfile
+from unittest.mock import patch
 
 from foundation.errors import FoundationError
 from foundation.ir import load
-from foundation.native import decode, emit
+from foundation.native import NativeTools, decode, emit
 
 
 class TranslationTests(unittest.TestCase):
@@ -29,6 +35,19 @@ class TranslationTests(unittest.TestCase):
         for changed in [source + '\nfn hidden() {}', source.replace('let model = model();', 'std::process::exit(0);')]:
             with self.assertRaises(FoundationError):
                 decode(changed)
+
+    def test_selected_rustc_is_used_for_the_cargo_reference_build(self):
+        with tempfile.TemporaryDirectory(prefix='foundation-cargo-selection-') as scratch:
+            root = Path(scratch)
+            cargo = root / 'cargo'
+            observation = root / 'observed.json'
+            cargo.write_text('#!' + sys.executable + '\nimport os, json\n'
+                             + 'open(' + repr(str(observation)) + ', "w").write(json.dumps(os.environ.get("RUSTC")))\n')
+            cargo.chmod(0o700)
+            selected_rustc = root / 'selected-rustc'
+            with patch.dict(os.environ, {'RUSTC': '/wrong/compiler'}):
+                NativeTools(str(cargo), str(selected_rustc)).build_core()
+            self.assertEqual(json.loads(observation.read_text()), str(selected_rustc))
 
 
 if __name__ == '__main__':

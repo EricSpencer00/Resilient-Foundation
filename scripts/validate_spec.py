@@ -64,12 +64,22 @@ def check_backend_status(route):
 def check_resilient_report(report):
     '''Validate the cross-repository Resilient certificate acceptance record.'''
     require(report['status']=='passed' and report['scope']=='resilient_contract_certificate_e2e' and
-            report['evidence_class']=='solver_checked','Unsupported Resilient integration gate')
+            report['evidence_class']=='solver_checked' and
+            report.get('format')=='foundation-resilient-integration-report-v2' and
+            report.get('claim_scope')=='smt_queries' and report.get('source_binding')=='regenerated',
+            'Unsupported Resilient integration gate')
     require(report['tests_run']>=4 and report['tests_failed']==report['tests_skipped']==0,
             'Resilient integration gate failed or skipped')
     require(report['mutation']['status']=='rejected','Resilient source mutation was not rejected')
-    required_caps={'source-frontend','contract-verification','proof-certificates','embedded-runtime'}
-    require(required_caps <= set(report['capability_ids']),'Resilient capability coverage is incomplete')
+    required_caps={'source-frontend','contract-verification','proof-certificates'}
+    require(required_caps == set(report['capability_ids']),'Unexecuted Resilient capability claims')
+    require(required_caps <= set(report.get('inventoried_capability_ids',[])), 'Missing Resilient inventory')
+    expected_cases={'regenerate-and-replay','verify-complete-record','source-identity-mutation',
+                    'stale-certificate-reimport','forged-assurance','replay-downgrade',
+                    'satisfiable-query','solver-output-spoofing'}
+    cases=report.get('cases',[])
+    require(len(cases)==len(expected_cases) and {c['id'] for c in cases}==expected_cases and
+            all(c['status']=='passed' for c in cases), 'Missing Resilient acceptance cases')
     for group in ['implementation_hashes','test_hashes','driver_hashes','evidence_files']:
         bindings=report.get(group,{})
         require(bindings,'Resilient report lacks '+group)
@@ -77,6 +87,20 @@ def check_resilient_report(report):
             require(safe_path(path) and (ROOT/path).is_file() and
                     hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,
                     'Stale Resilient integration report: '+path)
+    record='validation/resilient/evidence.json'
+    evidence=load(record)
+    require(record in report['evidence_files'] and
+            evidence['format']=='foundation-resilient-evidence-v2' and
+            evidence['evidence_class']=='solver_checked' and evidence['claim_scope']=='smt_queries' and
+            evidence['source_binding']['status']=='regenerated', 'Unsupported saved Resilient assurance')
+    require(report['replay']==evidence['verification'] and report['replay']['status']=='passed' and
+            report['replay']['queries'] and all(q['result']=='unsat' for q in report['replay']['queries']),
+            'Missing direct solver query evidence')
+    require(report['receipt']['evidence_sha256']==report['evidence_files'][record] and
+            report['source_sha256']==evidence['source']['sha256'] and
+            report['certificate_sha256']==evidence['contract_certificate']['sha256'] and
+            report['proof_manifest_sha256']==evidence['proof_directory']['manifest_sha256'] and
+            report['inventory_sha256']==evidence['inventory']['sha256'], 'Resilient report identities differ')
 def cyclic(nodes,edges):
     colors={}
     def visit(n):
