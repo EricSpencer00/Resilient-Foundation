@@ -35,6 +35,8 @@ EMBEDDED_PIPELINE's current heading reports scalar source -> bytecode -> embedde
 
 Foundation policies can require stronger evidence than current Resilient compilation. That policy must not retroactively claim the current compiler provides the new guarantee.
 
+The repository-boundary implementation and its acceptance record are documented in [the Resilient evidence package](28-resilient-evidence-package.md).
+
 ## Validation and upstream work
 
-Implementation in Resilient follows its own AGENTS.md, public-interface tests and evidence workflow. Preserve user authorization boundaries for that repository's changes. Foundation now independently parses a restricted existing Resilient signature and pure return/if fragment through [its source adapter](../foundation/source.py), with source spans and scalar conformance checks. This is a standalone adapter, not an upstream compiler integration or audit of the wider language. No upstream code change or push was made.
+Implementation in Resilient follows its own AGENTS.md, public-interface tests and evidence workflow. Preserve user authorization boundaries for that repository's changes. Foundation independently parses a restricted existing Resilient signature and pure return/if fragment through [its source adapter](../foundation/source.py), with source spans and scalar conformance checks. It also inventories the actual Resilient checkout and imports contract-certificate/SMT-LIB2 artifacts through [the evidence adapter](../foundation/resilient.py), delegating proof replay to the Resilient binary. This remains an evidence boundary rather than a fork or an audit of the wider language. No upstream code change or push was made.

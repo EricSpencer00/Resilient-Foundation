@@ -6,7 +6,7 @@
       "outcome": "Executed",
       "policy": "scalar_source_exact_trusted_rust_v1",
       "runtime_status": "DeployedBound",
-      "capsule_sha256": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+      "capsule_sha256": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
       "native_sha256": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d",
       "inputs": {
         "x": "-9223372036854775808"
@@ -35,7 +35,7 @@
       "outcome": "Executed",
       "policy": "scalar_source_exact_trusted_rust_v1",
       "runtime_status": "DeployedBound",
-      "capsule_sha256": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+      "capsule_sha256": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
       "native_sha256": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d",
       "inputs": {
         "x": "-1"
@@ -64,7 +64,7 @@
       "outcome": "Executed",
       "policy": "scalar_source_exact_trusted_rust_v1",
       "runtime_status": "DeployedBound",
-      "capsule_sha256": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+      "capsule_sha256": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
       "native_sha256": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d",
       "inputs": {
         "x": "0"
@@ -93,7 +93,7 @@
       "outcome": "Executed",
       "policy": "scalar_source_exact_trusted_rust_v1",
       "runtime_status": "DeployedBound",
-      "capsule_sha256": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+      "capsule_sha256": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
       "native_sha256": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d",
       "inputs": {
         "x": "1"
@@ -122,7 +122,7 @@
       "outcome": "Executed",
       "policy": "scalar_source_exact_trusted_rust_v1",
       "runtime_status": "DeployedBound",
-      "capsule_sha256": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
+      "capsule_sha256": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
       "native_sha256": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d",
       "inputs": {
         "x": "9223372036854775807"

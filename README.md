@@ -2,7 +2,7 @@
 
 A Rust-based foundation for AI-generated software whose requirements, executable specifications, implementation, translation evidence and runtime behavior remain connected.
 
-**Status: public scalar end-to-end prototype, version 0.1.0-draft, 1 October 2026.** A controlled requirement and restricted Resilient candidate now pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The recorded NUC run passed all 36 conformance checks with no skips. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
+**Status: public scalar end-to-end prototype, version 0.1.0-draft, 1 October 2026.** A controlled requirement and restricted Resilient candidate now pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The recorded NUC run passed all 40 conformance checks with no skips. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
 
 The first frontend is [Resilient](https://github.com/EricSpencer00/Resilient), owned by Eric Spencer. Resilient keeps its language/compiler/runtime identity; Foundation supplies shared semantic profiles, obligations, evidence and evaluation protocols.
 
@@ -22,6 +22,7 @@ Free-form language becomes an explicit requirement ledger. Controlled language a
 6. [Roadmap and acceptance gates](docs/21-roadmap.md).
 7. [Machine-readable work packages](roadmap/work-packages.json).
 8. [Current implementation and next gates](docs/26-implementation-status.md), and [Rust verifier comparison](research/rust-verification-routes.md).
+9. [Resilient evidence package](docs/28-resilient-evidence-package.md).
 
 ## Validate the specification
 
@@ -61,6 +62,8 @@ make e2e
 The execution returns `"0"` and identifies the exact accepted capsule and native executable. Tool paths can be set with global `--solver`, `--cargo` and `--rustc` options before the subcommand. `bin/foundation` is also available when the Python environment is active. An existing output directory is preserved; use a fresh path for each build.
 
 The supported policy is `scalar_source_exact_trusted_rust_v1`. It accepts one exact controlled nonnegative requirement template and a pure i64/bool source fragment. Other prose returns `NeedsDecision`; unsupported source and stronger native policies fail explicitly. Generated Rust constructs the expression model and runs the tested reference evaluator. [The CLI contract](docs/23-api-cli.md) describes outcomes and remaining limits.
+
+The Resilient integration is available through `foundation resilient inspect` and `foundation resilient import-cert`. It inventories the actual Resilient compiler/runtime surfaces, binds contract-certificate JSON and SMT-LIB2 manifests to source and repository hashes, and can require `rz verify-all --z3` before recording `solver_checked` evidence. The supported import boundary is documented in [the evidence package](docs/28-resilient-evidence-package.md); recovery, resource, temporal, embedded and tooling surfaces remain explicitly catalogued rather than promoted to a Foundation proof claim.
 
 [Saved evidence](validation/e2e.json) records actual tool identities, test/source hashes, solver calls, native compilations, five frozen oracle executions and a replayed counterexample. It is a host-specific record; rebuild a capsule to execute it. The candidate was authored by Codex during this task; no attested model snapshot or model benchmark is claimed.
 

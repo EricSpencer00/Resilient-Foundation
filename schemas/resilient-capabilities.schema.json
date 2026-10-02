@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:resilient-foundation:schema:resilient-capabilities:v1",
+  "title": "resilient-capabilities",
+  "type": "object",
+  "properties": {
+    "version": {"const": "0.1.0-draft"},
+    "kind": {"const": "resilient_capabilities"},
+    "integration_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+          "stage": {"enum": ["source_extraction", "semantic_profile", "verification", "evidence", "translation", "runtime", "ci"]},
+          "status": {"enum": ["observed", "integrated", "planned"]},
+          "evidence_class": {"enum": ["inventory_only", "artifact_checked", "solver_checked", "runtime_empirical"]},
+          "surface": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "scope": {"type": "string", "minLength": 1},
+          "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        },
+        "required": ["id", "stage", "status", "evidence_class", "surface", "scope", "limitations"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["version", "kind", "integration_id", "capabilities"],
+  "additionalProperties": false
+}

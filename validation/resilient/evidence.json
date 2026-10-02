@@ -1,0 +1,68 @@
+{
+  "format": "foundation-resilient-evidence-v1",
+  "integration_id": "resilient-evidence-v1",
+  "source": {
+    "name": "foundation_cert_demo.rz",
+    "sha256": "d7b77754c7724e02291d5de076c0ac3b97016f5cdff7ff63b18caac7df3d68a6"
+  },
+  "inventory": {
+    "format": "foundation-resilient-inventory-v1",
+    "sha256": "2c00e09499a90b1360f2c4f6116632a75de047cfb56283567ca6f3cfb947c361",
+    "resilient_revision": null,
+    "capability_ids": [
+      "source-frontend",
+      "contract-verification",
+      "proof-certificates",
+      "signed-certificates",
+      "recovery-and-effects",
+      "information-flow",
+      "resource-contracts",
+      "temporal-refinement",
+      "embedded-runtime",
+      "mutation-and-regression",
+      "tooling-and-lsp"
+    ]
+  },
+  "contract_certificate": {
+    "schema": "resilient-contract-certificate/v1",
+    "schema_version": 1,
+    "sha256": "f211239c5e2c44811f2efaf9dcec986d8fe85327219c02733abbd19720ab9725",
+    "functions": 2,
+    "clauses": 2,
+    "verdicts": {
+      "pass": 2,
+      "fail": 0,
+      "unknown": 0
+    }
+  },
+  "proof_directory": {
+    "manifest_sha256": "80bfb0fa265b454920a0a3bc477893b152d20905ac981fc8d5ad8793f25cc319",
+    "obligations": [
+      {
+        "certificate": "ident_round__decl__0.smt2",
+        "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+        "signed": false
+      }
+    ],
+    "batch_signature_present": false
+  },
+  "verification": {
+    "status": "passed",
+    "command": [
+      "rz",
+      "verify-all",
+      "proofs",
+      "--z3"
+    ],
+    "returncode": 0,
+    "stdout": "\u001b[36mVerifying 1 obligation(s) from /tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz\u001b[0m\n  fn                               kind       sha256   sig      z3      \n  ident_round::decl[0]             decl       ok       -        unsat   \n\n\u001b[32mverify-all: all checks passed\u001b[0m\n",
+    "stderr": "",
+    "z3_replay_requested": true
+  },
+  "evidence_class": "solver_checked",
+  "limitations": [
+    "The Resilient compiler and Z3 remain trusted producers/checkers for this imported route.",
+    "A certificate authenticates proof artifacts; it does not prove source-to-query preservation by itself.",
+    "Capabilities in the inventory are observed from source anchors unless an explicit evidence report names them."
+  ]
+}

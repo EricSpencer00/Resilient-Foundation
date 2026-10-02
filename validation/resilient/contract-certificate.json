@@ -1,0 +1,33 @@
+{
+  "schema": "resilient-contract-certificate/v1",
+  "schema_version": 1,
+  "source": "/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz",
+  "functions": [
+    {
+      "name": "ident_round",
+      "enrolled": false,
+      "provenance": [],
+      "clauses": [
+      {
+        "clause": "x + 0 == x",
+        "kind": "requires",
+        "smtlib2": "; RES-071 verification certificate\n; expected solver result: unsat (proves the contract is a tautology)\n(set-logic AUFLIA)\n(declare-const x Int)\n(assert (not (= (+ x 0) x)))\n(check-sat)\n",
+        "verdict": "pass"
+      },
+      {
+        "clause": "result == x",
+        "kind": "ensures",
+        "basis": "implementation",
+        "verdict": "pass"
+      }
+      ]
+    },
+    {
+      "name": "main",
+      "enrolled": false,
+      "provenance": [],
+      "clauses": [
+      ]
+    }
+  ]
+}

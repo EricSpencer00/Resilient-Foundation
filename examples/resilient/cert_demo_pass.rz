@@ -1,0 +1,15 @@
+// Foundation's cross-repository fixture: every declared contract clause is
+// expected to be discharged by the Resilient z3 verifier.
+fn ident_round(int x) -> int
+    requires x + 0 == x
+    ensures result == x
+{
+    return x;
+}
+
+fn main() {
+    let r = ident_round(42);
+    println(r);
+}
+
+main();
