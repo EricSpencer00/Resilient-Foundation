@@ -131,6 +131,32 @@
       "evidence_report": "validation/e2e.json"
     },
     {
+      "id": "resilient-contract-cert",
+      "status": "experimental",
+      "task_kinds": [
+        "contracts",
+        "evidence"
+      ],
+      "semantic_profiles": [
+        "resilient-evidence-v1"
+      ],
+      "evidence_classes": [
+        "solver_checked"
+      ],
+      "scope": "Resilient contract-certificate JSON and SMT-LIB2 manifests bound to source and compiler inventory, with rz verify-all --z3 replay.",
+      "checker_status": "implemented",
+      "limitations": [
+        "Resilient's compiler, certificate verifier and Z3 remain trusted.",
+        "Source-to-query preservation, signatures, recovery, resources, temporal refinement and embedded deployment require their own acceptance gates."
+      ],
+      "implementation_artifacts": [
+        "foundation/resilient.py",
+        "foundation/cli.py",
+        "scripts/run_resilient_integration.py"
+      ],
+      "evidence_report": "validation/resilient/report.json"
+    },
+    {
       "id": "translation-native",
       "status": "planned",
       "task_kinds": [

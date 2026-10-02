@@ -9,6 +9,7 @@ from .intent import interpret
 from .ir import loads
 from .native import NativeTools
 from .pipeline import POLICY, build, check, run
+from .resilient import import_evidence, inspect as inspect_resilient, verify_evidence
 from .source import parse_source
 
 
@@ -35,6 +36,26 @@ def main():
     execute.add_argument('capsule', type=Path)
     execute.add_argument('--input', required=True, help='JSON object; i64 values are decimal strings')
     execute.add_argument('--policy', default=POLICY)
+    resilient = commands.add_parser('resilient', help='inventory and verify an existing Resilient checkout')
+    resilient_commands = resilient.add_subparsers(dest='resilient_command', required=True)
+    resilient_inspect = resilient_commands.add_parser('inspect')
+    resilient_inspect.add_argument('--root', required=True, type=Path)
+    resilient_import = resilient_commands.add_parser('import-cert')
+    resilient_import.add_argument('--root', required=True, type=Path)
+    resilient_import.add_argument('--source', required=True, type=Path)
+    resilient_import.add_argument('--certificate', required=True, type=Path)
+    resilient_import.add_argument('--certificate-dir', required=True, type=Path)
+    resilient_import.add_argument('--rz', type=Path)
+    resilient_import.add_argument('--z3', type=Path)
+    resilient_import.add_argument('--out', type=Path)
+    resilient_verify = resilient_commands.add_parser('verify-evidence')
+    resilient_verify.add_argument('--evidence', required=True, type=Path)
+    resilient_verify.add_argument('--root', required=True, type=Path)
+    resilient_verify.add_argument('--source', required=True, type=Path)
+    resilient_verify.add_argument('--certificate', required=True, type=Path)
+    resilient_verify.add_argument('--certificate-dir', required=True, type=Path)
+    resilient_verify.add_argument('--rz', type=Path)
+    resilient_verify.add_argument('--z3', type=Path)
     args = parser.parse_args()
     try:
         if args.command == 'intent':
@@ -43,6 +64,15 @@ def main():
         elif args.command == 'source':
             model, source_map = parse_source(args.candidate.read_text())
             result = {'program': model, 'source_map': source_map}
+        elif args.command == 'resilient':
+            if args.resilient_command == 'inspect':
+                result = inspect_resilient(args.root)
+            elif args.resilient_command == 'import-cert':
+                result = import_evidence(args.root, args.source, args.certificate,
+                                         args.certificate_dir, args.rz, args.z3, args.out)
+            else:
+                result = verify_evidence(args.evidence, args.root, args.source, args.certificate,
+                                         args.certificate_dir, args.rz, args.z3)
         else:
             native = NativeTools(args.cargo, args.rustc)
             if args.command == 'build':

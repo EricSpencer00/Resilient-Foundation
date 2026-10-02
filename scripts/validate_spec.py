@@ -30,7 +30,8 @@ def check_backend_status(route):
         return
     require(route['status']=='experimental' and route['checker_status']=='implemented',
             'Released/mechanized backend claim needs its own acceptance gate')
-    expected={'scalar-smt':['solver_checked'],'translation-ir':['translation_checked']}
+    expected={'scalar-smt':['solver_checked'],'translation-ir':['translation_checked'],
+              'resilient-contract-cert':['solver_checked']}
     require(route['id'] in expected and route['evidence_classes']==expected[route['id']],
             'Unsupported backend or inflated evidence class')
     artifacts=route.get('implementation_artifacts',[])
@@ -38,6 +39,13 @@ def check_backend_status(route):
     record=route.get('evidence_report','')
     require(safe_path(record) and (ROOT/record).is_file(),'Backend lacks recorded acceptance run')
     report=load(record)
+    if route['id']=='resilient-contract-cert':
+        require(report.get('kind')=='resilient_integration_report','Unsupported Resilient integration report')
+        check_resilient_report(report)
+        require('contract-verification' in report['capability_ids'],'Resilient contract capability is absent')
+        bound=set(report['implementation_hashes']) | set(report['driver_hashes'])
+        require(set(artifacts)<=bound,'Implementation not bound by Resilient run')
+        return
     require(report['status']=='passed' and report['scope']=='scalar_e2e_conformance' and
             report['policy']=='scalar_source_exact_trusted_rust_v1','Unsupported recorded gate')
     require(report['tests_run']>0 and report['tests_failed']==report['tests_skipped']==0 and
@@ -52,6 +60,23 @@ def check_backend_status(route):
             require(safe_path(p) and (ROOT/p).is_file() and
                     hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==digest,'Stale recorded run: '+p)
     require(set(artifacts)<=set(report['implementation_hashes']),'Implementation not bound by recorded run')
+
+def check_resilient_report(report):
+    '''Validate the cross-repository Resilient certificate acceptance record.'''
+    require(report['status']=='passed' and report['scope']=='resilient_contract_certificate_e2e' and
+            report['evidence_class']=='solver_checked','Unsupported Resilient integration gate')
+    require(report['tests_run']>=4 and report['tests_failed']==report['tests_skipped']==0,
+            'Resilient integration gate failed or skipped')
+    require(report['mutation']['status']=='rejected','Resilient source mutation was not rejected')
+    required_caps={'source-frontend','contract-verification','proof-certificates','embedded-runtime'}
+    require(required_caps <= set(report['capability_ids']),'Resilient capability coverage is incomplete')
+    for group in ['implementation_hashes','test_hashes','driver_hashes','evidence_files']:
+        bindings=report.get(group,{})
+        require(bindings,'Resilient report lacks '+group)
+        for path,digest in bindings.items():
+            require(safe_path(path) and (ROOT/path).is_file() and
+                    hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,
+                    'Stale Resilient integration report: '+path)
 def cyclic(nodes,edges):
     colors={}
     def visit(n):
@@ -135,13 +160,16 @@ def main():
         schemas[p.stem.removesuffix('.schema')]=s
     mapping={'requirement_ledger':'requirements','semantic_profile':'semantic-profile','scalar_program':'program-ir',
       'obligation':'obligation','pipeline_result':'pipeline-result','evidence_graph':'evidence-graph',
-      'task_bundle':'task-bundle','eval_run_plan':'eval-run-plan','backend_capabilities':'backend-capabilities'}
+      'task_bundle':'task-bundle','eval_run_plan':'eval-run-plan','backend_capabilities':'backend-capabilities',
+      'resilient_capabilities':'resilient-capabilities','resilient_integration_report':'resilient-integration-report'}
     instances=0
     for p in sorted(ROOT.rglob('*.json')):
         if any(x in p.parts for x in ['.git','.venv','artifacts','target']) or p.name=='.validation-report.json':continue
         x=load(str(p.relative_to(ROOT)))
         if isinstance(x,dict) and x.get('kind') in mapping:
             Draft202012Validator(schemas[mapping[x['kind']]]).validate(x);instances+=1
+            if x['kind']=='resilient_integration_report':
+                check_resilient_report(x)
             if x['kind']=='scalar_program':
                 f=x['function'];params={p['name']:p['type'] for p in f['params']}
                 require(len(params)==len(f['params']),'Duplicate parameter')

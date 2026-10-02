@@ -2,13 +2,13 @@
   "status": "passed",
   "scope": "scalar_e2e_conformance",
   "policy": "scalar_source_exact_trusted_rust_v1",
-  "started_at_utc": "2026-10-01T15:38:41.269620+00:00",
-  "completed_at_utc": "2026-10-01T15:38:54.971584+00:00",
+  "started_at_utc": "2026-10-02T01:08:55.287905+00:00",
+  "completed_at_utc": "2026-10-02T01:09:09.139093+00:00",
   "host": "hst-bench",
   "architecture": "x86_64",
   "python": "3.12.3",
   "python_dependencies": {
-    "jsonschema": "4.25.1"
+    "jsonschema": "4.10.3"
   },
   "solver": {
     "version": "Z3 version 4.8.12 - 64 bit",
@@ -23,13 +23,13 @@
     ],
     "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
     "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
-    "core_library_sha256": "f1a8d37c06a9a33ebb6c502c616ea214ac4c203bc0f6930f4cb5e7892c4e7a77"
+    "core_library_sha256": "8d55fcd7c3bcd664101d79852af81a2602a4c4e4aa3b4525e4463fcb9e03f979"
   },
-  "tests_run": 36,
+  "tests_run": 40,
   "tests_failed": 0,
   "tests_skipped": 0,
   "oracle_cases_executed": 5,
-  "elapsed_ms": 13733,
+  "elapsed_ms": 13880,
   "instrumented_operations": {
     "in_process_real_solver_calls": 50,
     "in_process_fault_solver_calls": 3,
@@ -44,7 +44,7 @@
     "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
     "foundation/native.py": "648ad4646a40ead0defb6d390799d694481b6a2b032d82c6fd1ea28e844bb558",
     "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
-    "foundation/cli.py": "a06b9a7f5398c6a13f272be67a0206c8a73014751c6659bc329f450c4e1a8bd3",
+    "foundation/cli.py": "c992d4a5bf0b295725a541c68241be87216fd8996973a427b5a1a53762f56df5",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "bin/foundation": "183b46fd5aa43a4eec50f06f9de83957f1c7eddafa6dea8aa01a7f554ecc1fc1",
@@ -58,6 +58,7 @@
   "test_hashes": {
     "tests/test_e2e.py": "1d24cca22ad4b8386dbadb45da8190c0130a12cf16ca7ecaeded9f0bb5d50b37",
     "tests/test_frontend.py": "15a825744f70c168abcf7b18d966847febcb5ab1021331583d52dede68e9fb7e",
+    "tests/test_resilient.py": "cf4a5df168413d64b47d84d869b4292a04d52b9312a1d1afead1700469a2b187",
     "tests/test_smt_encoding.py": "8ce53fa9b65690983fc7f7e964cfae52b6b61e29f70e36257f634ed936b2c67f",
     "tests/test_translation.py": "c1a348bc32f64949615d9561a485034a7c20f91954bd0e04fb8effe91a609816"
   },
@@ -67,10 +68,10 @@
   "evidence_files": {
     "validation/e2e/candidate-ir.json": "50b13196e3f80308f88d7bb5dfb1233f10b8ca9b96c879faa133a86cd8adf4d5",
     "validation/e2e/candidate.rz": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
-    "validation/e2e/capsule.json": "b10404a7af3330712602899b3b2b88dc777b851812748d0439ab495e34caacec",
-    "validation/e2e/check-receipt.json": "e0a5e77c6631af303ba8e414c61f1f77a12516c9c9a89b8dd314ac4e31011dde",
+    "validation/e2e/capsule.json": "7e4bd4f6b766bed24c6fb91ef42b7cae8bd2ba0a29b6eb419d86f44282ccbf29",
+    "validation/e2e/check-receipt.json": "2d4e935a230000ea4ccd4f007108b5502ff0312a455b57dc8f6a3119a4640165",
     "validation/e2e/counterexample.json": "c7ab993b465f3fed4655890098ed1fd4b60f92e9d8bdd38227325db9fae9084f",
-    "validation/e2e/executions.json": "71b42bdeb93d71c2415c635cc8f7e3c7303a9a0a59c68feb4e8c98cdb3c8fc29",
+    "validation/e2e/executions.json": "5297a70aa2e52fa606f200bddc1803547e73dce070849f5d3395224a3a58cbd1",
     "validation/e2e/formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
     "validation/e2e/generated.rs": "f29cceced38bd6406fc50870d5b4c79ad4f5d494ca118b6f2ded0051199efcf4",
     "validation/e2e/profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
