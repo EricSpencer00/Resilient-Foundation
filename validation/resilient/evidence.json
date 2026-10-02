@@ -1,13 +1,21 @@
 {
-  "format": "foundation-resilient-evidence-v1",
+  "format": "foundation-resilient-evidence-v2",
   "integration_id": "resilient-evidence-v1",
   "source": {
-    "name": "foundation_cert_demo.rz",
-    "sha256": "d7b77754c7724e02291d5de076c0ac3b97016f5cdff7ff63b18caac7df3d68a6"
+    "name": "cert_demo_pass.rz",
+    "sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
+  },
+  "source_binding": {
+    "status": "regenerated",
+    "compiler": {
+      "name": "rz",
+      "sha256": "4488f751b5a866102919011908c3dcc4516c4cf7e4b84922dc9972c417572f4c"
+    },
+    "profile": "pure-scalar-contract-definitions-v1"
   },
   "inventory": {
     "format": "foundation-resilient-inventory-v1",
-    "sha256": "2c00e09499a90b1360f2c4f6116632a75de047cfb56283567ca6f3cfb947c361",
+    "sha256": "2502746dc2a0f8629a3d7cf1f229ae7887739df198e793ae089d46191ab4814b",
     "resilient_revision": null,
     "capability_ids": [
       "source-frontend",
@@ -26,43 +34,60 @@
   "contract_certificate": {
     "schema": "resilient-contract-certificate/v1",
     "schema_version": 1,
-    "sha256": "f211239c5e2c44811f2efaf9dcec986d8fe85327219c02733abbd19720ab9725",
-    "functions": 2,
+    "sha256": "b95ed262ea784137a840c399653f4c9263970242d1457b88eb1298cde101b53e",
+    "functions": 1,
     "clauses": 2,
     "verdicts": {
       "pass": 2,
       "fail": 0,
       "unknown": 0
-    }
+    },
+    "compiler_reported_only": [
+      "contract:ident_round:1:ensures"
+    ]
   },
   "proof_directory": {
-    "manifest_sha256": "80bfb0fa265b454920a0a3bc477893b152d20905ac981fc8d5ad8793f25cc319",
+    "manifest_sha256": "5a7aa0511a7f6077d13e5e940a4c788525ce6f4eab722aed734323ca11617d93",
     "obligations": [
       {
         "certificate": "ident_round__decl__0.smt2",
         "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
-        "signed": false
+        "fn": "ident_round",
+        "kind": "decl",
+        "idx": 0,
+        "signature": null
       }
     ],
-    "batch_signature_present": false
+    "batch_signature_present": false,
+    "batch_signature_sha256": null,
+    "authentication": "not_checked"
   },
   "verification": {
     "status": "passed",
-    "command": [
-      "rz",
-      "verify-all",
-      "proofs",
-      "--z3"
-    ],
-    "returncode": 0,
-    "stdout": "\u001b[36mVerifying 1 obligation(s) from /tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz\u001b[0m\n  fn                               kind       sha256   sig      z3      \n  ident_round::decl[0]             decl       ok       -        unsat   \n\n\u001b[32mverify-all: all checks passed\u001b[0m\n",
-    "stderr": "",
-    "z3_replay_requested": true
+    "solver": {
+      "name": "z3",
+      "sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+    },
+    "queries": [
+      {
+        "id": "contract:ident_round:0:requires",
+        "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+        "result": "unsat"
+      },
+      {
+        "id": "manifest:ident_round__decl__0.smt2",
+        "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+        "result": "unsat"
+      }
+    ]
   },
   "evidence_class": "solver_checked",
+  "claim_scope": "smt_queries",
   "limitations": [
-    "The Resilient compiler and Z3 remain trusted producers/checkers for this imported route.",
-    "A certificate authenticates proof artifacts; it does not prove source-to-query preservation by itself.",
-    "Capabilities in the inventory are observed from source anchors unless an explicit evidence report names them."
+    "Solver evidence covers only the explicitly replayed SMT queries under Z3 trust.",
+    "Source regeneration trusts the selected Resilient binary and its encoding; it is not a source-to-query theorem.",
+    "Clauses without a query remain compiler-reported and carry no independent solver evidence.",
+    "Signatures are retained as artifact identities, not authenticated by this adapter.",
+    "Inventory anchors are selected source observations, not proof or execution coverage of those capabilities."
   ]
 }

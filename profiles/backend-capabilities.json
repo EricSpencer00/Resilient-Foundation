@@ -143,11 +143,11 @@
       "evidence_classes": [
         "solver_checked"
       ],
-      "scope": "Resilient contract-certificate JSON and SMT-LIB2 manifests bound to source and compiler inventory, with rz verify-all --z3 replay.",
+      "scope": "Regenerated pure scalar Resilient contract definitions, with direct Z3 replay and per-query evidence scope.",
       "checker_status": "implemented",
       "limitations": [
-        "Resilient's compiler, certificate verifier and Z3 remain trusted.",
-        "Source-to-query preservation, signatures, recovery, resources, temporal refinement and embedded deployment require their own acceptance gates."
+        "The selected Resilient binary and its source-to-query encoding remain trusted.",
+        "Only replayed SMT queries carry solver evidence; other clauses remain compiler-reported. Signatures, recovery, resources, temporal refinement and embedded deployment require separate gates."
       ],
       "implementation_artifacts": [
         "foundation/resilient.py",

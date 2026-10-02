@@ -1,11 +1,18 @@
 {
   "version": "0.1.0-draft",
   "kind": "resilient_integration_report",
-  "format": "foundation-resilient-integration-report-v1",
+  "format": "foundation-resilient-integration-report-v2",
   "status": "passed",
   "scope": "resilient_contract_certificate_e2e",
   "evidence_class": "solver_checked",
+  "claim_scope": "smt_queries",
+  "source_binding": "regenerated",
   "capability_ids": [
+    "source-frontend",
+    "contract-verification",
+    "proof-certificates"
+  ],
+  "inventoried_capability_ids": [
     "source-frontend",
     "contract-verification",
     "proof-certificates",
@@ -18,26 +25,14 @@
     "mutation-and-regression",
     "tooling-and-lsp"
   ],
-  "inventory_sha256": "2c00e09499a90b1360f2c4f6116632a75de047cfb56283567ca6f3cfb947c361",
-  "source_sha256": "d7b77754c7724e02291d5de076c0ac3b97016f5cdff7ff63b18caac7df3d68a6",
-  "certificate_sha256": "f211239c5e2c44811f2efaf9dcec986d8fe85327219c02733abbd19720ab9725",
-  "proof_manifest_sha256": "80bfb0fa265b454920a0a3bc477893b152d20905ac981fc8d5ad8793f25cc319",
+  "inventory_sha256": "2502746dc2a0f8629a3d7cf1f229ae7887739df198e793ae089d46191ab4814b",
+  "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
+  "certificate_sha256": "b95ed262ea784137a840c399653f4c9263970242d1457b88eb1298cde101b53e",
+  "proof_manifest_sha256": "5a7aa0511a7f6077d13e5e940a4c788525ce6f4eab722aed734323ca11617d93",
   "build": {
-    "cargo": "/home/eric/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo",
-    "rustc": "/home/eric/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc",
-    "command": [
-      "/home/eric/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo",
-      "build",
-      "--manifest-path",
-      "/tmp/foundation-resilient-goal-20261001/resilient/resilient/Cargo.toml",
-      "--release",
-      "--locked",
-      "--features",
-      "z3"
-    ],
-    "seconds": 173.302,
-    "stdout": "",
-    "stderr": "   Compiling resilient v1.1.0 (/tmp/foundation-resilient-goal-20261001/resilient/resilient)\n    Finished `release` profile [optimized] target(s) in 2m 53s\n"
+    "status": "prebuilt",
+    "binary_sha256": "4488f751b5a866102919011908c3dcc4516c4cf7e4b84922dc9972c417572f4c",
+    "assumption": "Caller-selected trusted binary; build provenance is not independently proved."
   },
   "emit": {
     "command": [
@@ -45,61 +40,124 @@
       "--no-cache",
       "--typecheck",
       "--emit-contract-certificate",
-      "/tmp/foundation-resilient-goal-20261001/evidence/contract-certificate.json",
+      "/tmp/foundation-integrity-20261001/acceptance/contract-certificate.json",
       "--emit-certificate",
-      "/tmp/foundation-resilient-goal-20261001/evidence/proofs",
-      "/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz"
+      "/tmp/foundation-integrity-20261001/acceptance/proofs",
+      "/tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz"
     ],
-    "seconds": 0.03,
-    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /tmp/foundation-resilient-goal-20261001/evidence/contract-certificate.json\u001b[0m\n42\nProgram executed successfully\n",
-    "stderr": "seed=10350510214065648067\n/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz:0:0: warning[resilience]: `main` scores 28/100 (F \u2014 vibe-coded, unverified) \u2014 add `requires`/`ensures` contracts to improve resilience\nmutation: 4 total mutation site(s) across 2 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nmutation:   `main`: 3 site(s) [literal]\n/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz:0:0: warning[mutation]: 3/4 mutation site(s) (75%) are in functions with no contracts \u2014 the Z3 verifier cannot kill them\n/tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz:0:0: warning[mutation]: `main`: 3 unconstrained mutation site(s) \u2014 add `requires`/`ensures` contracts\nblame: `ident_round` has `requires` on [x]; root caller(s) responsible: [main] (chain: main \u2192 ident_round)\n"
+    "seconds": 0.028,
+    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /tmp/foundation-integrity-20261001/acceptance/contract-certificate.json\u001b[0m\nProgram executed successfully\n",
+    "stderr": "seed=6732023289021048979\nmutation: 1 total mutation site(s) across 1 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nwarning: /tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz:3:4: function `ident_round` is never called\n"
   },
   "replay": {
-    "command": [
-      "/tmp/foundation-resilient-goal-20261001/resilient/target/release/rz",
-      "verify-all",
-      "/tmp/foundation-resilient-goal-20261001/evidence/proofs",
-      "--z3"
-    ],
-    "seconds": 0.013,
-    "stdout": "\u001b[36mVerifying 1 obligation(s) from /tmp/foundation-resilient-goal-20261001/resilient/resilient/examples/foundation_cert_demo.rz\u001b[0m\n  fn                               kind       sha256   sig      z3      \n  ident_round::decl[0]             decl       ok       -        unsat   \n\n\u001b[32mverify-all: all checks passed\u001b[0m\n",
-    "stderr": ""
+    "status": "passed",
+    "solver": {
+      "name": "z3",
+      "sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+    },
+    "queries": [
+      {
+        "id": "contract:ident_round:0:requires",
+        "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+        "result": "unsat"
+      },
+      {
+        "id": "manifest:ident_round__decl__0.smt2",
+        "sha256": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+        "result": "unsat"
+      }
+    ]
   },
+  "receipt": {
+    "status": "passed",
+    "format": "foundation-resilient-check-receipt-v2",
+    "evidence_sha256": "c6182077566a8cfd4898bd2181084906748a6bf9c130a3ad8f03ec27a3128b16",
+    "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
+    "inventory_sha256": "2502746dc2a0f8629a3d7cf1f229ae7887739df198e793ae089d46191ab4814b",
+    "evidence_class": "solver_checked",
+    "claim_scope": "smt_queries",
+    "source_binding": "regenerated"
+  },
+  "cases": [
+    {
+      "id": "regenerate-and-replay",
+      "status": "passed"
+    },
+    {
+      "id": "verify-complete-record",
+      "status": "passed"
+    },
+    {
+      "id": "source-identity-mutation",
+      "status": "passed",
+      "outcome": "InvalidEvidence"
+    },
+    {
+      "id": "stale-certificate-reimport",
+      "status": "passed",
+      "outcome": "InvalidEvidence"
+    },
+    {
+      "id": "forged-assurance",
+      "status": "passed",
+      "outcome": "InvalidEvidence"
+    },
+    {
+      "id": "replay-downgrade",
+      "status": "passed",
+      "outcome": "InvalidEvidence"
+    },
+    {
+      "id": "satisfiable-query",
+      "status": "passed",
+      "outcome": "Refuted"
+    },
+    {
+      "id": "solver-output-spoofing",
+      "status": "passed",
+      "outcome": "InvalidEvidence"
+    }
+  ],
   "mutation": {
-    "status": "rejected",
-    "outcome": "InvalidEvidence",
-    "reason": "Foundation Resilient evidence is stale: source"
+    "status": "rejected"
   },
   "implementation_hashes": {
-    "foundation/resilient.py": "261fd6457b09734c063fbb8317661e12f03eca6c23920b88c51eafaedc8ae2f4",
+    "foundation/resilient.py": "714902b458994f9126ea2b84d26e2c6c6de734b004a0923536a0531a89c2fcff",
+    "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
     "foundation/cli.py": "c992d4a5bf0b295725a541c68241be87216fd8996973a427b5a1a53762f56df5",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
-    "profiles/resilient-capabilities.json": "2cbfe424634aef6ba1eeda6c2d029781f4a1e8188eb071839d9ab44acdd7de63",
+    "profiles/scalar-wrapping-v1.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "schemas/program-ir.schema.json": "e168d4c49e47d5bf5917ea6b1a8c3184d8b80f0492efd6f62299177d1a02f807",
+    "profiles/resilient-capabilities.json": "73ab825e1ad59b5595f38c44dca61f74a3f42da09ecc15bf1ed41073399550bf",
     "schemas/resilient-capabilities.schema.json": "fa2a82ac11a763b12b088b581ad5c9749ea5a119430ea14e7ef821812d4877d6",
-    "schemas/resilient-integration-report.schema.json": "f7b72f645d81c7f2ff9fbe1af5446cb3f608ca72a8e731cb7b9c932bb33a401d",
-    "profiles/backend-capabilities.json": "aabe4d44ad695479d4ee1d8b0b44f21cc5fd50f29ff251244b8b6c72af9c1e85",
-    "scripts/validate_spec.py": "f95d8b661b1056d2d3b0ebdbcf1dc062418c5072327c988b37149c1882dc5e48",
-    "examples/resilient/cert_demo_pass.rz": "d7b77754c7724e02291d5de076c0ac3b97016f5cdff7ff63b18caac7df3d68a6"
+    "schemas/resilient-integration-report.schema.json": "c2c80da87fb622235445698ff6a378189350b327f8b7e85b7ca5b86012318cd5",
+    "profiles/backend-capabilities.json": "68f4fb13c39e4d2681098ff04fb2082421a8dfde93652c142dcb5120c7d79ec9",
+    "scripts/validate_spec.py": "f4c4dd1c64264d11e3dce58adb16bcf63663d7c54f5ec993407f09da8100850b",
+    "examples/resilient/cert_demo_pass.rz": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
   },
   "test_hashes": {
-    "tests/test_resilient.py": "cf4a5df168413d64b47d84d869b4292a04d52b9312a1d1afead1700469a2b187"
+    "tests/test_resilient.py": "d0f5e8863ba6a06268c0b149c450f8c493ee6d5ef93606bac2ea5f0f9bf11b17"
   },
   "driver_hashes": {
-    "scripts/run_resilient_integration.py": "afa9c977af8e75a86de7465bc01ba7ea483f4315fe58dbec1cf4c339bb2ade5f"
+    "scripts/run_resilient_integration.py": "929e69a8f858700270aa62a114dd85589b3c2c2118cd15a18f86778566033a7c",
+    "scripts/replay_resilient.py": "3a0903fa1673e94fad66c21b26e078db141709cab7a8a1e722779fc6e03052b0"
   },
   "evidence_files": {
-    "validation/resilient/evidence.json": "310c269da5a24c96d1be8b14865aac0ee90eb2700c0a69e30e94cb0d6a484c9f",
-    "validation/resilient/contract-certificate.json": "f211239c5e2c44811f2efaf9dcec986d8fe85327219c02733abbd19720ab9725",
-    "validation/resilient/proofs/manifest.json": "80bfb0fa265b454920a0a3bc477893b152d20905ac981fc8d5ad8793f25cc319",
-    "validation/resilient/proofs/ident_round__decl__0.smt2": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444"
+    "validation/resilient/contract-certificate.json": "b95ed262ea784137a840c399653f4c9263970242d1457b88eb1298cde101b53e",
+    "validation/resilient/evidence.json": "c6182077566a8cfd4898bd2181084906748a6bf9c130a3ad8f03ec27a3128b16",
+    "validation/resilient/proofs/ident_round__decl__0.smt2": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
+    "validation/resilient/proofs/manifest.json": "5a7aa0511a7f6077d13e5e940a4c788525ce6f4eab722aed734323ca11617d93",
+    "validation/resilient/source/cert_demo_pass.rz": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
   },
-  "tests_run": 4,
+  "tests_run": 26,
   "tests_failed": 0,
   "tests_skipped": 0,
   "assumptions": [
-    "The Resilient compiler and Z3 remain trusted producers/checkers for this imported route.",
-    "A certificate authenticates proof artifacts; it does not prove source-to-query preservation by itself.",
-    "Capabilities in the inventory are observed from source anchors unless an explicit evidence report names them."
+    "Solver evidence covers only the explicitly replayed SMT queries under Z3 trust.",
+    "Source regeneration trusts the selected Resilient binary and its encoding; it is not a source-to-query theorem.",
+    "Clauses without a query remain compiler-reported and carry no independent solver evidence.",
+    "Signatures are retained as artifact identities, not authenticated by this adapter.",
+    "Inventory anchors are selected source observations, not proof or execution coverage of those capabilities."
   ]
 }

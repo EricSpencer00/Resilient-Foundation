@@ -55,7 +55,7 @@ The repository-boundary route inventories an existing Resilient checkout and imp
 ~~~text
 python -m foundation resilient inspect --root /path/to/Resilient
 python -m foundation resilient import-cert --root /path/to/Resilient \
-  --source /path/to/Resilient/resilient/examples/foundation_cert_demo.rz \
+  --source /path/to/cert_demo_pass.rz \
   --certificate /tmp/contract-certificate.json \
   --certificate-dir /tmp/proofs --rz /path/to/rz --z3 /usr/bin/z3 \
   --out /tmp/resilient-evidence.json
@@ -65,7 +65,7 @@ python -m foundation resilient verify-evidence --evidence /tmp/resilient-evidenc
   --rz /path/to/rz --z3 /usr/bin/z3
 ~~~
 
-The import remains `artifact_checked` without replay. With `--rz` and `--z3`, Resilient's `verify-all --z3` must pass before the record becomes `solver_checked`. Source, certificate, manifest and capability-inventory hashes are recomputed by `verify-evidence`; a changed source is rejected. See [the full integration boundary](28-resilient-evidence-package.md) for capability limits.
+The import remains `artifact_checked` without direct solver replay. `--rz` regenerates certificates from current pure function definitions and requires matching artifacts. `--z3` replays every embedded and manifest query directly; only those queries gain `solver_checked` evidence. Clauses without queries remain compiler-reported. Without `--rz`, the source binding is explicitly `associated_only`. `verify-evidence` recomputes every field and required tool identity, rejecting stale records, forged assurance and omitted replay. Old v1 records require regeneration. See [the full integration boundary](28-resilient-evidence-package.md) for capability limits.
 
 ## Planned expanded CLI
 

@@ -4,6 +4,7 @@ The constructor decoder is a restricted target reader, not a general Rust parser
 Native compilation, runtime/OS/hardware remain explicitly trusted.
 """
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -187,9 +188,10 @@ def decode(source):
     return ConstructorReader(model).read()
 
 
-def tool_run(arguments, cwd=None, timeout=60):
+def tool_run(arguments, cwd=None, timeout=60, env=None):
     try:
-        result = subprocess.run([str(a) for a in arguments], cwd=cwd, capture_output=True, text=True, timeout=timeout)
+        result = subprocess.run([str(a) for a in arguments], cwd=cwd, env=env,
+                                capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired as exc:
         raise FoundationError('Timeout', 'Native tool budget exceeded', 'native') from exc
     except OSError as exc:
@@ -205,8 +207,10 @@ class NativeTools:
         require(self.cargo and self.rustc, 'Rust toolchain is unavailable', 'Unsupported', 'native')
 
     def build_core(self):
+        compiler = shutil.which(str(self.rustc)) or os.path.abspath(self.rustc)
+        environment = dict(os.environ, RUSTC=compiler)
         tool_run([self.cargo, 'build', '--release', '--locked', '-p', 'foundation-core',
-                  '--manifest-path', ROOT / 'Cargo.toml'], timeout=60)
+                  '--manifest-path', ROOT / 'Cargo.toml'], timeout=60, env=environment)
 
     def identity(self):
         version = tool_run([self.rustc, '-vV']).stdout.strip()

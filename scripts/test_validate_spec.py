@@ -6,7 +6,7 @@ import json
 import tempfile
 from unittest.mock import patch
 
-from validate_spec import check_work_package_status, check_backend_status
+from validate_spec import check_work_package_status, check_backend_status, check_resilient_report, ROOT
 
 
 class WorkPackageStatusTests(unittest.TestCase):
@@ -86,6 +86,29 @@ class BackendStatusTests(unittest.TestCase):
     def test_planned_route_cannot_claim_implemented_checker(self):
         with self.assertRaises(ValueError):
             check_backend_status({'status': 'planned', 'checker_status': 'implemented'})
+
+
+class ResilientReportTests(unittest.TestCase):
+    def setUp(self):
+        self.report = json.loads((ROOT / 'validation/resilient/report.json').read_text())
+
+    def test_saved_source_and_query_evidence_is_bound(self):
+        check_resilient_report(self.report)
+
+    def test_inventory_cannot_be_promoted_to_runtime_coverage(self):
+        self.report['capability_ids'].append('embedded-runtime')
+        with self.assertRaises(ValueError):
+            check_resilient_report(self.report)
+
+    def test_assurance_and_missing_adversarial_cases_fail_closed(self):
+        for field, value in [('claim_scope', 'whole_program'), ('source_binding', 'associated_only'),
+                             ('cases', []), ('format', 'foundation-resilient-integration-report-v1')]:
+            with self.subTest(field=field):
+                saved = self.report.get(field)
+                self.report[field] = value
+                with self.assertRaises(ValueError):
+                    check_resilient_report(self.report)
+                self.report[field] = saved
 
 
 if __name__ == '__main__':

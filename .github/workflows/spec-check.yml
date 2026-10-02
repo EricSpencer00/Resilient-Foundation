@@ -54,4 +54,5 @@ jobs:
           python3 -m venv .venv
           .venv/bin/python -m pip install --disable-pip-version-check -r requirements-dev.txt
           .venv/bin/python scripts/run_e2e.py --solver /usr/bin/z3
+          .venv/bin/python scripts/replay_resilient.py --z3 /usr/bin/z3
           .venv/bin/python scripts/validate_spec.py
