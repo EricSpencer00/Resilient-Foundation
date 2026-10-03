@@ -1,0 +1,265 @@
+{
+  "cases": [
+    {
+      "case_id": "CLAMP-MIN",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "-9223372036854775808"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-BELOW",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "-11"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-LOWER",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "-10"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-LOWER-INNER",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "-9"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-9"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "-9"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-ZERO",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "0"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "0"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "0"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-UPPER-INNER",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "9"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "9"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "9"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-UPPER",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "10"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-ABOVE",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "11"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    },
+    {
+      "case_id": "CLAMP-MAX",
+      "format": "foundation-execution-v1",
+      "outcome": "Executed",
+      "policy": "scalar_source_exact_trusted_rust_v1",
+      "runtime_status": "DeployedBound",
+      "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+      "native_sha256": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853",
+      "inputs": {
+        "x": "9223372036854775807"
+      },
+      "observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "reference_observation": {
+        "kind": "return",
+        "type": "i64",
+        "value": "10"
+      },
+      "assumptions": [
+        "Versioned controlled template interpretation and restricted Resilient parser.",
+        "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+        "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+        "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+        "Native source executes through the reference evaluator; this is not direct optimized code generation."
+      ]
+    }
+  ]
+}

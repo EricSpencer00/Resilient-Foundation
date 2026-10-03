@@ -1,0 +1,71 @@
+{
+  "format": "foundation-source-map-v1",
+  "spans": [
+    {
+      "ir_path": "function.body",
+      "start": 25,
+      "end": 104,
+      "excerpt": "if x < -10 { return -10; } else { if x > 10 { return 10; } else { return x; } }"
+    },
+    {
+      "ir_path": "function.body.condition",
+      "start": 28,
+      "end": 35,
+      "excerpt": "x < -10"
+    },
+    {
+      "ir_path": "function.body.condition.left",
+      "start": 28,
+      "end": 29,
+      "excerpt": "x"
+    },
+    {
+      "ir_path": "function.body.condition.right",
+      "start": 32,
+      "end": 35,
+      "excerpt": "-10"
+    },
+    {
+      "ir_path": "function.body.then",
+      "start": 45,
+      "end": 48,
+      "excerpt": "-10"
+    },
+    {
+      "ir_path": "function.body.else",
+      "start": 59,
+      "end": 102,
+      "excerpt": "if x > 10 { return 10; } else { return x; }"
+    },
+    {
+      "ir_path": "function.body.else.condition",
+      "start": 62,
+      "end": 68,
+      "excerpt": "x > 10"
+    },
+    {
+      "ir_path": "function.body.else.condition.left",
+      "start": 62,
+      "end": 63,
+      "excerpt": "x"
+    },
+    {
+      "ir_path": "function.body.else.condition.right",
+      "start": 66,
+      "end": 68,
+      "excerpt": "10"
+    },
+    {
+      "ir_path": "function.body.else.then",
+      "start": 78,
+      "end": 80,
+      "excerpt": "10"
+    },
+    {
+      "ir_path": "function.body.else.else",
+      "start": 98,
+      "end": 99,
+      "excerpt": "x"
+    }
+  ]
+}

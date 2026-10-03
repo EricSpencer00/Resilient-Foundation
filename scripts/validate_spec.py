@@ -59,6 +59,17 @@ def check_backend_status(route):
         for p,digest in bindings.items():
             require(safe_path(p) and (ROOT/p).is_file() and
                     hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==digest,'Stale recorded run: '+p)
+    if 'foundation/intent.py' in artifacts:
+        clamp=report.get('clamp_validation',{})
+        require(clamp.get('template_id')=='clamp-i64-minus10-plus10-v1' and
+                clamp.get('oracle_cases_executed')==9 and clamp.get('wrong_boundary_mutants_refuted')==2,
+                'Missing controlled clamp acceptance evidence')
+        bindings=report.get('template_fixture_hashes',{})
+        require('examples/clamp/oracle.json' in bindings and clamp.get('oracle_sha256')==bindings['examples/clamp/oracle.json'],
+                'Missing clamp oracle identity')
+        for path,digest in bindings.items():
+            require(safe_path(path) and (ROOT/path).is_file() and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,
+                    'Stale clamp fixture: '+path)
     require(set(artifacts)<=set(report['implementation_hashes']),'Implementation not bound by recorded run')
 
 def check_resilient_report(report):

@@ -1,0 +1,1 @@
+fn clamp(int x) -> int { if x <= -9 { return -10; } else { if x > 10 { return 10; } else { return x; } } }

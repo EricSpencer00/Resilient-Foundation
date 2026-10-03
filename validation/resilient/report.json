@@ -25,35 +25,47 @@
     "mutation-and-regression",
     "tooling-and-lsp"
   ],
-  "inventory_sha256": "2502746dc2a0f8629a3d7cf1f229ae7887739df198e793ae089d46191ab4814b",
+  "inventory_sha256": "14b1b4c9ef1a4dc6399a4497071da59fab1e84190274eee5f6e8d26b9cc37a53",
   "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
-  "certificate_sha256": "b95ed262ea784137a840c399653f4c9263970242d1457b88eb1298cde101b53e",
-  "proof_manifest_sha256": "5a7aa0511a7f6077d13e5e940a4c788525ce6f4eab722aed734323ca11617d93",
+  "certificate_sha256": "952a064a7e8ffd5a91f0697558a37a0fdd9fab4703a351abcf4f1cc5101f507d",
+  "proof_manifest_sha256": "1aebeabc58d8db68de43b95a30cde0d530e4e7a53ea5712a0368caa367586f77",
+  "compiler_revision": "53a9f198013655e6ad9372f8aaf463d22ee6c032",
   "build": {
-    "status": "prebuilt",
-    "binary_sha256": "4488f751b5a866102919011908c3dcc4516c4cf7e4b84922dc9972c417572f4c",
-    "assumption": "Caller-selected trusted binary; build provenance is not independently proved."
+    "status": "built",
+    "command": [
+      "/Users/eric/.cargo/bin/cargo",
+      "build",
+      "--manifest-path",
+      "/Users/eric/Documents/Codex/2026-10-02/task/Resilient-pinned/resilient/Cargo.toml",
+      "--locked",
+      "--features",
+      "z3"
+    ],
+    "seconds": 0.168,
+    "stdout": "",
+    "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s\n",
+    "binary_sha256": "5ff6b6e6168824045b0014279e08105e48a94b60bbd805c960b328f691566155"
   },
   "emit": {
     "command": [
-      "/tmp/foundation-resilient-goal-20261001/resilient/target/release/rz",
+      "/Users/eric/Documents/Codex/2026-10-02/task/Resilient-pinned/target/debug/rz",
       "--no-cache",
       "--typecheck",
       "--emit-contract-certificate",
-      "/tmp/foundation-integrity-20261001/acceptance/contract-certificate.json",
+      "/Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/contract-certificate.json",
       "--emit-certificate",
-      "/tmp/foundation-integrity-20261001/acceptance/proofs",
-      "/tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz"
+      "/Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/proofs",
+      "/Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/source/cert_demo_pass.rz"
     ],
-    "seconds": 0.028,
-    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /tmp/foundation-integrity-20261001/acceptance/contract-certificate.json\u001b[0m\nProgram executed successfully\n",
-    "stderr": "seed=6732023289021048979\nmutation: 1 total mutation site(s) across 1 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nwarning: /tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz:3:4: function `ident_round` is never called\n"
+    "seconds": 0.677,
+    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/contract-certificate.json\u001b[0m\nProgram executed successfully\n",
+    "stderr": "seed=10445410799553781805\nmutation: 1 total mutation site(s) across 1 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nwarning: /Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/source/cert_demo_pass.rz:3:4: function `ident_round` is never called\n"
   },
   "replay": {
     "status": "passed",
     "solver": {
       "name": "z3",
-      "sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+      "sha256": "ae6c8df33db9c9ae9a80b6044e77cd66529a141d8b25f0620f1e89b409594f48"
     },
     "queries": [
       {
@@ -71,9 +83,9 @@
   "receipt": {
     "status": "passed",
     "format": "foundation-resilient-check-receipt-v2",
-    "evidence_sha256": "c6182077566a8cfd4898bd2181084906748a6bf9c130a3ad8f03ec27a3128b16",
+    "evidence_sha256": "5899900081aed46676aa25ea3a38560ab6be32c00c0bf4eb06dd5dcc6d105ed8",
     "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
-    "inventory_sha256": "2502746dc2a0f8629a3d7cf1f229ae7887739df198e793ae089d46191ab4814b",
+    "inventory_sha256": "14b1b4c9ef1a4dc6399a4497071da59fab1e84190274eee5f6e8d26b9cc37a53",
     "evidence_class": "solver_checked",
     "claim_scope": "smt_queries",
     "source_binding": "regenerated"
@@ -131,23 +143,24 @@
     "schemas/program-ir.schema.json": "e168d4c49e47d5bf5917ea6b1a8c3184d8b80f0492efd6f62299177d1a02f807",
     "profiles/resilient-capabilities.json": "73ab825e1ad59b5595f38c44dca61f74a3f42da09ecc15bf1ed41073399550bf",
     "schemas/resilient-capabilities.schema.json": "fa2a82ac11a763b12b088b581ad5c9749ea5a119430ea14e7ef821812d4877d6",
-    "schemas/resilient-integration-report.schema.json": "c2c80da87fb622235445698ff6a378189350b327f8b7e85b7ca5b86012318cd5",
+    "schemas/resilient-integration-report.schema.json": "2ce1e7c1d87120276c6961762018c233775551f2ae3f88f4c9ba58b894e5f2ae",
     "profiles/backend-capabilities.json": "68f4fb13c39e4d2681098ff04fb2082421a8dfde93652c142dcb5120c7d79ec9",
-    "scripts/validate_spec.py": "f4c4dd1c64264d11e3dce58adb16bcf63663d7c54f5ec993407f09da8100850b",
+    "scripts/validate_spec.py": "3b7d2796a0927049574bedcca7bf458b4c2bb4da6b4db0d2b409c3fea57fa2d5",
     "examples/resilient/cert_demo_pass.rz": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
   },
   "test_hashes": {
-    "tests/test_resilient.py": "d0f5e8863ba6a06268c0b149c450f8c493ee6d5ef93606bac2ea5f0f9bf11b17"
+    "tests/test_resilient.py": "d0f5e8863ba6a06268c0b149c450f8c493ee6d5ef93606bac2ea5f0f9bf11b17",
+    "tests/test_resilient_gate.py": "524e3aaf2718d22d2b4e121a650ed7661c0bbfce4c896944d2784f3766ee043e"
   },
   "driver_hashes": {
-    "scripts/run_resilient_integration.py": "929e69a8f858700270aa62a114dd85589b3c2c2118cd15a18f86778566033a7c",
+    "scripts/run_resilient_integration.py": "3357805ad60599acd99588c65e03dded056f5a2e1b4d9c9e215330f26b0cf657",
     "scripts/replay_resilient.py": "3a0903fa1673e94fad66c21b26e078db141709cab7a8a1e722779fc6e03052b0"
   },
   "evidence_files": {
-    "validation/resilient/contract-certificate.json": "b95ed262ea784137a840c399653f4c9263970242d1457b88eb1298cde101b53e",
-    "validation/resilient/evidence.json": "c6182077566a8cfd4898bd2181084906748a6bf9c130a3ad8f03ec27a3128b16",
+    "validation/resilient/contract-certificate.json": "952a064a7e8ffd5a91f0697558a37a0fdd9fab4703a351abcf4f1cc5101f507d",
+    "validation/resilient/evidence.json": "5899900081aed46676aa25ea3a38560ab6be32c00c0bf4eb06dd5dcc6d105ed8",
     "validation/resilient/proofs/ident_round__decl__0.smt2": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
-    "validation/resilient/proofs/manifest.json": "5a7aa0511a7f6077d13e5e940a4c788525ce6f4eab722aed734323ca11617d93",
+    "validation/resilient/proofs/manifest.json": "1aebeabc58d8db68de43b95a30cde0d530e4e7a53ea5712a0368caa367586f77",
     "validation/resilient/source/cert_demo_pass.rz": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
   },
   "tests_run": 26,

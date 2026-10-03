@@ -46,9 +46,20 @@ def main():
     parser.add_argument('--z3', default=os.environ.get('FOUNDATION_Z3') or shutil.which('z3'), type=Path)
     parser.add_argument('--rz', type=Path, help='Use an existing trusted binary; skip the build')
     parser.add_argument('--timeout', default=900, type=int)
+    parser.add_argument('--expected-revision', help='Require this full compiler commit before building')
+    parser.add_argument('--build-profile', choices=['dev', 'release'], default='release')
     args = parser.parse_args()
     root = absolute(args.resilient_root)
     out = absolute(args.out)
+    if not 1 <= args.timeout <= 1800:
+        raise RuntimeError('Integration timeout must be between 1 and 1800 seconds')
+    if args.expected_revision:
+        revision = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], capture_output=True, text=True, timeout=10)
+        if revision.returncode or revision.stdout.strip() != args.expected_revision or len(args.expected_revision) != 40:
+            raise RuntimeError('Pinned Resilient revision differs from the selected checkout')
+        dirty = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=normal'], capture_output=True, text=True, timeout=10)
+        if dirty.returncode or dirty.stdout.strip():
+            raise RuntimeError('Pinned Resilient checkout has uncommitted source changes')
     if out.exists() or out.is_symlink():
         raise RuntimeError('Output already exists; use a fresh path: ' + str(out))
     if not args.z3:
@@ -64,11 +75,13 @@ def main():
         if not args.cargo or not args.rustc:
             raise RuntimeError('cargo and rustc are required when --rz is absent')
         cargo, rustc = absolute(args.cargo), absolute(args.rustc)
-        env = dict(os.environ, RUSTC=str(rustc))
+        target = Path(os.environ.get('CARGO_TARGET_DIR', str(root / 'target'))).resolve()
+        env = dict(os.environ, RUSTC=str(rustc), CARGO_TARGET_DIR=str(target))
         build = {'status': 'built', **run([str(cargo), 'build', '--manifest-path',
-                  str(root / 'resilient/Cargo.toml'), '--release', '--locked', '--features', 'z3'],
+                  str(root / 'resilient/Cargo.toml'), '--locked', '--features', 'z3'] +
+                  (['--release'] if args.build_profile == 'release' else []),
                   timeout=args.timeout, env=env)}
-        rz = root / 'target/release/rz'
+        rz = target / ('release' if args.build_profile == 'release' else 'debug') / 'rz'
         build['binary_sha256'] = file_hash(rz)
     fixture = ROOT / 'examples/resilient/cert_demo_pass.rz'
     source = out / 'source' / fixture.name
@@ -144,9 +157,9 @@ def main():
         'inventory_sha256': inventory['inventory_sha256'], 'source_sha256': file_hash(source),
         'certificate_sha256': file_hash(certificate),
         'proof_manifest_sha256': evidence['proof_directory']['manifest_sha256'],
-        'build': build, 'emit': emit, 'replay': evidence['verification'], 'receipt': receipt, 'cases': cases,
+        'compiler_revision': args.expected_revision, 'build': build, 'emit': emit, 'replay': evidence['verification'], 'receipt': receipt, 'cases': cases,
         'mutation': {'status': 'rejected'}, 'implementation_hashes': hashes(implementation_paths),
-        'test_hashes': hashes(['tests/test_resilient.py']),
+        'test_hashes': hashes(['tests/test_resilient.py', 'tests/test_resilient_gate.py']),
         'driver_hashes': hashes(['scripts/run_resilient_integration.py', 'scripts/replay_resilient.py']),
         'evidence_files': evidence_files, 'tests_run': results.testsRun + len(cases),
         'tests_failed': 0, 'tests_skipped': 0, 'assumptions': evidence['limitations'],

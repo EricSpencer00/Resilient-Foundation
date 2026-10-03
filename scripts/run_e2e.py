@@ -23,6 +23,7 @@ from foundation.pipeline import build, implementation_identity, run, solver_iden
 from foundation import smt
 
 ORACLE_HASH = '353683fa08bc2e60c2fd5eeea2e0ce5a17572892bdfff7c621595941f9de640e'
+CLAMP_ORACLE_HASH = 'a6f7148c94828dad2504c2ba9a23d626e70d2c46c3ff19709a63f911e274c82b'
 
 
 def main():
@@ -36,6 +37,7 @@ def main():
     os.environ['FOUNDATION_SOLVER'] = args.solver
     native = NativeTools(os.environ.get('FOUNDATION_CARGO'), os.environ.get('FOUNDATION_RUSTC'))
     require(file_hash(ROOT / 'examples/nonnegative/oracle.json') == ORACLE_HASH, 'Frozen oracle was changed')
+    require(file_hash(ROOT / 'examples/clamp/oracle.json') == CLAMP_ORACLE_HASH, 'Frozen clamp oracle was changed')
     args.evidence_dir.mkdir(parents=True, exist_ok=True)
     calls = {'in_process_real_solver_calls': 0, 'in_process_fault_solver_calls': 0,
              'in_process_native_compilations': 0, 'cli_subprocess_calls_excluded': True}
@@ -77,6 +79,32 @@ def main():
             except FoundationError as exc:
                 require(exc.outcome == 'Refuted', 'Wrong candidate failed for an unrelated reason', 'Error', 'e2e')
                 write_json(args.evidence_dir / 'counterexample.json', exc.details['counterexample'])
+        clamp_dir = args.evidence_dir / 'clamp'
+        clamp_dir.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='foundation-recorded-clamp-') as scratch:
+            capsule = Path(scratch) / 'accepted'
+            request = (ROOT / 'examples/e2e/clamp/request.txt').read_text()
+            candidate = (ROOT / 'examples/e2e/clamp/candidate.rz').read_text()
+            build(request, candidate, capsule, args.solver, native)
+            clamp_executions = []
+            for case in load(ROOT / 'examples/clamp/oracle.json')['expected_cases']:
+                observation = run(capsule, {'x': case['input']}, args.solver, native)
+                require(observation['observation']['value'] == case['output'], 'Frozen clamp oracle differs', 'Error', 'e2e')
+                clamp_executions.append({'case_id': case['id'], **observation})
+            for name in ['capsule.json', 'check-receipt.json', 'formal.smt2', 'translation.smt2',
+                         'requirements.json', 'spec-ir.json', 'candidate-ir.json', 'source-map.json',
+                         'generated.rs', 'translation-ir.json', 'candidate.rz', 'request.txt', 'profile.json']:
+                shutil.copyfile(capsule / name, clamp_dir / name)
+            write_json(clamp_dir / 'executions.json', {'cases': clamp_executions})
+            for mutant in load(ROOT / 'examples/clamp/oracle.json')['wrong_boundary_mutants']:
+                try:
+                    build(request, (ROOT / 'examples/e2e/clamp' / mutant['fixture']).read_text(),
+                          Path(scratch) / mutant['fixture'], args.solver, native)
+                    raise FoundationError('Error', 'Wrong clamp boundary was accepted', 'e2e')
+                except FoundationError as exc:
+                    require(exc.outcome == 'Refuted' and exc.details['counterexample']['arguments'] == [mutant['input']],
+                            'Clamp mutant failed for unrelated reason or wrong witness', 'Error', 'e2e')
+                    write_json(clamp_dir / (mutant['fixture'] + '.counterexample.json'), exc.details['counterexample'])
     report = {
         'status': 'passed', 'scope': 'scalar_e2e_conformance', 'policy': receipt['policy'],
         'started_at_utc': started_at, 'completed_at_utc': datetime.now(timezone.utc).isoformat(),
@@ -86,10 +114,15 @@ def main():
         'tests_run': result.testsRun, 'tests_failed': len(result.failures) + len(result.errors),
         'tests_skipped': len(result.skipped), 'oracle_cases_executed': len(executions),
         'elapsed_ms': int((time.monotonic() - started) * 1000), 'instrumented_operations': calls,
+        'clamp_validation': {'template_id': 'clamp-i64-minus10-plus10-v1', 'oracle_sha256': CLAMP_ORACLE_HASH,
+                             'oracle_cases_executed': len(clamp_executions), 'wrong_boundary_mutants_refuted': 2},
         'oracle_sha256': ORACLE_HASH, 'implementation_hashes': implementation_identity(),
         'test_hashes': {str(p.relative_to(ROOT)): file_hash(p) for p in sorted((ROOT / 'tests').glob('test_*.py'))},
+        'template_fixture_hashes': {str(p.relative_to(ROOT)): file_hash(p) for p in
+                                   sorted((ROOT / 'examples/e2e/clamp').iterdir())} |
+                                  {'examples/clamp/oracle.json': CLAMP_ORACLE_HASH},
         'driver_hashes': {'scripts/run_e2e.py': file_hash(ROOT / 'scripts/run_e2e.py')},
-        'evidence_files': {str(p.relative_to(ROOT)): file_hash(p) for p in sorted(args.evidence_dir.iterdir()) if p.is_file()},
+        'evidence_files': {str(p.relative_to(ROOT)): file_hash(p) for p in sorted(args.evidence_dir.rglob('*')) if p.is_file()},
         'capability_ids': ['scalar-smt', 'translation-ir'], 'formal_class': 'solver_checked',
         'translation_class': 'translation_checked', 'native_relation': 'trusted_compilation',
         'model_generation': 'interactive Codex-authored candidate; no attested snapshot or model benchmark',

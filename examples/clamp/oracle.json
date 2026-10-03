@@ -1,0 +1,23 @@
+{
+  "version": "0.1.0-draft",
+  "illustrative": false,
+  "task_id": "clamp",
+  "template_id": "clamp-i64-minus10-plus10-v1",
+  "provenance": "Specified independently from the inclusive interval: below -10 maps to -10, above 10 maps to 10, otherwise identity. Frozen before intent implementation.",
+  "expected_cases": [
+    {"id": "CLAMP-MIN", "input": "-9223372036854775808", "output": "-10"},
+    {"id": "CLAMP-BELOW", "input": "-11", "output": "-10"},
+    {"id": "CLAMP-LOWER", "input": "-10", "output": "-10"},
+    {"id": "CLAMP-LOWER-INNER", "input": "-9", "output": "-9"},
+    {"id": "CLAMP-ZERO", "input": "0", "output": "0"},
+    {"id": "CLAMP-UPPER-INNER", "input": "9", "output": "9"},
+    {"id": "CLAMP-UPPER", "input": "10", "output": "10"},
+    {"id": "CLAMP-ABOVE", "input": "11", "output": "10"},
+    {"id": "CLAMP-MAX", "input": "9223372036854775807", "output": "10"}
+  ],
+  "wrong_boundary_mutants": [
+    {"fixture": "wrong-lower-boundary.rz", "input": "-9", "wrong_output": "-10"},
+    {"fixture": "wrong-upper-boundary.rz", "input": "9", "wrong_output": "10"}
+  ],
+  "equivalent_mutant": "Replacing x < -10 and x > 10 with inclusive comparisons returns the same endpoint values."
+}

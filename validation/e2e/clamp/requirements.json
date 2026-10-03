@@ -1,0 +1,76 @@
+{
+  "version": "0.1.0-draft",
+  "kind": "requirement_ledger",
+  "illustrative": false,
+  "task_id": "clamp",
+  "intent_mode": "controlled_language",
+  "source_artifact_id": "request",
+  "interpretation_state": "accepted",
+  "decision_provenance": "Explicit template clamp-i64-minus10-plus10-v1 under scalar-wrapping-v1; input domain is all i64; endpoints are inclusive -10 and 10.",
+  "requirements": [
+    {
+      "id": "R-CLAMP-LOWER",
+      "text": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_excerpt": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_span": {
+        "start": 0,
+        "end": 59
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-CLAMP-LOWER"
+      ],
+      "oracle_case_ids": [
+        "CLAMP-MIN",
+        "CLAMP-BELOW",
+        "CLAMP-LOWER"
+      ],
+      "assumptions": [
+        "Integer is signed wrapping i64; this fixed template has no arithmetic operations or excluded inputs."
+      ]
+    },
+    {
+      "id": "R-CLAMP-INTERIOR",
+      "text": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_excerpt": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_span": {
+        "start": 0,
+        "end": 59
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-CLAMP-INTERIOR"
+      ],
+      "oracle_case_ids": [
+        "CLAMP-LOWER-INNER",
+        "CLAMP-ZERO",
+        "CLAMP-UPPER-INNER"
+      ],
+      "assumptions": [
+        "Integer is signed wrapping i64; this fixed template has no arithmetic operations or excluded inputs."
+      ]
+    },
+    {
+      "id": "R-CLAMP-UPPER",
+      "text": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_excerpt": "For an integer x, clamp x to the inclusive range [-10, 10].",
+      "source_span": {
+        "start": 0,
+        "end": 59
+      },
+      "decision": "accepted",
+      "clause_ids": [
+        "C-CLAMP-UPPER"
+      ],
+      "oracle_case_ids": [
+        "CLAMP-UPPER",
+        "CLAMP-ABOVE",
+        "CLAMP-MAX"
+      ],
+      "assumptions": [
+        "Integer is signed wrapping i64; this fixed template has no arithmetic operations or excluded inputs."
+      ]
+    }
+  ],
+  "unresolved_ambiguities": []
+}

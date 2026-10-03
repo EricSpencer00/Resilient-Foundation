@@ -1,0 +1,31 @@
+{
+  "format": "foundation-check-receipt-v1",
+  "outcome": "Proved",
+  "acceptance": "Accepted",
+  "policy": "scalar_source_exact_trusted_rust_v1",
+  "formal_evidence_class": "solver_checked",
+  "translation_evidence_class": "translation_checked",
+  "native_relation": "trusted_compilation",
+  "capsule_sha256": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+  "checked_artifacts": {
+    "request.txt": "498b925d4c21316caf606eea7e7ccc0f9cc02e9fb118575490f0e20fe8e7bc6b",
+    "requirements.json": "ae6388f2aca306f9d4232294e529c3ee6bd77c3b6eb60f8d625e12ce965940a4",
+    "spec-ir.json": "f5e83c6c8f897edee5628841248adfacc7975157db2d37d89d4ee30b4fc07362",
+    "candidate.rz": "28f98f496741f788fa9909fd30e1e3fefadbb8c27e79bf1aa17e925ba8bd6e96",
+    "candidate-ir.json": "a1a46d65cbdaf52d9a44f1b4d9ca4824bcdcbb543ff40d5576887b14751edc90",
+    "source-map.json": "0ab6443975856a5bb3cb5cb389e6d075e5065d33d15006b56f1849144b968b79",
+    "profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "generated.rs": "4e5e321fc1c09aabcf98dbc4155daeceb1002f2f81c235d3c02b2b1ee6f358a3",
+    "translation-ir.json": "505730bd41eee397e28eaad62c50fc4ded892b64421d0ffbb3d3d704ec562056",
+    "formal.smt2": "35d051ead6dc68bfb6ba28d3390181a8bf82980693d4bf8048fa204ca08d201d",
+    "translation.smt2": "35d051ead6dc68bfb6ba28d3390181a8bf82980693d4bf8048fa204ca08d201d",
+    "native": "7bd6a93fe78afb440db6e6cbdbdde89a2fa0b249270e1458854a56f07c123853"
+  },
+  "assumptions": [
+    "Versioned controlled template interpretation and restricted Resilient parser.",
+    "Typed scalar model and QF_BV encoding; Z3 is trusted, no independent UNSAT proof kernel.",
+    "Restricted Rust constructor decoder and tested foundation-core reference runtime.",
+    "Recorded rustc/LLVM compilation, standard library, OS and hardware.",
+    "Native source executes through the reference evaluator; this is not direct optimized code generation."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "resilient-contract-certificate/v1",
   "schema_version": 1,
-  "source": "/tmp/foundation-integrity-20261001/acceptance/source/cert_demo_pass.rz",
+  "source": "/Users/eric/Documents/Codex/2026-10-02/task/pinned-regeneration-verified/source/cert_demo_pass.rz",
   "functions": [
     {
       "name": "ident_round",

@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "-9"
+  ],
+  "spec_observation": {
+    "kind": "return",
+    "type": "i64",
+    "value": "-9"
+  },
+  "candidate_observation": {
+    "kind": "return",
+    "type": "i64",
+    "value": "-10"
+  },
+  "replay": "rust_reference_runtime",
+  "validated": true
+}

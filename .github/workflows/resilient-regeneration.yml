@@ -1,0 +1,56 @@
+name: Pinned Resilient regeneration
+on:
+  push:
+    paths: ['foundation/**', 'scripts/**', 'tests/**', 'schemas/**', 'profiles/**', 'examples/resilient/**', '.github/workflows/resilient-regeneration.yml']
+  pull_request:
+    paths: ['foundation/**', 'scripts/**', 'tests/**', 'schemas/**', 'profiles/**', 'examples/resilient/**', '.github/workflows/resilient-regeneration.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resilient-regeneration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  regenerate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_PROFILE_DEV_DEBUG: 0
+      CARGO_TARGET_DIR: ${{ runner.temp }}/resilient-target
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Check out pinned public compiler
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: EricSpencer00/Resilient
+          ref: 53a9f198013655e6ad9372f8aaf463d22ee6c032
+          path: upstream-resilient
+          persist-credentials: false
+      - name: Select Rust and solver
+        run: |
+          rustup toolchain install 1.91.1 --profile minimal
+          echo "FOUNDATION_CARGO=$(rustup which --toolchain 1.91.1 cargo)" >> "$GITHUB_ENV"
+          echo "FOUNDATION_RUSTC=$(rustup which --toolchain 1.91.1 rustc)" >> "$GITHUB_ENV"
+          sudo apt-get update
+          sudo apt-get install --yes z3 libz3-dev libclang-dev
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r requirements-dev.txt
+      - name: Regenerate from pinned source and directly replay every query
+        env:
+          BINDGEN_EXTRA_CLANG_ARGS: -I/usr/include
+          LIBRARY_PATH: /usr/lib/x86_64-linux-gnu
+        run: |
+          .venv/bin/python scripts/run_resilient_integration.py \
+            --resilient-root upstream-resilient \
+            --expected-revision 53a9f198013655e6ad9372f8aaf463d22ee6c032 \
+            --build-profile dev --timeout 900 --z3 /usr/bin/z3 \
+            --out "${{ runner.temp }}/resilient-regeneration"
+      - name: Retain bounded regeneration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resilient-regeneration-${{ github.sha }}
+          path: ${{ runner.temp }}/resilient-regeneration/
+          retention-days: 14
+          if-no-files-found: error

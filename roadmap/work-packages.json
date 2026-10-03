@@ -395,7 +395,11 @@
       "implementation_artifacts": [
         "foundation/intent.py",
         "tests/test_frontend.py",
-        "docs/26-implementation-status.md"
+        "docs/26-implementation-status.md",
+        "tests/test_clamp.py",
+        "examples/clamp/oracle.json",
+        "examples/e2e/clamp/request.txt",
+        "examples/e2e/clamp/candidate.rz"
       ]
     },
     {

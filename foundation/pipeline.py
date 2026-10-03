@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 
 from .errors import FoundationError
-from .intent import interpret
+from .intent import interpret, intent_identity
 from .ir import ROOT, canonical, file_hash, identity, inputs, load, require, validate_program, write_json
 from .native import NativeTools, decode, emit, execute
 from .smt import equivalence_query, solve
@@ -15,7 +15,6 @@ POLICY = 'scalar_source_exact_trusted_rust_v1'
 FORMAT = 'foundation-capsule-v1'
 SCOPE = {'semantic_profile_id': 'scalar-wrapping-v1', 'domain': 'all inputs of declared i64/bool signature',
          'observations': ['return_value', 'DivideByZero', 'termination'], 'fragment': 'pure_total_scalar_expressions'}
-INTENT = {'mode': 'controlled_language', 'status': 'accepted', 'template': 'nonnegative-i64-v1'}
 FILES = ['request.txt', 'requirements.json', 'spec-ir.json', 'candidate.rz', 'candidate-ir.json',
          'source-map.json', 'profile.json', 'generated.rs', 'translation-ir.json', 'formal.smt2',
          'translation.smt2', 'native']
@@ -90,7 +89,7 @@ def build(request, candidate_source, output, solver, native=None, policy=POLICY,
     native.compile(output)
     evidence = {
         'format': FORMAT, 'policy': POLICY, 'acceptance': 'Accepted',
-        'intent': INTENT,
+        'intent': intent_identity(ledger),
         'scope': SCOPE,
         'formal': {'outcome': 'Proved', 'evidence_class': 'solver_checked', 'obligation': 'spec_candidate_observable_equivalence'},
         'translation': {'outcome': 'Proved', 'evidence_class': 'translation_checked', 'basis': 'solver_checked',
@@ -120,7 +119,7 @@ def check(directory, solver, native=None, policy=POLICY):
                               'solver', 'solver_timeout_ms', 'artifact_hashes', 'canonical_identities',
                               'implementation_hashes', 'assumptions', 'generation'}, 'Capsule fields differ from supported format')
     require(evidence.get('format') == FORMAT and evidence.get('policy') == POLICY and evidence.get('acceptance') == 'Accepted', 'Capsule policy/acceptance is invalid')
-    require(evidence.get('intent') == INTENT and evidence.get('scope') == SCOPE, 'Intent or proof scope differs from supported route')
+    require(evidence.get('scope') == SCOPE, 'Proof scope differs from supported route')
     require(evidence.get('formal') == {'outcome': 'Proved', 'evidence_class': 'solver_checked', 'obligation': 'spec_candidate_observable_equivalence'}, 'Unsupported formal evidence declaration')
     require(evidence.get('translation') == {'outcome': 'Proved', 'evidence_class': 'translation_checked', 'basis': 'solver_checked',
                                           'obligation': 'candidate_restricted_rust_constructor_equivalence'}, 'Unsupported translation evidence declaration')
@@ -135,6 +134,7 @@ def check(directory, solver, native=None, policy=POLICY):
                                          'model_snapshot': 'not_attested', 'model_evaluation': 'not_run'}, 'Unsupported generation provenance claim')
     require((directory / 'profile.json').read_bytes() == (ROOT / 'profiles/scalar-wrapping-v1.json').read_bytes(), 'Semantic profile changed')
     spec, ledger = interpret((directory / 'request.txt').read_text())
+    require(evidence.get('intent') == intent_identity(ledger), 'Intent differs from the bound request template')
     candidate, source_map = parse_source((directory / 'candidate.rz').read_text())
     target = decode((directory / 'generated.rs').read_text())
     for name, expected in [('spec-ir.json', spec), ('requirements.json', ledger), ('candidate-ir.json', candidate),

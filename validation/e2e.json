@@ -2,20 +2,20 @@
   "status": "passed",
   "scope": "scalar_e2e_conformance",
   "policy": "scalar_source_exact_trusted_rust_v1",
-  "started_at_utc": "2026-10-02T03:31:15.863657+00:00",
-  "completed_at_utc": "2026-10-02T03:31:29.712611+00:00",
-  "host": "hst-bench",
-  "architecture": "x86_64",
-  "python": "3.12.3",
+  "started_at_utc": "2026-10-03T02:53:39.464441+00:00",
+  "completed_at_utc": "2026-10-03T02:54:37.326607+00:00",
+  "host": "Eric-MB64.local",
+  "architecture": "arm64",
+  "python": "3.14.7",
   "python_dependencies": {
     "jsonschema": "4.25.1"
   },
   "solver": {
-    "version": "Z3 version 4.8.12 - 64 bit",
-    "executable_sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+    "version": "Z3 version 4.15.4 - 64 bit",
+    "executable_sha256": "ae6c8df33db9c9ae9a80b6044e77cd66529a141d8b25f0620f1e89b409594f48"
   },
   "native_toolchain": {
-    "rustc_verbose_version": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "rustc_verbose_version": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: aarch64-apple-darwin\nrelease: 1.91.1\nLLVM version: 21.1.2",
     "flags": [
       "--edition=2024",
       "-Copt-level=2",
@@ -23,27 +23,33 @@
     ],
     "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
     "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
-    "core_library_sha256": "26fcffe11960f408b4b49ee3382a8baa82c1f31dc81b2d72b3594a9dc98c00ae"
+    "core_library_sha256": "bd50a7e4364ab03edcfc7bdb5c418294c2bf0b7eddb5edcdc83af988b888b1e9"
   },
-  "tests_run": 55,
+  "tests_run": 61,
   "tests_failed": 0,
   "tests_skipped": 0,
   "oracle_cases_executed": 5,
-  "elapsed_ms": 13876,
+  "elapsed_ms": 57940,
   "instrumented_operations": {
-    "in_process_real_solver_calls": 50,
+    "in_process_real_solver_calls": 108,
     "in_process_fault_solver_calls": 3,
-    "in_process_native_compilations": 37,
+    "in_process_native_compilations": 88,
     "cli_subprocess_calls_excluded": true
+  },
+  "clamp_validation": {
+    "template_id": "clamp-i64-minus10-plus10-v1",
+    "oracle_sha256": "a6f7148c94828dad2504c2ba9a23d626e70d2c46c3ff19709a63f911e274c82b",
+    "oracle_cases_executed": 9,
+    "wrong_boundary_mutants_refuted": 2
   },
   "oracle_sha256": "353683fa08bc2e60c2fd5eeea2e0ce5a17572892bdfff7c621595941f9de640e",
   "implementation_hashes": {
     "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
     "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
-    "foundation/intent.py": "b05c1b08803bf67f496cd933e1ff25f5a9f2dfa6cc4cd708446ece79e7ae1aff",
+    "foundation/intent.py": "ce854885d1667d8ccf8dafa531d5adcc9eb0bd77b832002849a02ea184a9a33f",
     "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
     "foundation/native.py": "bd379f6cf9278fe6f4920ab89a3e30ab7b9d041b39aec7a8dff7e033802b328d",
-    "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
+    "foundation/pipeline.py": "d13f1c479d2db9bff46fc0e1d190c6f5fbb04057669c307f428f7784e3af9dbe",
     "foundation/cli.py": "c992d4a5bf0b295725a541c68241be87216fd8996973a427b5a1a53762f56df5",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
@@ -56,22 +62,48 @@
     "Cargo.lock": "85ea84e03353ade069a4108bfe7c5aecc11d573ef738374a47b83447ddbb2e81"
   },
   "test_hashes": {
+    "tests/test_clamp.py": "71db3bc2ddb96a56db82a81ad4576ae83f03b1e180fe9d14b8b8cc6213dee28e",
     "tests/test_e2e.py": "1d24cca22ad4b8386dbadb45da8190c0130a12cf16ca7ecaeded9f0bb5d50b37",
     "tests/test_frontend.py": "15a825744f70c168abcf7b18d966847febcb5ab1021331583d52dede68e9fb7e",
     "tests/test_resilient.py": "d0f5e8863ba6a06268c0b149c450f8c493ee6d5ef93606bac2ea5f0f9bf11b17",
+    "tests/test_resilient_gate.py": "524e3aaf2718d22d2b4e121a650ed7661c0bbfce4c896944d2784f3766ee043e",
     "tests/test_smt_encoding.py": "8ce53fa9b65690983fc7f7e964cfae52b6b61e29f70e36257f634ed936b2c67f",
     "tests/test_translation.py": "802379d5f6c391648ea3cd14a61bd02e39ef352083693e4d53cf7dde4cbec3ac"
   },
+  "template_fixture_hashes": {
+    "examples/e2e/clamp/candidate.rz": "28f98f496741f788fa9909fd30e1e3fefadbb8c27e79bf1aa17e925ba8bd6e96",
+    "examples/e2e/clamp/equivalent.rz": "0a6016e58e60809fe127c80d32775394070ed3e5f261da3fd921651900be83c7",
+    "examples/e2e/clamp/request.txt": "498b925d4c21316caf606eea7e7ccc0f9cc02e9fb118575490f0e20fe8e7bc6b",
+    "examples/e2e/clamp/wrong-lower-boundary.rz": "ba5683f37a83f8c3b07013535af596766bb8f581b97365bc9d633452dcb2f74d",
+    "examples/e2e/clamp/wrong-upper-boundary.rz": "d86c924acd427bc343c3a7f38436ec620806a25aba662d5392575e77ceddf9fe",
+    "examples/clamp/oracle.json": "a6f7148c94828dad2504c2ba9a23d626e70d2c46c3ff19709a63f911e274c82b"
+  },
   "driver_hashes": {
-    "scripts/run_e2e.py": "4bf299815eb62c9a9f75dfb4e520ecf9e68b8d89b2755572d01982201404c4bf"
+    "scripts/run_e2e.py": "a23279844dae0369f8195721388e28ffd80996eaab6f9b819eb716796e9bc7e8"
   },
   "evidence_files": {
     "validation/e2e/candidate-ir.json": "50b13196e3f80308f88d7bb5dfb1233f10b8ca9b96c879faa133a86cd8adf4d5",
     "validation/e2e/candidate.rz": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
-    "validation/e2e/capsule.json": "b66ff5aab5b3f5596c0b41ac908aafe6a48bd1a98bbe9da7d5efbb3d3d01ea13",
-    "validation/e2e/check-receipt.json": "ea3d0c5d456a677c1aab1bf4ac3977df2baf53b874187ba0ee5fa66007b6a4a1",
+    "validation/e2e/capsule.json": "b83a678e78f72060129d65958db19f702f339189b098a1b139be6ecd2266f88e",
+    "validation/e2e/check-receipt.json": "a9fd08b6f9527f018d35b039f86a4d14b54762e2bd176fc3e005350ebd07a848",
+    "validation/e2e/clamp/candidate-ir.json": "a1a46d65cbdaf52d9a44f1b4d9ca4824bcdcbb543ff40d5576887b14751edc90",
+    "validation/e2e/clamp/candidate.rz": "28f98f496741f788fa9909fd30e1e3fefadbb8c27e79bf1aa17e925ba8bd6e96",
+    "validation/e2e/clamp/capsule.json": "c884fa9a162c5cdcbef7bc895009a0682020db0df2642cb3a85b8de79bd36e27",
+    "validation/e2e/clamp/check-receipt.json": "96dafb77763a6c77f64cae0ab60a3478712c9c497debd8ee510444a0fdcdd71c",
+    "validation/e2e/clamp/executions.json": "d205c90b6884c4c01edd14659470d51a06735e782fd13b12d7c402c6a2acc984",
+    "validation/e2e/clamp/formal.smt2": "35d051ead6dc68bfb6ba28d3390181a8bf82980693d4bf8048fa204ca08d201d",
+    "validation/e2e/clamp/generated.rs": "4e5e321fc1c09aabcf98dbc4155daeceb1002f2f81c235d3c02b2b1ee6f358a3",
+    "validation/e2e/clamp/profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
+    "validation/e2e/clamp/request.txt": "498b925d4c21316caf606eea7e7ccc0f9cc02e9fb118575490f0e20fe8e7bc6b",
+    "validation/e2e/clamp/requirements.json": "ae6388f2aca306f9d4232294e529c3ee6bd77c3b6eb60f8d625e12ce965940a4",
+    "validation/e2e/clamp/source-map.json": "0ab6443975856a5bb3cb5cb389e6d075e5065d33d15006b56f1849144b968b79",
+    "validation/e2e/clamp/spec-ir.json": "f5e83c6c8f897edee5628841248adfacc7975157db2d37d89d4ee30b4fc07362",
+    "validation/e2e/clamp/translation-ir.json": "505730bd41eee397e28eaad62c50fc4ded892b64421d0ffbb3d3d704ec562056",
+    "validation/e2e/clamp/translation.smt2": "35d051ead6dc68bfb6ba28d3390181a8bf82980693d4bf8048fa204ca08d201d",
+    "validation/e2e/clamp/wrong-lower-boundary.rz.counterexample.json": "01aa842544a491afa3158a1611d3cd291a500d4816f634fd85490953bcf19637",
+    "validation/e2e/clamp/wrong-upper-boundary.rz.counterexample.json": "289c5636579f00e45468a97b033aa08d616beffa0b599efafa716a322f83b7f5",
     "validation/e2e/counterexample.json": "c7ab993b465f3fed4655890098ed1fd4b60f92e9d8bdd38227325db9fae9084f",
-    "validation/e2e/executions.json": "18dc91f473e38323789acd11d6fe50d6da10f79ee58b4949ca6973d767ac99ec",
+    "validation/e2e/executions.json": "48bd78a8974aa6b7470b54b84e5b56da0a4fba415baa56edf5b6390dff21097a",
     "validation/e2e/formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
     "validation/e2e/generated.rs": "f29cceced38bd6406fc50870d5b4c79ad4f5d494ca118b6f2ded0051199efcf4",
     "validation/e2e/profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",

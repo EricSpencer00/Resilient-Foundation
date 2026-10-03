@@ -31,7 +31,7 @@
   "native": {
     "relation": "trusted_compilation",
     "toolchain": {
-      "rustc_verbose_version": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8",
+      "rustc_verbose_version": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: aarch64-apple-darwin\nrelease: 1.91.1\nLLVM version: 21.1.2",
       "flags": [
         "--edition=2024",
         "-Copt-level=2",
@@ -39,12 +39,12 @@
       ],
       "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
       "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
-      "core_library_sha256": "26fcffe11960f408b4b49ee3382a8baa82c1f31dc81b2d72b3594a9dc98c00ae"
+      "core_library_sha256": "bd50a7e4364ab03edcfc7bdb5c418294c2bf0b7eddb5edcdc83af988b888b1e9"
     }
   },
   "solver": {
-    "version": "Z3 version 4.8.12 - 64 bit",
-    "executable_sha256": "c05be002097e2f2106efeeac03e58032e3f5cca10104f95d7a0ddc0bd3f907cb"
+    "version": "Z3 version 4.15.4 - 64 bit",
+    "executable_sha256": "ae6c8df33db9c9ae9a80b6044e77cd66529a141d8b25f0620f1e89b409594f48"
   },
   "solver_timeout_ms": 10000,
   "artifact_hashes": {
@@ -59,7 +59,7 @@
     "translation-ir.json": "074d858553fc723ae0665adc49f4c3b54ceaf45a9435bde9321997622bd712bd",
     "formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
     "translation.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
-    "native": "5c64cc2983128b8d4b161e22c51e96d6a67011ed5333c5f220eb68d0233c259d"
+    "native": "8f926e604c37aacd5bc165d510da096861e9671de260e0d23022ac2a30d1c30c"
   },
   "canonical_identities": {
     "spec": "5177dd2baa48773f534b8f2e177724c14cecb98c652f775366e10061a196d038",
@@ -69,10 +69,10 @@
   "implementation_hashes": {
     "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
     "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
-    "foundation/intent.py": "b05c1b08803bf67f496cd933e1ff25f5a9f2dfa6cc4cd708446ece79e7ae1aff",
+    "foundation/intent.py": "ce854885d1667d8ccf8dafa531d5adcc9eb0bd77b832002849a02ea184a9a33f",
     "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
     "foundation/native.py": "bd379f6cf9278fe6f4920ab89a3e30ab7b9d041b39aec7a8dff7e033802b328d",
-    "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
+    "foundation/pipeline.py": "d13f1c479d2db9bff46fc0e1d190c6f5fbb04057669c307f428f7784e3af9dbe",
     "foundation/cli.py": "c992d4a5bf0b295725a541c68241be87216fd8996973a427b5a1a53762f56df5",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
