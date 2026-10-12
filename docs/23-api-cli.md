@@ -37,14 +37,15 @@ Run from the checkout root with the development requirements installed:
 ~~~text
 python -m foundation intent request.txt
 python -m foundation source candidate.rz
+python -m foundation synthesize --request request.txt --out artifacts/generated
 python -m foundation build --request request.txt --candidate candidate.rz --out artifacts/fresh
 python -m foundation check artifacts/fresh
 python -m foundation run artifacts/fresh --input '{"x":"-7"}'
 ~~~
 
-Activate `.venv` for the `bin/foundation` launcher, or use `.venv/bin/python -m foundation`. Global `--solver`, `--cargo` and `--rustc` select executable paths before the subcommand. `build` accepts `--timeout-ms` in 1..60000; build/check/run accept the supported `--policy scalar_source_exact_trusted_rust_v1`. Output directories must be fresh. Rejected builds preserve inspectable intermediate evidence and never create an accepted capsule.
+Activate `.venv` for the `bin/foundation` launcher, or use `.venv/bin/python -m foundation`. Global `--solver`, `--cargo` and `--rustc` select executable paths before the subcommand. `build` and `synthesize` accept `--timeout-ms` in 1..60000; build/synthesize/check/run accept the supported `--policy scalar_source_exact_trusted_rust_v1`. Output directories must be fresh. Rejected builds preserve inspectable intermediate evidence and never create an accepted capsule.
 
-The controlled requirement is the exact shipped nonnegative template. Other prose is `NeedsDecision`. Source supports one `fn name(int x, bool flag) -> int|bool` with total return/if blocks and pure scalar expressions; loops, helpers, contracts, effects and extra declarations are `Unsupported`. i64 JSON inputs are canonical decimal strings; JSON integer inputs are rejected to avoid precision loss.
+The controlled requirement is the exact shipped nonnegative template. `synthesize` renders a Resilient function from its accepted typed IR, then calls the existing build/check route. The capsule binds deterministic generation provenance; `check` reconstructs the generated source exactly from the accepted spec. Other prose is `NeedsDecision` with a required formal-intent acceptance obligation. Source supports one `fn name(int x, bool flag) -> int|bool` with total return/if blocks and pure scalar expressions; loops, helpers, contracts, effects and extra declarations are `Unsupported`. i64 JSON inputs are canonical decimal strings; JSON integer inputs are rejected to avoid precision loss.
 
 `check` reconstructs source/target obligations and runs the actual solver; it does not accept the producer's result merely because hashes match. `run` repeats checking and executes only the exact validated binary, comparing the observation with reference evaluation. The prototype trusts Z3, the restricted encodings/reference runtime, Rust compilation, OS and hardware. It does not satisfy `strict_native_exact`.
 

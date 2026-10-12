@@ -43,3 +43,5 @@ Closest prior art includes FRET, VeriSpecGen, Verus-SpecGym and AlphaVerus. See 
 ## Implemented scalar boundary
 
 The current [intent adapter](../foundation/intent.py) implements one exact controlled sentence under `nonnegative-i64-v1`. It records an accepted typed ledger and locks the generated spec IR. Other prose returns `NeedsDecision`; the interactive Codex candidate does not set its own requirement or acceptance state.
+
+The `synthesize` route renders Resilient source from this accepted spec IR and verifies the generated source through the same scalar capsule checker. Its generation record is reconstructed during checking. This deterministic rendering is not evidence that unrestricted natural language was interpreted correctly. Unmatched prose returns `NeedsDecision` with an explicit formal-intent acceptance obligation and no capsule.

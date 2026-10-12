@@ -395,7 +395,10 @@
       "implementation_artifacts": [
         "foundation/intent.py",
         "tests/test_frontend.py",
-        "docs/26-implementation-status.md"
+        "docs/26-implementation-status.md",
+        "foundation/synthesis.py",
+        "tests/test_synthesis_e2e.py",
+        "tests/test_generation_integrity.py"
       ]
     },
     {

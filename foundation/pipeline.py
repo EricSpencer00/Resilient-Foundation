@@ -158,7 +158,7 @@ def check(directory, solver, native=None, policy=POLICY):
     require((directory / 'profile.json').read_bytes() == (ROOT / 'profiles/scalar-wrapping-v1.json').read_bytes(), 'Semantic profile changed')
     spec, ledger = interpret((directory / 'request.txt').read_text())
     if generation['role'] == 'deterministic_spec_ir_v1':
-        require((directory / 'candidate.rz').read_text() == render_source(spec),
+        require((directory / 'candidate.rz').read_bytes() == render_source(spec).encode('utf-8'),
                 'Synthesized source differs from accepted formal intent', 'InvalidEvidence', 'generation')
     candidate, source_map = parse_source((directory / 'candidate.rz').read_text())
     target = decode((directory / 'generated.rs').read_text())
