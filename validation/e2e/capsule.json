@@ -74,7 +74,7 @@
     "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
     "foundation/native.py": "bd379f6cf9278fe6f4920ab89a3e30ab7b9d041b39aec7a8dff7e033802b328d",
     "foundation/pipeline.py": "55352faeb3b8f2ca750f76e4f4f78112fe93e7e44f9b35dfb1fbea8b57bc8349",
-    "foundation/cli.py": "cdc830c78b6b9448603d2dbf6debcb94fede88ccc623d3976e22638ede475f7d",
+    "foundation/cli.py": "865cb1bd8b362acc98298add5c7305349558075a30ab37fca80ef556fcef6d64",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "bin/foundation": "183b46fd5aa43a4eec50f06f9de83957f1c7eddafa6dea8aa01a7f554ecc1fc1",

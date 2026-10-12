@@ -27,8 +27,8 @@
   ],
   "inventory_sha256": "14b1b4c9ef1a4dc6399a4497071da59fab1e84190274eee5f6e8d26b9cc37a53",
   "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
-  "certificate_sha256": "fc6e2e9ab4766a152ca3a8f37a5f29ebdef310a1dc880b5d9f4e4c7282acc8f9",
-  "proof_manifest_sha256": "9eff77ba12c99fd6f021ae93c065414ee6f5b9d9e3336d256165074762973286",
+  "certificate_sha256": "7580fb52e7ec80f28ac60241cfb4b27471f6b872cee94dd6bf92f2d0b6e5d86f",
+  "proof_manifest_sha256": "5c2ce760fde030b8060d6ec13f7d0ccce7d5468c63e50aa30597f2296e57aec9",
   "build": {
     "status": "prebuilt",
     "binary_sha256": "4187be52e66647b22f09caac69f35b4ed934ec8a1da81cbda3270fc8814c0ee8",
@@ -40,14 +40,14 @@
       "--no-cache",
       "--typecheck",
       "--emit-contract-certificate",
-      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-regenerated/contract-certificate.json",
+      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-tools-regenerated/contract-certificate.json",
       "--emit-certificate",
-      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-regenerated/proofs",
-      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-regenerated/source/cert_demo_pass.rz"
+      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-tools-regenerated/proofs",
+      "/home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-tools-regenerated/source/cert_demo_pass.rz"
     ],
-    "seconds": 0.125,
-    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-regenerated/contract-certificate.json\u001b[0m\nProgram executed successfully\n",
-    "stderr": "seed=4233121089454147657\nmutation: 1 total mutation site(s) across 1 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nwarning: /home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-regenerated/source/cert_demo_pass.rz:3:4: function `ident_round` is never called\n"
+    "seconds": 0.028,
+    "stdout": "Running type checker...\n\u001b[32mType check passed\u001b[0m\n\u001b[36mWrote 1 verification certificate(s)\u001b[0m\n\u001b[36mWrote contract certificate to /home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-tools-regenerated/contract-certificate.json\u001b[0m\nProgram executed successfully\n",
+    "stderr": "seed=18295395036708356603\nmutation: 1 total mutation site(s) across 1 function(s)\nmutation:   `ident_round`: 1 site(s) [return]\nwarning: /home/eric/autopilot-runs/resilient-agent-20261012/Resilient-Foundation/artifacts/resilient-tools-regenerated/source/cert_demo_pass.rz:3:4: function `ident_round` is never called\n"
   },
   "replay": {
     "status": "passed",
@@ -71,7 +71,7 @@
   "receipt": {
     "status": "passed",
     "format": "foundation-resilient-check-receipt-v2",
-    "evidence_sha256": "6d8707c091424ceafcf23e1e953397531933539fb2ed56771287bbf18da579ba",
+    "evidence_sha256": "3fb416f368758c93bd882eab51fda4e5874cbc7fe7a6bbe457b1a84b602f33cf",
     "source_sha256": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1",
     "inventory_sha256": "14b1b4c9ef1a4dc6399a4497071da59fab1e84190274eee5f6e8d26b9cc37a53",
     "evidence_class": "solver_checked",
@@ -124,7 +124,7 @@
   "implementation_hashes": {
     "foundation/resilient.py": "714902b458994f9126ea2b84d26e2c6c6de734b004a0923536a0531a89c2fcff",
     "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
-    "foundation/cli.py": "cdc830c78b6b9448603d2dbf6debcb94fede88ccc623d3976e22638ede475f7d",
+    "foundation/cli.py": "865cb1bd8b362acc98298add5c7305349558075a30ab37fca80ef556fcef6d64",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
     "profiles/scalar-wrapping-v1.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",
@@ -144,10 +144,10 @@
     "scripts/replay_resilient.py": "3a0903fa1673e94fad66c21b26e078db141709cab7a8a1e722779fc6e03052b0"
   },
   "evidence_files": {
-    "validation/resilient/contract-certificate.json": "fc6e2e9ab4766a152ca3a8f37a5f29ebdef310a1dc880b5d9f4e4c7282acc8f9",
-    "validation/resilient/evidence.json": "6d8707c091424ceafcf23e1e953397531933539fb2ed56771287bbf18da579ba",
+    "validation/resilient/contract-certificate.json": "7580fb52e7ec80f28ac60241cfb4b27471f6b872cee94dd6bf92f2d0b6e5d86f",
+    "validation/resilient/evidence.json": "3fb416f368758c93bd882eab51fda4e5874cbc7fe7a6bbe457b1a84b602f33cf",
     "validation/resilient/proofs/ident_round__decl__0.smt2": "36527ced94a4adc6ca2f2cbb14c9436d7ca68f33d6e3ef9e8737f615f2a37444",
-    "validation/resilient/proofs/manifest.json": "9eff77ba12c99fd6f021ae93c065414ee6f5b9d9e3336d256165074762973286",
+    "validation/resilient/proofs/manifest.json": "5c2ce760fde030b8060d6ec13f7d0ccce7d5468c63e50aa30597f2296e57aec9",
     "validation/resilient/source/cert_demo_pass.rz": "4b01b8eb2558bdc32e407ebd7a4fce1f4e6dbeacfa477f5a02c50e1494dd0ce1"
   },
   "tests_run": 26,

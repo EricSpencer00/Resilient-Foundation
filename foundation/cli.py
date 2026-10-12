@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -16,8 +17,8 @@ from .source import parse_source
 def main():
     parser = argparse.ArgumentParser(prog='foundation', description='Checked scalar workflow with explicit trusted Rust compilation')
     parser.add_argument('--solver', default=shutil.which('z3') or '/usr/bin/z3')
-    parser.add_argument('--cargo', default=shutil.which('cargo'))
-    parser.add_argument('--rustc', default=shutil.which('rustc'))
+    parser.add_argument('--cargo', default=os.environ.get('FOUNDATION_CARGO') or shutil.which('cargo'))
+    parser.add_argument('--rustc', default=os.environ.get('FOUNDATION_RUSTC') or shutil.which('rustc'))
     commands = parser.add_subparsers(dest='command', required=True)
     intent = commands.add_parser('intent')
     intent.add_argument('request', type=Path)

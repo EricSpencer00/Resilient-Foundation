@@ -34,7 +34,7 @@ The [capsule checker](../foundation/pipeline.py) reinterprets the request, repar
 
 ## Recorded validation
 
-The [actual NUC report](../validation/e2e.json) records 62 tests, zero failures and zero skips, five independently specified oracle executions, 50 in-process real solver invocations and 37 native compilations. CLI subprocess operations are additional and excluded from those counters. Three fault solver invocations check missing/unknown/timeout outcomes. Generated-source line-ending mutations, forged deterministic provenance, wrong branches, overflow, observable division errors, stale artifacts, hash-consistent forged queries/targets and inflated proof claims fail their required boundary. A semantically equivalent boundary mutant is accepted.
+The [actual NUC report](../validation/e2e.json) records 63 tests, zero failures and zero skips, five independently specified oracle executions, 50 in-process real solver invocations and 37 native compilations. CLI subprocess operations are additional and excluded from those counters. Three fault solver invocations check missing/unknown/timeout outcomes. Generated-source line-ending mutations, forged deterministic provenance, wrong branches, overflow, observable division errors, stale artifacts, hash-consistent forged queries/targets and inflated proof claims fail their required boundary. A semantically equivalent boundary mutant is accepted.
 
 The report includes exact implementation, test, driver and evidence hashes, observed solver/Python/Rust identities and host architecture. Evidence excludes the executable itself and remains a host-specific audit record. Use a newly built capsule for execution. This conformance result is not a general soundness theorem, model score or performance benchmark.
 

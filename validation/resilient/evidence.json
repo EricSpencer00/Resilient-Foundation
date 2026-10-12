@@ -34,7 +34,7 @@
   "contract_certificate": {
     "schema": "resilient-contract-certificate/v1",
     "schema_version": 1,
-    "sha256": "fc6e2e9ab4766a152ca3a8f37a5f29ebdef310a1dc880b5d9f4e4c7282acc8f9",
+    "sha256": "7580fb52e7ec80f28ac60241cfb4b27471f6b872cee94dd6bf92f2d0b6e5d86f",
     "functions": 1,
     "clauses": 2,
     "verdicts": {
@@ -47,7 +47,7 @@
     ]
   },
   "proof_directory": {
-    "manifest_sha256": "9eff77ba12c99fd6f021ae93c065414ee6f5b9d9e3336d256165074762973286",
+    "manifest_sha256": "5c2ce760fde030b8060d6ec13f7d0ccce7d5468c63e50aa30597f2296e57aec9",
     "obligations": [
       {
         "certificate": "ident_round__decl__0.smt2",
