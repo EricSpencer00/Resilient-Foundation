@@ -1,3 +1,16 @@
 {
-  "claims": {}
+  "claims": {
+    "foundation/source.py": {
+      "branch": "res-6-source-diagnostics",
+      "claimed_at": "2026-10-12T13:32:12Z"
+    },
+    "foundation/source_diagnostics.py": {
+      "branch": "res-6-source-diagnostics",
+      "claimed_at": "2026-10-12T13:32:12Z"
+    },
+    "tests/test_source_diagnostics.py": {
+      "branch": "res-6-source-diagnostics",
+      "claimed_at": "2026-10-12T13:32:12Z"
+    }
+  }
 }
