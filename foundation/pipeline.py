@@ -10,6 +10,7 @@ from .ir import ROOT, canonical, file_hash, identity, inputs, load, require, val
 from .native import NativeTools, decode, emit, execute
 from .smt import equivalence_query, solve
 from .source import parse_source
+from .synthesis import render_source
 
 POLICY = 'scalar_source_exact_trusted_rust_v1'
 FORMAT = 'foundation-capsule-v1'
@@ -19,7 +20,7 @@ INTENT = {'mode': 'controlled_language', 'status': 'accepted', 'template': 'nonn
 FILES = ['request.txt', 'requirements.json', 'spec-ir.json', 'candidate.rz', 'candidate-ir.json',
          'source-map.json', 'profile.json', 'generated.rs', 'translation-ir.json', 'formal.smt2',
          'translation.smt2', 'native']
-TCB_FILES = ['foundation/ir.py', 'foundation/source.py', 'foundation/intent.py', 'foundation/smt.py',
+TCB_FILES = ['foundation/ir.py', 'foundation/source.py', 'foundation/intent.py', 'foundation/synthesis.py', 'foundation/smt.py',
              'foundation/native.py', 'foundation/pipeline.py', 'foundation/cli.py', 'foundation/errors.py',
              'foundation/__main__.py', 'bin/foundation', 'schemas/program-ir.schema.json', 'runtime/scalar-runner.rs.in',
              'crates/foundation-core/src/lib.rs', 'crates/foundation-core/Cargo.toml', 'Cargo.toml', 'Cargo.lock']
@@ -56,9 +57,28 @@ def replay_refutation(spec, candidate, result, native):
             'replay': 'rust_reference_runtime', 'validated': True}
 
 
-def build(request, candidate_source, output, solver, native=None, policy=POLICY, timeout_ms=10000):
+def generation_record(role, source_hash):
+    return {'role': role, 'candidate_source_sha256': source_hash,
+            'model_snapshot': 'not_applicable' if role == 'deterministic_spec_ir_v1' else 'not_attested',
+            'model_evaluation': 'not_run'}
+
+
+def synthesize(request, output, solver, native=None, policy=POLICY, timeout_ms=10000):
+    spec, _ = interpret(request)
+    source = render_source(spec)
+    return build(request, source, output, solver, native, policy, timeout_ms,
+                 generation_role='deterministic_spec_ir_v1')
+
+
+def build(request, candidate_source, output, solver, native=None, policy=POLICY, timeout_ms=10000,
+          generation_role='untrusted_candidate_producer'):
     require(policy == POLICY, 'Requested assurance policy is unsupported; native-machine checking is unavailable', 'Unsupported', 'policy')
     spec, ledger = interpret(request)
+    require(generation_role in ('untrusted_candidate_producer', 'deterministic_spec_ir_v1'),
+            'Unsupported generation role', 'Unsupported', 'generation')
+    if generation_role == 'deterministic_spec_ir_v1':
+        require(candidate_source == render_source(spec), 'Candidate differs from generated accepted intent',
+                'InvalidEvidence', 'generation')
     candidate, source_map = parse_source(candidate_source)
     native = native or NativeTools()
     native.build_core()
@@ -101,8 +121,7 @@ def build(request, candidate_source, output, solver, native=None, policy=POLICY,
         'canonical_identities': {'spec': identity('program-ir', spec), 'candidate': identity('program-ir', candidate),
                                  'translation': identity('program-ir', target)},
         'implementation_hashes': implementation_identity(), 'assumptions': ASSUMPTIONS,
-        'generation': {'role': 'untrusted_candidate_producer', 'candidate_source_sha256': file_hash(output / 'candidate.rz'),
-                       'model_snapshot': 'not_attested', 'model_evaluation': 'not_run'},
+        'generation': generation_record(generation_role, file_hash(output / 'candidate.rz')),
     }
     write_json(output / 'capsule.json', evidence)
     receipt, _ = check(output, solver, native)
@@ -131,10 +150,16 @@ def check(directory, solver, native=None, policy=POLICY):
     for name in FILES:
         path = directory / name
         require(path.is_file() and not path.is_symlink() and file_hash(path) == hashes[name], 'Stale or changed artifact: ' + name)
-    require(evidence.get('generation') == {'role': 'untrusted_candidate_producer', 'candidate_source_sha256': hashes['candidate.rz'],
-                                         'model_snapshot': 'not_attested', 'model_evaluation': 'not_run'}, 'Unsupported generation provenance claim')
+    generation = evidence.get('generation')
+    require(isinstance(generation, dict) and generation.get('role') in
+            ('untrusted_candidate_producer', 'deterministic_spec_ir_v1'), 'Unsupported generation provenance claim')
+    require(generation == generation_record(generation['role'], hashes['candidate.rz']),
+            'Unsupported generation provenance claim')
     require((directory / 'profile.json').read_bytes() == (ROOT / 'profiles/scalar-wrapping-v1.json').read_bytes(), 'Semantic profile changed')
     spec, ledger = interpret((directory / 'request.txt').read_text())
+    if generation['role'] == 'deterministic_spec_ir_v1':
+        require((directory / 'candidate.rz').read_text() == render_source(spec),
+                'Synthesized source differs from accepted formal intent', 'InvalidEvidence', 'generation')
     candidate, source_map = parse_source((directory / 'candidate.rz').read_text())
     target = decode((directory / 'generated.rs').read_text())
     for name, expected in [('spec-ir.json', spec), ('requirements.json', ledger), ('candidate-ir.json', candidate),

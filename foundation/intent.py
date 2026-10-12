@@ -9,7 +9,14 @@ TEMPLATE_ID = 'nonnegative-i64-v1'
 def interpret(text):
     sentence = text.strip()
     if sentence != SENTENCE:
-        raise FoundationError('NeedsDecision', 'Request does not match a supported controlled-language template', 'intent')
+        raise FoundationError('NeedsDecision', 'Request does not match a supported controlled-language template',
+                              'intent', obligations=[{
+                                  'id': 'accept-formal-intent',
+                                  'question': 'Which exact all-input scalar rule should be accepted?',
+                                  'supported_template': TEMPLATE_ID,
+                                  'supported_sentence': SENTENCE,
+                                  'source_span': {'start': 0, 'end': len(text)},
+                              }])
     x, zero = node('var', 'i64', name='x'), node('int', 'i64', value='0')
     body = node('if', 'i64', condition=binary('ge_signed', x, zero), then=x, **{'else': zero})
     spec = program(body, [{'name': 'x', 'type': 'i64'}], 'nonnegative', 'spec-nonnegative')

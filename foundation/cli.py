@@ -8,7 +8,7 @@ from .errors import EXIT_CODES, FoundationError
 from .intent import interpret
 from .ir import loads
 from .native import NativeTools
-from .pipeline import POLICY, build, check, run
+from .pipeline import POLICY, build, check, run, synthesize
 from .resilient import import_evidence, inspect as inspect_resilient, verify_evidence
 from .source import parse_source
 
@@ -29,6 +29,11 @@ def main():
     create.add_argument('--out', required=True, type=Path)
     create.add_argument('--policy', default=POLICY)
     create.add_argument('--timeout-ms', type=int, default=10000)
+    generate = commands.add_parser('synthesize', help='generate source from accepted intent and check its capsule')
+    generate.add_argument('--request', required=True, type=Path)
+    generate.add_argument('--out', required=True, type=Path)
+    generate.add_argument('--policy', default=POLICY)
+    generate.add_argument('--timeout-ms', type=int, default=10000)
     verify = commands.add_parser('check')
     verify.add_argument('capsule', type=Path)
     verify.add_argument('--policy', default=POLICY)
@@ -78,6 +83,9 @@ def main():
             if args.command == 'build':
                 result = build(args.request.read_text(), args.candidate.read_text(), args.out, args.solver,
                                native, args.policy, args.timeout_ms)
+            elif args.command == 'synthesize':
+                result = synthesize(args.request.read_text(), args.out, args.solver,
+                                    native, args.policy, args.timeout_ms)
             elif args.command == 'check':
                 result, _ = check(args.capsule, args.solver, native, args.policy)
             else:
