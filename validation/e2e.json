@@ -2,13 +2,13 @@
   "status": "passed",
   "scope": "scalar_e2e_conformance",
   "policy": "scalar_source_exact_trusted_rust_v1",
-  "started_at_utc": "2026-10-02T03:31:15.863657+00:00",
-  "completed_at_utc": "2026-10-02T03:31:29.712611+00:00",
+  "started_at_utc": "2026-10-12T12:45:31.893878+00:00",
+  "completed_at_utc": "2026-10-12T12:45:52.879761+00:00",
   "host": "hst-bench",
   "architecture": "x86_64",
   "python": "3.12.3",
   "python_dependencies": {
-    "jsonschema": "4.25.1"
+    "jsonschema": "4.10.3"
   },
   "solver": {
     "version": "Z3 version 4.8.12 - 64 bit",
@@ -23,13 +23,13 @@
     ],
     "core_source_sha256": "96e7ee6e044c6c15466b2543e854cfb55207c898f31ad95c5ce1b185697ad9bb",
     "runner_sha256": "2432ed71697efe660ce6c34687ddf1fabf3e93570ddcb5ca22141b2de0dc67a9",
-    "core_library_sha256": "26fcffe11960f408b4b49ee3382a8baa82c1f31dc81b2d72b3594a9dc98c00ae"
+    "core_library_sha256": "55db9a5642846a4af91e443181dec01ba2e0be7ac3f249e3ec36c07fe263194a"
   },
-  "tests_run": 55,
+  "tests_run": 63,
   "tests_failed": 0,
   "tests_skipped": 0,
   "oracle_cases_executed": 5,
-  "elapsed_ms": 13876,
+  "elapsed_ms": 21018,
   "instrumented_operations": {
     "in_process_real_solver_calls": 50,
     "in_process_fault_solver_calls": 3,
@@ -40,11 +40,12 @@
   "implementation_hashes": {
     "foundation/ir.py": "a61017043c243ac4e9d53ac9258f4c8b7752ae8d140931e0b7b23c776ad5676c",
     "foundation/source.py": "c5d691f04265dae978cfd35c890f321d02b565cd6e7cfab7275e31b3a7952b39",
-    "foundation/intent.py": "b05c1b08803bf67f496cd933e1ff25f5a9f2dfa6cc4cd708446ece79e7ae1aff",
+    "foundation/intent.py": "f1598d20d933c5f809a3352c5258b3b3e6365b9925d97037114fadfb3e4879c0",
+    "foundation/synthesis.py": "dad55572b08a7fcf60f68e338458824e774fc9df448736b75ccd486544880737",
     "foundation/smt.py": "7f388565236dfa100b3a7cbf8b5404453ce48deeb6763604c09097d1edab3639",
     "foundation/native.py": "bd379f6cf9278fe6f4920ab89a3e30ab7b9d041b39aec7a8dff7e033802b328d",
-    "foundation/pipeline.py": "688fbc29f0c4e0c6e84f215dfbd5f2667770daae4c73505e6ebaaff91187b222",
-    "foundation/cli.py": "c992d4a5bf0b295725a541c68241be87216fd8996973a427b5a1a53762f56df5",
+    "foundation/pipeline.py": "55352faeb3b8f2ca750f76e4f4f78112fe93e7e44f9b35dfb1fbea8b57bc8349",
+    "foundation/cli.py": "865cb1bd8b362acc98298add5c7305349558075a30ab37fca80ef556fcef6d64",
     "foundation/errors.py": "f3906c352bf5105932c57efc120fae5e6e79000b47160ed63c4d8c465966b93b",
     "foundation/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "bin/foundation": "183b46fd5aa43a4eec50f06f9de83957f1c7eddafa6dea8aa01a7f554ecc1fc1",
@@ -56,10 +57,14 @@
     "Cargo.lock": "85ea84e03353ade069a4108bfe7c5aecc11d573ef738374a47b83447ddbb2e81"
   },
   "test_hashes": {
+    "tests/test_cli_toolchain.py": "e50d089b436fc9dbedfc64c5ebdf9e5dba93bce2e0eaebf3595877739ca10baf",
     "tests/test_e2e.py": "1d24cca22ad4b8386dbadb45da8190c0130a12cf16ca7ecaeded9f0bb5d50b37",
     "tests/test_frontend.py": "15a825744f70c168abcf7b18d966847febcb5ab1021331583d52dede68e9fb7e",
+    "tests/test_generation_integrity.py": "bfd4f14e801ee03a166fe17d5c45a6ad032a03b10dd4b02838a7455fd7a33c94",
+    "tests/test_readiness.py": "8526ce295d6276ee52ade16e03500a2a03dddc87d5fc72eb3bc050f8fbee24e5",
     "tests/test_resilient.py": "d0f5e8863ba6a06268c0b149c450f8c493ee6d5ef93606bac2ea5f0f9bf11b17",
     "tests/test_smt_encoding.py": "8ce53fa9b65690983fc7f7e964cfae52b6b61e29f70e36257f634ed936b2c67f",
+    "tests/test_synthesis_e2e.py": "42c7d96bc728d7c5b5b99708a421ce855d602fe3db0d87e99407a4e38fed5700",
     "tests/test_translation.py": "802379d5f6c391648ea3cd14a61bd02e39ef352083693e4d53cf7dde4cbec3ac"
   },
   "driver_hashes": {
@@ -68,10 +73,10 @@
   "evidence_files": {
     "validation/e2e/candidate-ir.json": "50b13196e3f80308f88d7bb5dfb1233f10b8ca9b96c879faa133a86cd8adf4d5",
     "validation/e2e/candidate.rz": "cecb94cd84b532056d2bba011f417acd8e546578e9aea426fd86b3f1e4b0a9ad",
-    "validation/e2e/capsule.json": "b66ff5aab5b3f5596c0b41ac908aafe6a48bd1a98bbe9da7d5efbb3d3d01ea13",
-    "validation/e2e/check-receipt.json": "ea3d0c5d456a677c1aab1bf4ac3977df2baf53b874187ba0ee5fa66007b6a4a1",
+    "validation/e2e/capsule.json": "8bce263297d95f43346412649dced283b3647082a501ea66f520e640bfbfb8f4",
+    "validation/e2e/check-receipt.json": "0462baf3a746c66aa11af2ff200df99674348123cd4ea3480eb9e4830a60a330",
     "validation/e2e/counterexample.json": "c7ab993b465f3fed4655890098ed1fd4b60f92e9d8bdd38227325db9fae9084f",
-    "validation/e2e/executions.json": "18dc91f473e38323789acd11d6fe50d6da10f79ee58b4949ca6973d767ac99ec",
+    "validation/e2e/executions.json": "3b0d6e52d3c717b527b491a480c4d5da01379539f84081a664d94be8114ae54c",
     "validation/e2e/formal.smt2": "412d3cee1dca779ad5f6339bbed773370675f8df88e888d54ddc40eced04e670",
     "validation/e2e/generated.rs": "f29cceced38bd6406fc50870d5b4c79ad4f5d494ca118b6f2ded0051199efcf4",
     "validation/e2e/profile.json": "2578eab48dc462dc5c4f315d0a43a179b22be180f641b3c799893d5cd0dd235f",

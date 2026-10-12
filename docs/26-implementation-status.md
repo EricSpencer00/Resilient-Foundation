@@ -1,6 +1,6 @@
 # Current implementation
 
-Checked 1 October 2026. The normative semantics remain in [the semantic core](05-semantic-core.md). This public checkout contains the archive's complete specification and the first supported end-to-end scalar route. The separate Resilient compiler repository remains unchanged.
+Checked 12 October 2026. The normative semantics remain in [the semantic core](05-semantic-core.md). This public checkout contains the archive's complete specification and the first supported end-to-end scalar route. The separate Resilient compiler repository remains unchanged.
 
 ## Working route
 
@@ -10,7 +10,7 @@ The [Python frontend](../foundation/source.py) accepts one existing Resilient fu
 
 The [Resilient evidence adapter](../foundation/resilient.py) now provides a separate repository-boundary route. It inventories hashed compiler/runtime anchors, validates Resilient contract-certificate schema version 1 and SMT-LIB2 manifest hashes, regenerates supported pure definitions with the selected `rz` binary, and directly replays every SMT query with the selected Z3 executable. Its output remains `artifact_checked` without direct replay; replayed queries carry `solver_checked` evidence, while clauses without queries remain compiler-reported; it never upgrades the observed recovery, resource, temporal or embedded surfaces by implication.
 
-The [intent adapter](../foundation/intent.py) accepts only `nonnegative-i64-v1`: the exact controlled request shipped in the example. Arbitrary prose returns `NeedsDecision`. The [solver route](../foundation/smt.py) asks real Z3 whether any declared i64/bool input distinguishes return values or division errors. UNSAT establishes all-input equivalence under the trusted encoding and solver. SAT witnesses replay through the Rust reference evaluator before being reported as `Refuted`.
+The [intent adapter](../foundation/intent.py) accepts only `nonnegative-i64-v1`: the exact controlled request shipped in the example. Arbitrary prose returns `NeedsDecision` with a formal-intent obligation. The [synthesis adapter](../foundation/synthesis.py) renders the accepted spec IR as restricted Resilient source and checks a parser round trip. `synthesize` feeds that source into the existing build/check route; the capsule checker independently reconstructs its deterministic generation claim. The [solver route](../foundation/smt.py) asks real Z3 whether any declared i64/bool input distinguishes return values or division errors. UNSAT establishes all-input equivalence under the trusted encoding and solver. SAT witnesses replay through the Rust reference evaluator before being reported as `Refuted`.
 
 The [restricted target reader](../foundation/native.py) independently decodes emitted Rust constructors into IR. The translation relation is rerun through Z3. Only the exact trusted runtime wrapper is accepted. Generated Rust runs the reference evaluator; this prototype is not direct optimized code generation or a verifier for arbitrary Rust.
 
@@ -20,8 +20,8 @@ The [capsule checker](../foundation/pipeline.py) reinterprets the request, repar
 
 | Boundary | Current state | Remaining evidence |
 |---|---|---|
-| Prose to accepted requirements | One exact versioned controlled template | General intent validation and ambiguity decisions |
-| Resilient source to typed IR | Restricted parser, source maps, independent conformance | Mechanized extraction preservation; wider language |
+| Prose to accepted requirements | One exact versioned controlled template with an explicit decision obligation for other prose | General intent validation and ambiguity decisions |
+| Resilient source to typed IR | Restricted parser, source maps, deterministic synthesis for the one accepted template, independent conformance | Mechanized extraction preservation; wider language |
 | Scalar expressions to observations | Rust reference evaluator and strict wire adapter | Mechanized semantics connection |
 | Spec/candidate equivalence | Actual all-input QF_BV checks, Rust-replayed witnesses | Independent UNSAT kernel evidence |
 | Result to checked evidence | Bound artifacts and reconstructed/rerun obligations | Proof-witness formats and incremental evidence DAG |
@@ -34,12 +34,12 @@ The [capsule checker](../foundation/pipeline.py) reinterprets the request, repar
 
 ## Recorded validation
 
-The [actual NUC report](../validation/e2e.json) records 40 tests, zero failures and zero skips, five independently specified oracle executions, 50 in-process real solver invocations and 37 native compilations. CLI subprocess operations are additional and excluded from those counters. Three fault solver invocations check missing/unknown/timeout outcomes. Wrong branches, overflow, observable division errors, stale artifacts, hash-consistent forged queries/targets and inflated proof claims fail their required boundary. A semantically equivalent boundary mutant is accepted.
+The [actual NUC report](../validation/e2e.json) records 63 tests, zero failures and zero skips, five independently specified oracle executions, 50 in-process real solver invocations and 37 native compilations. CLI subprocess operations are additional and excluded from those counters. Three fault solver invocations check missing/unknown/timeout outcomes. Generated-source line-ending mutations, forged deterministic provenance, wrong branches, overflow, observable division errors, stale artifacts, hash-consistent forged queries/targets and inflated proof claims fail their required boundary. A semantically equivalent boundary mutant is accepted.
 
 The report includes exact implementation, test, driver and evidence hashes, observed solver/Python/Rust identities and host architecture. Evidence excludes the executable itself and remains a host-specific audit record. Use a newly built capsule for execution. This conformance result is not a general soundness theorem, model score or performance benchmark.
 
 ## Reproduce and next gates
 
-Follow [README commands](../README.md) and [the CLI contract](23-api-cli.md). `make check` runs specification consistency, Rust debug/release tests, lightweight Python tests, formatting and lint. `make e2e` runs the required real solver/native suite, rejects skips and saves evidence. Substantive runs belong on an authorized compute host. CI is configured for Rust 1.91.1 on Ubuntu; the observed NUC run used Rust 1.98.1. No hosted CI run is claimed for this branch.
+Follow [README commands](../README.md) and [the CLI contract](23-api-cli.md). `make check` runs specification consistency, Rust debug/release tests, lightweight Python tests, formatting and lint. `make e2e` runs the required real solver/native suite, rejects skips and saves evidence. Substantive runs belong on an authorized compute host. CI is configured for Rust 1.91.1 on Ubuntu; the observed NUC run used Rust 1.98.1. Hosted CI status is tracked separately on the change PR; the report records NUC acceptance only.
 
 Next gates are independent kernel evidence, a mechanized semantics connection and a restricted native relation. Verus/AutoVerus is a later adapter for Rust proof generation; its comparison and trust boundaries are in [the verifier research](../research/rust-verification-routes.md). Recovery, resource/probability routes and model evaluation retain their existing requirements.

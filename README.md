@@ -2,7 +2,7 @@
 
 A Rust-based foundation for AI-generated software whose requirements, executable specifications, implementation, translation evidence and runtime behavior remain connected.
 
-**Status: public scalar end-to-end prototype, version 0.1.0-draft, 1 October 2026.** A controlled requirement and restricted Resilient candidate now pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The recorded NUC run passed all 40 conformance checks with no skips. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
+**Status: public scalar end-to-end prototype, version 0.1.0-draft, 12 October 2026.** One exact controlled requirement can generate a restricted Resilient implementation, or a caller can supply one; both paths pass through typed IR, all-input Z3 equivalence, checked Rust constructor translation, artifact-bound acceptance and guarded native execution. The saved NUC conformance report records the checks run for its exact implementation and test hashes. Z3 and Rust compilation remain trusted; kernel proofs, native machine-code equivalence, stateful effects and model benchmarks remain planned.
 
 The first frontend is [Resilient](https://github.com/EricSpencer00/Resilient), owned by Eric Spencer. Resilient keeps its language/compiler/runtime identity; Foundation supplies shared semantic profiles, obligations, evidence and evaluation protocols.
 
@@ -50,6 +50,9 @@ The example evaluates the five independently specified boundary inputs. `make ch
 Use a compute host with Python 3.10+, the pinned development requirements, Z3, and Rust 1.85+. Run from the repository root; on the coordinator Mac, offload the full gate to an authorized compute host.
 
 ~~~sh
+.venv/bin/python -m foundation synthesize \
+  --request examples/e2e/nonnegative/request.txt \
+  --out artifacts/generated-nonnegative
 .venv/bin/python -m foundation build \
   --request examples/e2e/nonnegative/request.txt \
   --candidate examples/e2e/nonnegative/candidate.rz \
@@ -59,9 +62,9 @@ Use a compute host with Python 3.10+, the pinned development requirements, Z3, a
 make e2e
 ~~~
 
-The execution returns `"0"` and identifies the exact accepted capsule and native executable. Tool paths can be set with global `--solver`, `--cargo` and `--rustc` options before the subcommand. `bin/foundation` is also available when the Python environment is active. An existing output directory is preserved; use a fresh path for each build.
+The generated and supplied-candidate routes both use the same proof and artifact checker. The execution returns `"0"` and identifies the exact accepted capsule and native executable. Tool paths can be set with global `--solver`, `--cargo` and `--rustc` options before the subcommand. `bin/foundation` is also available when the Python environment is active. An existing output directory is preserved; use a fresh path for each build.
 
-The supported policy is `scalar_source_exact_trusted_rust_v1`. It accepts one exact controlled nonnegative requirement template and a pure i64/bool source fragment. Other prose returns `NeedsDecision`; unsupported source and stronger native policies fail explicitly. Generated Rust constructs the expression model and runs the tested reference evaluator. [The CLI contract](docs/23-api-cli.md) describes outcomes and remaining limits.
+The supported policy is `scalar_source_exact_trusted_rust_v1`. It accepts one exact controlled nonnegative requirement template and a pure i64/bool source fragment. Other prose returns `NeedsDecision` with an explicit acceptance obligation; unsupported source and stronger native policies fail explicitly. Generated Rust constructs the expression model and runs the tested reference evaluator. [The CLI contract](docs/23-api-cli.md) describes outcomes and remaining limits.
 
 The Resilient integration is available through `foundation resilient inspect` and `foundation resilient import-cert`. It inventories the actual Resilient compiler/runtime surfaces, checks contract-certificate JSON and SMT-LIB2 manifests, regenerates supported pure definitions with `rz` to check their source binding, and replays every SMT query directly with Z3. Solver evidence names those queries; clauses with no query remain compiler-reported. The supported import boundary is documented in [the evidence package](docs/28-resilient-evidence-package.md); recovery, resource, temporal, embedded and tooling surfaces remain explicitly catalogued rather than promoted to a Foundation proof claim.
 

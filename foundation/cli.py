@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -8,7 +9,7 @@ from .errors import EXIT_CODES, FoundationError
 from .intent import interpret
 from .ir import loads
 from .native import NativeTools
-from .pipeline import POLICY, build, check, run
+from .pipeline import POLICY, build, check, run, synthesize
 from .resilient import import_evidence, inspect as inspect_resilient, verify_evidence
 from .source import parse_source
 
@@ -16,8 +17,8 @@ from .source import parse_source
 def main():
     parser = argparse.ArgumentParser(prog='foundation', description='Checked scalar workflow with explicit trusted Rust compilation')
     parser.add_argument('--solver', default=shutil.which('z3') or '/usr/bin/z3')
-    parser.add_argument('--cargo', default=shutil.which('cargo'))
-    parser.add_argument('--rustc', default=shutil.which('rustc'))
+    parser.add_argument('--cargo', default=os.environ.get('FOUNDATION_CARGO') or shutil.which('cargo'))
+    parser.add_argument('--rustc', default=os.environ.get('FOUNDATION_RUSTC') or shutil.which('rustc'))
     commands = parser.add_subparsers(dest='command', required=True)
     intent = commands.add_parser('intent')
     intent.add_argument('request', type=Path)
@@ -29,6 +30,11 @@ def main():
     create.add_argument('--out', required=True, type=Path)
     create.add_argument('--policy', default=POLICY)
     create.add_argument('--timeout-ms', type=int, default=10000)
+    generate = commands.add_parser('synthesize', help='generate source from accepted intent and check its capsule')
+    generate.add_argument('--request', required=True, type=Path)
+    generate.add_argument('--out', required=True, type=Path)
+    generate.add_argument('--policy', default=POLICY)
+    generate.add_argument('--timeout-ms', type=int, default=10000)
     verify = commands.add_parser('check')
     verify.add_argument('capsule', type=Path)
     verify.add_argument('--policy', default=POLICY)
@@ -78,6 +84,9 @@ def main():
             if args.command == 'build':
                 result = build(args.request.read_text(), args.candidate.read_text(), args.out, args.solver,
                                native, args.policy, args.timeout_ms)
+            elif args.command == 'synthesize':
+                result = synthesize(args.request.read_text(), args.out, args.solver,
+                                    native, args.policy, args.timeout_ms)
             elif args.command == 'check':
                 result, _ = check(args.capsule, args.solver, native, args.policy)
             else:
